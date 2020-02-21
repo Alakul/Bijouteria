@@ -1,0 +1,187 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	width: auto;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#cell {
+	text-align: center;
+	width: 180px;
+	height: 550px;
+	border: 2px solid goldenrod;
+	border-radius: 8px;
+}
+
+
+
+header {
+	background-color: white;
+	margin-left: auto;
+    margin-right: auto;
+    display: block;
+	padding: 10px;
+	width: auto;
+    top: 0;
+    position: sticky;
+    position: -webkit-sticky;
+    border-bottom-style: solid;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+	
+}
+
+header > ul {
+    list-style-type: none;
+    margin: auto;
+    padding: 0px;
+    text-align: center;
+    font-size: 1em;
+	height: auto;
+	width: auto;
+}
+
+header > ul > li {
+    display: inline-grid;
+    white-space: nowrap;
+	margin: 0 6px 0 6px;
+}
+
+#logo{
+	height: 36px;
+	margin: 0;
+	padding: 0;
+}
+
+.buttonStyle {
+	padding: 6px 10px 6px 10px;
+	margin: 2px;
+	background-color: white; 
+	border: 1px solid white;
+	font-weight: bold;
+	border-radius: 8px;
+	font-size: 14px;
+	color: black;
+	text-decoration: none;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	cursor: pointer;
+}	
+
+.buttonStyle:link, a:visited {
+    color: black;
+}
+
+.buttonStyle:hover {
+    color: white;
+    background-color: goldenrod; 
+}
+
+.buttonStyle:active {
+    color: gray;
+} 
+
+.searchBar {
+	padding: 6px 10px 6px 10px;
+	margin: 2px 0 2px 2px;
+	background-color: white;
+	color: black;
+	border: 2px solid goldenrod;
+	border-radius: 8px 0 0 8px;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.searchButton {
+	padding: 6px 10px 6px 10px;
+	margin: 2px 2px 0 2px;
+	background-color: white;
+	color: black;
+	border: 2px solid goldenrod;
+	border-radius: 0 8px 8px 0;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	cursor: pointer;
+}	
+
+.searchButton:link, a:visited {
+    color: black;
+}
+
+.searchButton:hover {
+    color: white;
+    background-color: goldenrod; 
+}
+
+.searchButton:active {
+    color: gray;
+} 
+
+.listMenu {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    display: none;
+	position: absolute;
+	border: 2px solid goldenrod;
+	border-radius: 8px;
+	background-color: white;
+}
+
+.listMenu > li {
+    position: block;
+	padding: 0;
+	font-size: 13px;
+	text-align: left;
+	border-top: 1px solid goldenrod;
+}
+
+.listMenu > li:hover {
+    color: white;
+    background-color: goldenrod;
+}
+
+.listHeader {
+	font-weight: bold;
+	margin: 0;
+	padding: 6px;
+}
+
+
+.listMenu > li > a {
+	display: block;
+	height: auto;
+	padding: 6px 10px 6px 10px;
+	margin: 0;
+	text-decoration: none;
+	color: black;
+}
+
+
+
+.inputText {
+	padding: 6px 10px 6px 10px;
+	margin: 6px;
+	background-color: white;
+	border: 2px solid goldenrod;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-weight: bold;
+	border-radius: 8px;
+	font-size: 14px;
+	color: black;
+}
+
+.inputArea {
+	margin: 30px 0 30px 0;
+}
+
+.formStyle{
+	margin: 60px;
+}
+
+
+#savePassword {
+	font-size: 12px;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
