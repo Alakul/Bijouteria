@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('pages/home');
 });
 
+Route::get('/addTutorial', 'HomeController@addTutorial');
+Route::post('titleImageUpload', 'HomeController@titleImageUpload')->name('image.upload.post');
+
+
 Auth::routes();

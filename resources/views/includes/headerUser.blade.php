@@ -31,5 +31,5 @@
             </form>
 		</ul>
 	</li>
-	<li style="float: right;"><a class="buttonStyle"><i class="fa fa-plus"></i></a></li>
+	<li style="float: right;"><a class="buttonStyle" href="{{action('HomeController@addTutorial')}}"><i class="fa fa-plus"></i></a></li>
 </ul>
