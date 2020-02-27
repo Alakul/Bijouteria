@@ -2,7 +2,22 @@ body {
 	margin: 0px;
 	padding: 0px;
 	width: auto;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	color: #333333;
+}
+
+h2 {
+	margin: 20px;
+	padding: 0;
+	color: #333333;
+	text-align: center;
+}
+
+h3 {
+	margin: 20px 20px 0 20px;
+	padding: 0;
+	color: #333333;
 }
 
 #cell {
@@ -12,8 +27,6 @@ body {
 	border: 2px solid goldenrod;
 	border-radius: 8px;
 }
-
-
 
 header {
 	background-color: white;
@@ -27,8 +40,8 @@ header {
     position: -webkit-sticky;
     border-bottom-style: solid;
     border-top-width: 1px;
-    border-bottom-width: 1px;
-	
+	border-bottom-width: 1px;
+	border-color: #DDDDDD;
 }
 
 header > ul {
@@ -54,22 +67,19 @@ header > ul > li {
 }
 
 .buttonStyle {
-	padding: 6px 10px 6px 10px;
-	margin: 2px;
-	background-color: white; 
-	border: 1px solid white;
+	padding: 10px;
+	border: 1px solid goldenrod;
 	font-weight: bold;
-	border-radius: 8px;
+	border-radius: 4px;
 	font-size: 14px;
-	color: black;
+	color: white;
+    background-color: goldenrod; 
 	text-decoration: none;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	cursor: pointer;
+	height: auto;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
 }	
-
-.buttonStyle:link, a:visited {
-    color: black;
-}
 
 .buttonStyle:hover {
     color: white;
@@ -81,42 +91,27 @@ header > ul > li {
 } 
 
 .searchBar {
-	padding: 6px 10px 6px 10px;
+	padding: 10px;
 	margin: 2px 0 2px 2px;
 	background-color: white;
-	color: black;
-	border: 2px solid goldenrod;
-	border-radius: 8px 0 0 8px;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px 0 0 4px;
 	font-size: 14px;
 	font-weight: bold;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	height: auto;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
 }
 
 .searchButton {
-	padding: 6px 10px 6px 10px;
-	margin: 2px 2px 0 2px;
+	padding: 10px;
+	margin: 2px 2px 2px 0;
 	background-color: white;
-	color: black;
-	border: 2px solid goldenrod;
-	border-radius: 0 8px 8px 0;
+	border: 2px solid #DDDDDD;
+	border-radius: 0 4px 4px 0;
 	font-size: 14px;
-	font-weight: bold;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	cursor: pointer;
-}	
-
-.searchButton:link, a:visited {
-    color: black;
 }
-
-.searchButton:hover {
-    color: white;
-    background-color: goldenrod; 
-}
-
-.searchButton:active {
-    color: gray;
-} 
 
 .listMenu {
     list-style-type:none;
@@ -161,15 +156,16 @@ header > ul > li {
 
 
 .inputText {
-	padding: 6px 10px 6px 10px;
-	margin: 6px;
+	padding: 10px;
+	margin: 6px 20px 20px 20px;
 	background-color: white;
-	border: 2px solid goldenrod;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-	font-weight: bold;
-	border-radius: 8px;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
 	font-size: 14px;
 	color: black;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	width: 88%;
 }
 
 .inputArea {
@@ -177,11 +173,61 @@ header > ul > li {
 }
 
 .formStyle{
-	margin: 60px;
+	margin: 30px auto 30px auto;
+	border: 1px solid #DDDDDD;
+	width: 500px;
+	padding: 15px;
 }
 
 
 #savePassword {
 	font-size: 12px;
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	margin: auto;
+}
+
+#passwordRemind {
+	font-size: 12px;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	text-align: center;
+	display: block;
+	margin: 40px 20px 20px 20px;
+}
+
+.buttons {
+	padding: 8px 14px 8px 14px;
+	margin: 2px;
+	height: auto;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+#categories {
+	font-weight: normal;
+}
+
+#materialsList, #toolsList, #stepsList {
+	text-decoration: none;
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+
+#steps {
+	border: 1px solid #DDDDDD;
+	margin: 20px;
+}
+
+i {
+	cursor: pointer;
+}
+
+label {
+	margin: 20px;
+	padding: 2px;
+	color: #333333;
+	font-weight: bold;
+	font-size: 14px;
 }

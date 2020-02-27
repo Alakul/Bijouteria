@@ -1,5 +1,5 @@
 <ul>
-	<li style="float: left;" id ="categories" onClick="listMenu(this)"><a class="buttonStyle"><i class="fas fa-bars"></i></a>
+	<li style="float: left;" id="categories" class="buttons" onClick="listMenu(this)"><a><i class="fas fa-bars"></i></a>
 		<ul class="listMenu" id="categoriesMenu" style="top: 46px;">
 			<h4 class="listHeader">Kategorie</h4>
 			<li><a>Bransoletki</a></li>

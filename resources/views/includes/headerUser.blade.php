@@ -1,5 +1,5 @@
 <ul>
-	<li style="float: left;" id ="categories" onClick="listMenu(this)"><a class="buttonStyle"><i class="fas fa-bars"></i></a>
+	<li style="float: left;" id="categories" class="buttons" onClick="listMenu(this)"><a><i class="fas fa-bars"></i></a>
 		<ul class="listMenu" id="categoriesMenu" style="top: 46px;">
 			<h4 class="listHeader">Kategorie</h4>
 			<li><a>Bransoletki</a></li>
@@ -18,7 +18,7 @@
 		</form>
 	</li>
 	<li><a href="{{ url('/') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="fortissimo logo"></a></li>
-	<li style="float: right;" id="user" onClick="listMenu(this)"><a class="buttonStyle">{{ Auth::user()->name }}</a>
+	<li style="float: right;" id="user" onClick="listMenu(this)"><a class="buttons">{{ Auth::user()->name }}</a>
 		<ul class="listMenu" id="userMenu" style="right: 16px; top: 46px;">
 			<h4 class="listHeader">Użytkownik</h4>
 			<li><a>Profil</a></li>
@@ -31,5 +31,5 @@
             </form>
 		</ul>
 	</li>
-	<li style="float: right;"><a class="buttonStyle" href="{{action('HomeController@addTutorial')}}"><i class="fa fa-plus"></i></a></li>
+	<li style="float: right;"><a class="buttons" href="{{action('HomeController@addTutorial')}}"><i class="fa fa-plus"></i></a></li>
 </ul>
