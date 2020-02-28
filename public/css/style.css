@@ -20,14 +20,6 @@ h3 {
 	color: #333333;
 }
 
-#cell {
-	text-align: center;
-	width: 180px;
-	height: 550px;
-	border: 2px solid goldenrod;
-	border-radius: 8px;
-}
-
 header {
 	background-color: white;
 	margin-left: auto;
@@ -60,10 +52,21 @@ header > ul > li {
 	margin: 0 6px 0 6px;
 }
 
-#logo{
-	height: 36px;
-	margin: 0;
-	padding: 0;
+i {
+	cursor: pointer;
+}
+
+label {
+	margin: 20px;
+	padding: 2px;
+	color: #333333;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+textarea {
+	resize: vertical;
+	max-height: 150px;
 }
 
 .buttonStyle {
@@ -90,6 +93,29 @@ header > ul > li {
     color: gray;
 } 
 
+.buttons {
+	padding: 8px 14px 8px 14px;
+	margin: 2px;
+	height: auto;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.buttonAdd {
+	padding: 8px;
+	margin: auto auto 10px auto;
+	height: auto;
+	width: auto;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+	color: #333333;
+	background-color: white;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+	display: block;
+}
+
 .searchBar {
 	padding: 10px;
 	margin: 2px 0 2px 2px;
@@ -98,19 +124,21 @@ header > ul > li {
 	border-radius: 4px 0 0 4px;
 	font-size: 14px;
 	font-weight: bold;
-	height: auto;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 }
 
 .searchButton {
 	padding: 10px;
-	margin: 2px 2px 2px 0;
+	margin: 2px;
 	background-color: white;
 	border: 2px solid #DDDDDD;
 	border-radius: 0 4px 4px 0;
 	font-size: 14px;
 	cursor: pointer;
+	height: auto;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
 }
 
 .listMenu {
@@ -119,8 +147,8 @@ header > ul > li {
     margin:0;
     display: none;
 	position: absolute;
-	border: 2px solid goldenrod;
-	border-radius: 8px;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
 	background-color: white;
 }
 
@@ -129,7 +157,7 @@ header > ul > li {
 	padding: 0;
 	font-size: 13px;
 	text-align: left;
-	border-top: 1px solid goldenrod;
+	border-top: 1px solid #DDDDDD;
 }
 
 .listMenu > li:hover {
@@ -143,7 +171,6 @@ header > ul > li {
 	padding: 6px;
 }
 
-
 .listMenu > li > a {
 	display: block;
 	height: auto;
@@ -152,8 +179,6 @@ header > ul > li {
 	text-decoration: none;
 	color: black;
 }
-
-
 
 .inputText {
 	padding: 10px;
@@ -165,7 +190,7 @@ header > ul > li {
 	color: black;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
-	width: 88%;
+	width: 87%;
 }
 
 .inputArea {
@@ -179,12 +204,27 @@ header > ul > li {
 	padding: 15px;
 }
 
+#logo{
+	height: 36px;
+	margin: 0;
+	padding: 0;
+}
+
+#cell {
+	text-align: center;
+	width: 180px;
+	height: 550px;
+	border: 2px solid goldenrod;
+	border-radius: 8px;
+}
 
 #savePassword {
 	font-size: 12px;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 	margin: auto;
+	vertical-align: middle;
+	*overflow: hidden;
 }
 
 #passwordRemind {
@@ -196,16 +236,39 @@ header > ul > li {
 	margin: 40px 20px 20px 20px;
 }
 
-.buttons {
-	padding: 8px 14px 8px 14px;
-	margin: 2px;
+#plus {
+	width: auto;
 	height: auto;
-	cursor: pointer;
-	font-weight: bold;
+	font-size: 18px;
+}
+
+#remember {
+	vertical-align: bottom;
+	width: 10px;
+	height: 10px;
 }
 
 #categories {
 	font-weight: normal;
+}
+
+#category {
+	padding: 6px;
+	margin: 6px 20px 20px 20px;
+	background-color: white;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+	font-size: 14px;
+	color: black;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	display: block;
+}
+
+#category > option {
+	color: black;
+	font-family: 'Roboto';
+	letter-spacing: 0.7px;
 }
 
 #materialsList, #toolsList, #stepsList {
@@ -216,18 +279,48 @@ header > ul > li {
 }
 
 #steps {
-	border: 1px solid #DDDDDD;
+	border: 2px solid #DDDDDD;
 	margin: 20px;
+	margin: 8px 20px 8px 20px;
 }
 
-i {
-	cursor: pointer;
+#miniature {
+	text-align: left;
+	margin: 20px;
+	padding: 0;
+	float: left;
+	display: block;
+	width: 25%;
+	height: auto;
+
 }
 
-label {
-	margin: 20px;
-	padding: 2px;
-	color: #333333;
+#imgMiniature {
+	border-radius: 10px;
+	border: 1px solid #333333;
+	width: 100%;
+	height: 300px;
+}
+
+#authorMiniature{
+	font-size: 16px;
+	padding: 0;
+	margin: 10px;
 	font-weight: bold;
-	font-size: 14px;
+}
+
+#authorImgMiniature {
+	width: 14px;
+	height: 14px;
+	margin-right: 10px;
+	padding: 0;
+	display: inline-block;
+}
+
+#titleMiniature {
+	font-size: 18px;
+	padding: 0;
+	margin: 10px;
+	font-weight: bold;
+	text-align: justify;
 }

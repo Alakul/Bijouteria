@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 
 class HomeController extends Controller
 {
@@ -31,18 +32,19 @@ class HomeController extends Controller
         return view('pages/addTutorial');
     }
 
-    public function titleImageUpload()
+    public function titleImageUpload(Request $request)
     {
-        request()->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        $this->validate($request, [
+            'fileToUpload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $imageName = time().'.'.request()->image->getClientOriginalExtension();
 
-        request()->image->move(public_path('images'), $imageName);
+        $image=$request->file('fileToUpload');
+        $imageNew=rand().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('images'), $imageNew);
 
         return back()
             ->with('success','You have successfully upload image.')
-            ->with('image',$imageName);
+            ->with('fileToUpload',$imageNew);
     }
 
 }
