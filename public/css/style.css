@@ -67,6 +67,7 @@ label {
 textarea {
 	resize: vertical;
 	max-height: 150px;
+	line-height: 1.5;
 }
 
 .buttonStyle {
@@ -292,7 +293,6 @@ textarea {
 	display: block;
 	width: 25%;
 	height: auto;
-
 }
 
 #imgMiniature {
@@ -318,9 +318,54 @@ textarea {
 }
 
 #titleMiniature {
-	font-size: 18px;
+	font-size: 16px;
 	padding: 0;
 	margin: 10px;
 	font-weight: bold;
 	text-align: justify;
 }
+
+#imgShow {
+	margin: 0 20px 6px 20px;
+	width: 92%;
+	height: 300px;
+	border: 1px solid #333333;
+}
+
+#descriptionShow, #descriptionStepShow {
+	margin: 6px 20px 20px 20px;
+	text-align: justify;
+	line-height: 1.5;
+	font-size: 14px;
+}
+
+.listShow {
+	margin: 10px 0 30px 0;
+}
+
+#imgStepShow {
+	width: 91%;
+	height: 300px;
+	margin: 0px 20px 6px 20px;
+}
+
+#categoryShow {
+	margin: 6px 6px 30px 20px;
+	font-size: 16px;
+	display: inline-block;
+}
+
+#categoryLabel {
+	margin: 20px 6px 20px 20px;
+}
+
+
+
+.grid-item {
+	float: left;
+	width: 80px;
+	height: 60px;
+	border: 2px solid hsla(0, 0%, 0%, 0.5);
+  }
+.grid-item { width: 200px; }
+.grid-item--width2 { width: 400px; }

@@ -41,7 +41,7 @@
             <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button></br>
 
             <div>
-                <ul id="stepsList">
+                <ol id="stepsList">
                     <li id="steps">
                         <h3>Krok:</h3></br>
                         <label>Zdjęcie</label></br>
@@ -49,7 +49,7 @@
                         <label>Opis</label>
                         <input id="descriptionStep" name="descriptionStep" class="inputText" type="text"><br/> 
                     </li>
-                </ul>
+                </ol>
             </div>
             <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button></br>
 			<button type="submit" class="buttonStyle" style="margin: 30px auto 30px auto; display: block;">Opublikuj</button>

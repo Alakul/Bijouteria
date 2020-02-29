@@ -1,37 +1,35 @@
 @extends('layouts.app')
 @section('content')
     <div class="formStyle">
-		<h2>Naszyjnik bla bla</h2>
+		<h2>Naszyjnik księżyc</h2>
 		<div class="inputArea">
             
-            <p>sffsdfs jdk dkd skmsl sfdjk skjfdsk fbla bla blaa bla dkfsd xddd</p>
-                
-            <img width="100%" height="300px" style="border: 1px solid #333333;">
-            </br>
+            <img id="imgShow">
+            <p id="descriptionShow">Naszyjnik wykonany metodą makrama ze sznurka grubość 1mm oraz czarnymi koralikami. Idealny na prezent.</p>
 
-            <label for="category">Kategoria:</label><p>Naszyjnik</p>
+            <label id="categoryLabel">Kategoria:</label>
+            <p id="categoryShow">Naszyjniki</p></br>
 
-            <label>Wymagane materiały</label>
-            <ul>
+            <label>Wymagane materiały:</label>
+            <ul id="materialsListShow" class="listShow">
                 <li>Bla Bla</li>
                 <li>Bla Bla</li>
             </ul>
             
-            <label>Wymagane narzędzia</label>
-            <ul>
+            <label>Wymagane narzędzia:</label>
+            <ul id="toolsListShow" class="listShow">
                 <li>Bla</li>
             </ul>
            
-
             <div>
                 <ul id="stepsList">
                     <li id="steps">
                         <h3>Krok 1:</h3></br>
-                        <img width="90%" height="300px" style=" padding: 20px;">
-                        <p  style=" padding: 20px;">sffsdfs jdk dkd skmsl sfdjk skjfdsk fbla bla blaa bla dkfsd xddd</p>
+                        <img id="imgStepShow">
+                        <p id="descriptionStepShow">Utnij 2 metry sznurka razy 2 a następnie złóż w połowie. Wykonaj węzeł beczka.</p>
                     </li>
                 </ul>
             </div>
 		</div>
-</div>
+    </div>
 @endsection

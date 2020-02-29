@@ -5,4 +5,5 @@
         <img id="imgMiniature" >
         <p id="titleMiniature">Tytuł jsdaoj sdajsado oadsiosadn djd dhkas ajhksd wsjdk s jskad  jaksd s</p>
     </div>
+
 @endsection
