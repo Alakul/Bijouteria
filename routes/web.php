@@ -22,5 +22,4 @@ Route::get('/tutorial', function () {
 Route::get('/addTutorial', 'HomeController@addTutorial');
 Route::post('titleImageUpload', 'HomeController@titleImageUpload')->name('image.upload.post');
 
-
 Auth::routes();

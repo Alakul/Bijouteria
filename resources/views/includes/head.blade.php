@@ -8,3 +8,7 @@
 <script src="js/script.js" ></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
+
+<link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>

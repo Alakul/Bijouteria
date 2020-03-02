@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-	<form method="POST" action="{{ route('login') }}" class="formStyle">
+	<form method="POST" action="{{ route('image.upload.post') }}" class="formStyle" enctype="multipart/form-data">
+        {{ csrf_field() }}
 		<h2>Dodaj poradnik</h2>
 		<div class="inputArea">
             <label>Tytuł <span style="color: red;">*</span></label></br>
@@ -10,12 +11,8 @@
             <textarea id="describtion" name="description" class="inputText" type="text"></textarea><br/>
                 
             <label>Zdjęcie tytułowe <span style="color: red;">*</span></label></br>
-            <form action="{{ route('image.upload.post') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="fileToUpload" id="fileToUpload"></br>
-                <button type="submit" class="btn btn-success">Upload</button>
-            </form>
-            </br>
+            <input type="file" id="fileToUpload" name="fileToUpload" onchange="loadPreview(this);"></br>
+            <img id="imagePreview" src="#" class="preview" height="100px"/></br>
 
             <label for="category">Kategoria <span style="color: red;">*</span></label>
             <select id="category">
@@ -42,17 +39,18 @@
 
             <div>
                 <ol id="stepsList">
-                    <li id="steps">
-                        <h3>Krok:</h3></br>
+                    <li id="step_1" class="steps">
+                        <h3>Krok 1:</h3></br>
                         <label>Zdjęcie</label></br>
-                        <textarea id="photo" name="photo" class="inputText" type="text" rows="4" cols="50"></textarea><br/>
+                        <input id="input_1" type="file" class="fileToUpload" name="fileToUpload" onchange="loadPreview(this);"></br>
+                        <img id="imagePreview" src="#" class="preview" height="100px"/></br>
                         <label>Opis</label>
-                        <input id="descriptionStep" name="descriptionStep" class="inputText" type="text"><br/> 
+                        <input id="description_1" name="descriptionStep" class="inputText" type="text"><br/> 
                     </li>
                 </ol>
             </div>
             <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button></br>
 			<button type="submit" class="buttonStyle" style="margin: 30px auto 30px auto; display: block;">Opublikuj</button>
 		</div>
-	</form>
+    </form>
 @endsection

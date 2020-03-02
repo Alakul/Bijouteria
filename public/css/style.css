@@ -205,6 +205,16 @@ textarea {
 	padding: 15px;
 }
 
+.steps {
+	border: 2px solid #DDDDDD;
+	margin: 20px;
+	margin: 8px 20px 8px 20px;
+}
+
+.fileToUpload {
+	margin: 6px 20px 6px 20px;
+}
+
 #logo{
 	height: 36px;
 	margin: 0;
@@ -255,7 +265,7 @@ textarea {
 
 #category {
 	padding: 6px;
-	margin: 6px 20px 20px 20px;
+	margin: 6px 20px 30px 20px;
 	background-color: white;
 	border: 2px solid #DDDDDD;
 	border-radius: 4px;
@@ -277,12 +287,6 @@ textarea {
 	list-style: none;
 	padding-left: 0;
 	margin: 0;
-}
-
-#steps {
-	border: 2px solid #DDDDDD;
-	margin: 20px;
-	margin: 8px 20px 8px 20px;
 }
 
 #miniature {
@@ -359,13 +363,13 @@ textarea {
 	margin: 20px 6px 20px 20px;
 }
 
+#imagePreview {
+	margin: 6px 20px 20px 20px;
+	width: 200px;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+}
 
-
-.grid-item {
-	float: left;
-	width: 80px;
-	height: 60px;
-	border: 2px solid hsla(0, 0%, 0%, 0.5);
-  }
-.grid-item { width: 200px; }
-.grid-item--width2 { width: 400px; }
+#fileToUpload {
+	margin: 6px 20px 6px 20px;
+}

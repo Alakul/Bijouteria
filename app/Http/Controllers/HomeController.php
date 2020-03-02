@@ -40,7 +40,7 @@ class HomeController extends Controller
 
         $image=$request->file('fileToUpload');
         $imageNew=rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('images'), $imageNew);
+        $image->move(public_path('/images/'), $imageNew);
 
         return back()
             ->with('success','You have successfully upload image.')
