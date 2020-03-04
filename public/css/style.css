@@ -215,6 +215,13 @@ textarea {
 	margin: 6px 20px 6px 20px;
 }
 
+.preview {
+	margin: 6px 20px 20px 20px;
+	width: 91%;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+}
+
 #logo{
 	height: 36px;
 	margin: 0;
@@ -361,13 +368,6 @@ textarea {
 
 #categoryLabel {
 	margin: 20px 6px 20px 20px;
-}
-
-#imagePreview {
-	margin: 6px 20px 20px 20px;
-	width: 200px;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
 }
 
 #fileToUpload {

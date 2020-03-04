@@ -12,7 +12,7 @@
                 
             <label>Zdjęcie tytułowe <span style="color: red;">*</span></label></br>
             <input type="file" id="fileToUpload" name="fileToUpload" onchange="loadPreview(this);"></br>
-            <img id="imagePreview" src="#" class="preview" height="100px"/></br>
+            <img id="imagePreview_0" src="#" class="preview" height="100px"/></br>
 
             <label for="category">Kategoria <span style="color: red;">*</span></label>
             <select id="category">
@@ -40,10 +40,10 @@
             <div>
                 <ol id="stepsList">
                     <li id="step_1" class="steps">
-                        <h3>Krok 1:</h3></br>
+                        <h3 id="h3_1">Krok 1:</h3></br>
                         <label>Zdjęcie</label></br>
                         <input id="input_1" type="file" class="fileToUpload" name="fileToUpload" onchange="loadPreview(this);"></br>
-                        <img id="imagePreview" src="#" class="preview" height="100px"/></br>
+                        <img id="imagePreview_1" src="#" class="preview" height="100px"/></br>
                         <label>Opis</label>
                         <input id="description_1" name="descriptionStep" class="inputText" type="text"><br/> 
                     </li>
