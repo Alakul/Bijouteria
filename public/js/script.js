@@ -2,6 +2,7 @@ var materials=1;
 var tools=1;
 var steps=1;
 
+
 function listMenu(obj) {
 	var id=obj.id;
 	if (id=='categories'){
@@ -26,7 +27,7 @@ function addToList(obj){
 		if (materials<=5){
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="materials" name="materials" class="inputText materialsInput" type="text"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="materials_'+materials+'" name="materials" class="inputText materialsInput" type="text" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			materials++;
 		}	
@@ -35,7 +36,7 @@ function addToList(obj){
 		if(tools<=5){
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="tools" name="tools" class="inputText toolsInput" type="text"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="tools_'+tools+'" name="tools" class="inputText toolsInput" type="text" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			tools++;
 		}
@@ -184,4 +185,64 @@ function fileSizeValidate(file) {
 			return true;
 		}
 	}
+}
+
+
+window.onload = function clearInputs(){
+	var list = document.getElementById("stepsList");
+	var items = list.getElementsByTagName("li");
+
+	for (var i = 0; i <= items.length; ++i){
+		document.getElementById('input_'+i).required = false;
+		document.getElementById('input_'+i).value='';
+
+		document.getElementById('description_'+i).value='';
+		document.getElementById('description_'+i).required = false;
+	}
+
+	var listMaterials = document.getElementById("materialsList");
+	var itemsMaterials = listMaterials.getElementsByTagName("li");
+	for (var i = 0; i < itemsMaterials.length; ++i){
+		document.getElementById('materials_'+i).value = '';
+		document.getElementById('materials_'+i).required = false;
+	}
+
+	var listTools = document.getElementById("toolsList");
+	var itemsTools = listTools.getElementsByTagName("li");
+	for (var i = 0; i < itemsTools.length; ++i){
+		document.getElementById('tools_'+i).value = '';
+		document.getElementById('tools_'+i).required = false;
+	}
+
+	document.getElementById('title').value='';
+	document.getElementById('title').required = false;
+	document.getElementById('category').value='';
+	document.getElementById('category').required = false;
+}
+
+function inputRequired(){
+
+	var list = document.getElementById("stepsList");
+	var items = list.getElementsByTagName("li");
+
+	for (var i = 0; i <= items.length; ++i){
+		document.getElementById('input_'+i).required = true;
+		document.getElementById('description_'+i).required = true;
+	}
+	document.getElementById('description_'+0).required = false;
+
+	var listMaterials = document.getElementById("materialsList");
+	var itemsMaterials = listMaterials.getElementsByTagName("li");
+	for (var i = 0; i < itemsMaterials.length; ++i){
+		document.getElementById('materials_'+i).required = true;
+	}
+
+	var listTools = document.getElementById("toolsList");
+	var itemsTools = listTools.getElementsByTagName("li");
+	for (var i = 0; i < itemsTools.length; ++i){
+		document.getElementById('tools_'+i).required = true;
+	}
+	
+	document.getElementById('title').required = true;
+	document.getElementById('category').required = true;
 }
