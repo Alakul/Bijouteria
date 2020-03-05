@@ -54,6 +54,7 @@ header > ul > li {
 
 i {
 	cursor: pointer;
+	color: #333333;
 }
 
 label {
@@ -161,7 +162,7 @@ textarea {
 	border: 2px solid #DDDDDD;
 	border-radius: 4px;
 	font-size: 14px;
-	color: black;
+	color: #333333;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 	width: 87%;
@@ -207,7 +208,7 @@ textarea {
 	padding: 6px 10px 6px 10px;
 	margin: 0;
 	text-decoration: none;
-	color: black;
+	color: #333333;
 }
 
 .listShow {
@@ -285,14 +286,14 @@ textarea {
 	border: 2px solid #DDDDDD;
 	border-radius: 4px;
 	font-size: 14px;
-	color: black;
+	color: #333333;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 	display: block;
 }
 
 #category > option {
-	color: black;
+	color: #333333;
 	font-family: 'Roboto';
 	letter-spacing: 0.7px;
 }

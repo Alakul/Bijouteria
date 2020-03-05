@@ -10,7 +10,7 @@
                     </span>
                 @enderror<br>
 				<label>Email</label><br>
-				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus>
+				<input id="email" name="email" class="inputText" type="email" required autocomplete="email">
 				
 
 				<label>Hasło</label><br>

@@ -48,7 +48,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie</label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text" required><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text" required><br>';
 			x.appendChild(childX);
 		}
 	}
@@ -130,22 +130,61 @@ function loadPreview(input, id){
 	var idInput=input.id;
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
 
-	if (idInput=='fileToUpload'){
-		number=0;
+	if(fileExtensionValidate(input)==false){
+		document.getElementById('input_'+number).value='';
+		document.getElementById('imagePreview_'+number).setAttribute('src','#');
+		document.getElementById('imagePreview_'+number).style.height = "200px";
+		alert("Nieprawidłowe rozszerzenie pliku.");
+		
 	}
 
-    id = id || '#imagePreview_'+number;
-    if (input.files && input.files[0]){
-        var reader = new FileReader();
- 
-        reader.onload = function (event){
-            $(id)
-			.attr('src', event.target.result)
-			.height('auto');
-        };
-
-		reader.readAsDataURL(input.files[0]);
+	if (fileSizeValidate(input)==false){
+		document.getElementById('input_'+number).value='';
+		document.getElementById('imagePreview_'+number).setAttribute('src','#');
+		document.getElementById('imagePreview_'+number).style.height = "200px";
+		alert('Maksymalny rozmiar pliku: 2 MB.');
 	}
- }
 
- 
+	if (fileExtensionValidate(input)==true && fileSizeValidate(input)==true){
+		if (idInput=='fileToUpload'){
+				number=0;
+		}
+
+		id = id || '#imagePreview_'+number;
+		if (input.files && input.files[0]){
+			var reader = new FileReader();
+		
+			reader.onload = function (event){
+				$(id)
+				.attr('src', event.target.result)
+				.height('auto');
+			};
+
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+}
+
+var validExtension = ".png, .gif, .jpeg, .jpg";
+function fileExtensionValidate(file) {
+	var filePath = file.value;
+	var getFileExtension = filePath.substring(filePath.lastIndexOf('.') + 1).toLowerCase();
+	var pos = validExtension.indexOf(getFileExtension);
+	if(pos < 0) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+var maxSize = '2048';
+function fileSizeValidate(file) {
+	if (file.files && file.files[0]) {
+		var fileSize = file.files[0].size/1024;
+		if(fileSize > maxSize) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+}

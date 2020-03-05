@@ -46,10 +46,10 @@
                     <i id="stepsIcon"></i>
                     <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i>
                     <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
-                    <label>Zdjęcie</label><br>
-                    <input id="input_1" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br>
+                    <label>Zdjęcie <span class="asterisk">*</span></label><br>
+                    <input id="input_1" class="fileToUpload"  type="file" name="fileToUpload" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
                     <img id="imagePreview_1" src="#" class="preview" height="200px"/><br>
-                    <label>Opis</label>
+                    <label>Opis <span class="asterisk">*</span></label>
                     <input id="description_1" name="descriptionStep" class="inputText" type="text" required><br> 
                     </li>
                 </ol>
