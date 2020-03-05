@@ -373,3 +373,22 @@ textarea {
 #fileToUpload {
 	margin: 6px 20px 6px 20px;
 }
+
+.alert {
+	margin: -12px 20px 10px 20px;
+	font-size: 14px;
+	color: #DC143C;
+	display: block;
+	border-radius: 4px;
+}
+
+.alertLogin {
+	margin: 6px 20px 6px 20px;
+	font-size: 14px;
+	background-color: #e91640;
+	color: white;
+	display: block;
+	padding: 20px 10px 20px 10px;
+	border: 2px solid #DC143C;
+	border-radius: 4px;
+}

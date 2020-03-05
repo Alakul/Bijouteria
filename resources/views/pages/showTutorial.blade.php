@@ -8,7 +8,7 @@
             <p id="descriptionShow">Naszyjnik wykonany metodą makrama ze sznurka grubość 1mm oraz czarnymi koralikami. Idealny na prezent.</p>
 
             <label id="categoryLabel">Kategoria:</label>
-            <p id="categoryShow">Naszyjniki</p></br>
+            <p id="categoryShow">Naszyjniki</p><br>
 
             <label>Wymagane materiały:</label>
             <ul id="materialsListShow" class="listShow">
@@ -24,7 +24,7 @@
             <div>
                 <ul id="stepsList">
                     <li id="steps">
-                        <h3>Krok 1:</h3></br>
+                        <h3>Krok 1:</h3><br>
                         <img id="imgStepShow">
                         <p id="descriptionStepShow">Utnij 2 metry sznurka razy 2 a następnie złóż w połowie. Wykonaj węzeł beczka.</p>
                     </li>

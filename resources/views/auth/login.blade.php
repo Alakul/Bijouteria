@@ -4,21 +4,22 @@
 			<h2>Logowanie</h2>
 			@csrf
 			<div class="inputArea">
-				<label>Email</label></br>
-				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus>
 				@error('email')
-                    <span role="alert">
+                    <span role="alert" class="alertLogin">
                         <strong>{{ $message }}</strong>
                     </span>
-                @enderror<br/>
+                @enderror<br>
+				<label>Email</label><br>
+				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus>
+				
 
-				<label>Hasło</label></br>
+				<label>Hasło</label><br>
 				<input id="password" name="password" class="inputText" type="password" required autocomplete="current-password">
 				@error('password')
-                    <span role="alert">
+                    <span role="alert" class="alert">
                          <strong>{{ $message }}</strong>
                     </span>
-                @enderror<br/>
+                @enderror<br>
 
 				<div style="margin: 6px 20px 6px 20px; text-align: center;">
 					<input id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>

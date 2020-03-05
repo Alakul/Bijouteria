@@ -48,7 +48,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-down" onclick="replaceDown(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-up" onclick="replaceUp(this);" style="float: right; margin-right: 20px;"></i></br><label>Zdjęcie</label></br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" onchange="loadPreview(this);"></br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/></br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text"><br/>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-down" onclick="replaceDown(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-up" onclick="replaceUp(this);" style="float: right; margin-right: 20px;"></i><br><label>Zdjęcie</label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text"><br>';
 			x.appendChild(childX);
 		}
 	}
