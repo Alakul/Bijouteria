@@ -12,7 +12,7 @@
                 
             <label>Zdjęcie tytułowe <span style="color: red;">*</span></label></br>
             <input type="file" id="fileToUpload" name="fileToUpload" onchange="loadPreview(this);"></br>
-            <img id="imagePreview_0" src="#" class="preview" height="100px"/></br>
+            <img id="imagePreview_0" src="#" class="preview" height="200px"/></br>
 
             <label for="category">Kategoria <span style="color: red;">*</span></label>
             <select id="category">
@@ -25,27 +25,31 @@
                 <option value="others">Inne</option>
             </select>
 
-            <label>Wymagane materiały</label>
+            <label>Wymagane materiały <span style="color: red;">*</span></label>
             <ul id="materialsList">
                 <li><input id="materials" name="materials" class="inputText" type="text" style="margin: 6px 20px 6px 20px;"></li>
             </ul>
             <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button></br>
 
-            <label>Wymagane narzędzia</label>
+            <label>Wymagane narzędzia <span style="color: red;">*</span></label>
             <ul id="toolsList">
                 <li><input id="tools" name="tools" class="inputText" type="text" style="margin: 6px 20px 6px 20px;"></li>
             </ul>
             <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button></br>
 
+            <label>Poradnik</label>
             <div>
                 <ol id="stepsList">
                     <li id="step_1" class="steps">
-                        <h3 id="h3_1">Krok 1:</h3></br>
-                        <label>Zdjęcie</label></br>
-                        <input id="input_1" type="file" class="fileToUpload" name="fileToUpload" onchange="loadPreview(this);"></br>
-                        <img id="imagePreview_1" src="#" class="preview" height="100px"/></br>
-                        <label>Opis</label>
-                        <input id="description_1" name="descriptionStep" class="inputText" type="text"><br/> 
+                    <h3 id="h3_1">Krok 1:</h3>
+                    <i id="stepsIcon" style="float: right; margin-right: 20px;"></i>
+                    <i class="fas fa-arrow-down" onclick="replaceDown(this);" style="float: right; margin-right: 20px;"></i>
+                    <i class="fas fa-arrow-up" onclick="replaceUp(this);" style="float: right; margin-right: 20px;"></i></br>
+                    <label>Zdjęcie</label></br>
+                    <input id="input_1" class="fileToUpload"  type="file" name="fileToUpload" onchange="loadPreview(this);"></br>
+                    <img id="imagePreview_1" src="#" class="preview" height="200px"/></br>
+                    <label>Opis</label>
+                    <input id="description_1" name="descriptionStep" class="inputText" type="text"><br/> 
                     </li>
                 </ol>
             </div>

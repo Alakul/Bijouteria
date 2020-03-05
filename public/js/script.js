@@ -26,7 +26,7 @@ function addToList(obj){
 		if (materials<=5){
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="materials" name="materials" class="inputText" type="text" style="width: 80%; margin: 6px 20px 6px 20px;"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="materials" name="materials" class="inputText" type="text" style="width: 80%; margin: 6px 15px 6px 20px;"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			materials++;
 		}	
@@ -35,7 +35,7 @@ function addToList(obj){
 		if(tools<=5){
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="tools" name="tools" class="inputText" type="text" style="width: 80%; margin: 6px 20px 6px 20px;"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="tools" name="tools" class="inputText" type="text" style="width: 80%; margin: 6px 15px 6px 20px;"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			tools++;
 		}
@@ -48,7 +48,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-down" onclick="replaceDown(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-up" onclick="replaceUp(this);" style="float: right; margin-right: 20px;"></i></br><label>Zdjęcie</label></br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" onchange="loadPreview(this);"></br><img id="imagePreview_'+steps+'" src="#" class="preview" height="100px"/></br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text"><br/>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-down" onclick="replaceDown(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-up" onclick="replaceUp(this);" style="float: right; margin-right: 20px;"></i></br><label>Zdjęcie</label></br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" onchange="loadPreview(this);"></br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/></br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text"><br/>';
 			x.appendChild(childX);
 		}
 	}
@@ -67,7 +67,7 @@ function deleteFromList(obj){
 	else if (id=='stepsIcon'){
 		steps--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
-		changeId(obj);	
+		changeId();
 	}
 }
 
@@ -76,7 +76,16 @@ function replaceUp(obj){
 	var number = idStep.substring(idStep.indexOf('_')+1, idStep.length);
 	var numberPrevious=number-1;
 
-	replace(number, numberPrevious);
+	var list = document.getElementById('stepsList');
+
+	if (numberPrevious==0){
+		return;
+	}
+	else {
+		list.insertBefore(document.getElementById("step_"+number),list.childNodes[numberPrevious]);
+		changeId();
+	}
+	
 }
 
 function replaceDown(obj){
@@ -84,25 +93,24 @@ function replaceDown(obj){
 	var number = idStep.substring(idStep.indexOf('_')+1, idStep.length);
 	var numberNext=number-(-1);
 
-	replace(number, numberNext);
-}
+	var list = document.getElementById('stepsList');
+	var listLenght=document.getElementById("stepsList").getElementsByTagName("li").length;
 
-function replace(number, number2){
-	var tempDescription=document.getElementById("description_"+number).value;
-	document.getElementById("description_"+number).value=document.getElementById("description_"+number2).value;
-	document.getElementById("description_"+number2).value=tempDescription;
-
-	var tempImg=document.getElementById("input_"+number).src;
-	document.getElementById("input_"+number).src=document.getElementById("input_"+number2).src;
-	document.getElementById("input_"+number2).src=tempImg;
+	if (numberNext>listLenght){
+		return;
+	}
+	else {
+		list.insertBefore(document.getElementById("step_"+numberNext),list.childNodes[number]);
+		changeId();
+	}
 }
 
 function changeId(){
-	var ul = document.getElementById("stepsList");
-	var items = ul.getElementsByTagName("li");
+	var list = document.getElementById("stepsList");
+	var items = list.getElementsByTagName("li");
 		
-	var temp=2;
-	for (var i = 1; i < items.length; ++i){
+	var temp=1;
+	for (var i = 0; i < items.length; ++i){
 			
 		items[i].setAttribute('id','step_'+temp);
 
@@ -110,7 +118,7 @@ function changeId(){
 		document.getElementById('h3_'+temp).innerHTML="Krok "+temp+":";
 			
 		items[i].children[7].setAttribute('id','input_'+temp);
-		items[i].children[9].setAttribute('id','description_'+temp);
+		items[i].children[9].setAttribute('id','imagePreview_'+temp);
 		items[i].children[12].setAttribute('id','description_'+temp);
 
 		temp++;
@@ -130,9 +138,9 @@ function loadPreview(input, id){
     if (input.files && input.files[0]){
         var reader = new FileReader();
  
-        reader.onload = function (e){
+        reader.onload = function (event){
             $(id)
-			.attr('src', e.target.result)
+			.attr('src', event.target.result)
 			.height('auto');
         };
 
