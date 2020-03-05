@@ -11,7 +11,7 @@
             <textarea id="describtion" name="description" class="inputText" type="text"></textarea><br/>
                 
             <label>Zdjęcie tytułowe <span class="asterisk">*</span></label><br>
-            <input id="fileToUpload" name="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
+            <input id="input_0" class="fileToUpload" name="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
             <img id="imagePreview_0" src="#" class="preview" height="200px"/><br>
 
             <label for="category">Kategoria <span class="asterisk">*</span></label>

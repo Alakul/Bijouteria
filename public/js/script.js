@@ -146,9 +146,6 @@ function loadPreview(input, id){
 	}
 
 	if (fileExtensionValidate(input)==true && fileSizeValidate(input)==true){
-		if (idInput=='fileToUpload'){
-				number=0;
-		}
 
 		id = id || '#imagePreview_'+number;
 		if (input.files && input.files[0]){
