@@ -21,7 +21,7 @@
                     </span>
                 @enderror<br>
 
-				<div style="margin: 6px 20px 6px 20px; text-align: center;">
+				<div id="rememberPassword">
 					<input id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
 					<label id="savePassword" for="remember">Zapamiętaj hasło</label>
 				</div>

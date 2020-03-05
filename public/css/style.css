@@ -70,6 +70,32 @@ textarea {
 	line-height: 1.5;
 }
 
+
+
+
+.alert {
+	margin: -12px 20px 10px 20px;
+	font-size: 14px;
+	color: #DC143C;
+	display: block;
+	border-radius: 4px;
+}
+
+.alertLogin {
+	margin: 6px 20px 6px 20px;
+	font-size: 14px;
+	background-color: #e91640;
+	color: white;
+	display: block;
+	padding: 20px 10px 20px 10px;
+	border: 2px solid #DC143C;
+	border-radius: 4px;
+}
+
+.asterisk{
+	color: red;
+}
+
 .buttonStyle {
 	padding: 10px;
 	border: 1px solid goldenrod;
@@ -117,29 +143,32 @@ textarea {
 	display: block;
 }
 
-.searchBar {
-	padding: 10px;
-	margin: 2px 0 2px 2px;
-	background-color: white;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px 0 0 4px;
-	font-size: 14px;
-	font-weight: bold;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
+.formStyle{
+	margin: 30px auto 30px auto;
+	border: 1px solid #DDDDDD;
+	width: 500px;
+	padding: 15px;
 }
 
-.searchButton {
+.fileToUpload {
+	margin: 6px 20px 6px 20px;
+}
+
+.inputText {
 	padding: 10px;
-	margin: 2px;
+	margin: 6px 20px 20px 20px;
 	background-color: white;
 	border: 2px solid #DDDDDD;
-	border-radius: 0 4px 4px 0;
+	border-radius: 4px;
 	font-size: 14px;
-	cursor: pointer;
-	height: auto;
+	color: black;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
+	width: 87%;
+}
+
+.inputArea {
+	margin: 30px 0 30px 0;
 }
 
 .listMenu {
@@ -181,38 +210,8 @@ textarea {
 	color: black;
 }
 
-.inputText {
-	padding: 10px;
-	margin: 6px 20px 20px 20px;
-	background-color: white;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
-	font-size: 14px;
-	color: black;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
-	width: 87%;
-}
-
-.inputArea {
-	margin: 30px 0 30px 0;
-}
-
-.formStyle{
-	margin: 30px auto 30px auto;
-	border: 1px solid #DDDDDD;
-	width: 500px;
-	padding: 15px;
-}
-
-.steps {
-	border: 2px solid #DDDDDD;
-	margin: 20px;
-	margin: 8px 20px 8px 20px;
-}
-
-.fileToUpload {
-	margin: 6px 20px 6px 20px;
+.listShow {
+	margin: 10px 0 30px 0;
 }
 
 .preview {
@@ -222,48 +221,57 @@ textarea {
 	border-radius: 4px;
 }
 
-#logo{
-	height: 36px;
-	margin: 0;
-	padding: 0;
-}
-
-#cell {
-	text-align: center;
-	width: 180px;
-	height: 550px;
-	border: 2px solid goldenrod;
-	border-radius: 8px;
-}
-
-#savePassword {
-	font-size: 12px;
+.searchBar {
+	padding: 10px;
+	margin: 2px 0 2px 2px;
+	background-color: white;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px 0 0 4px;
+	font-size: 14px;
+	font-weight: bold;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
-	margin: auto;
-	vertical-align: middle;
-	*overflow: hidden;
 }
 
-#passwordRemind {
-	font-size: 12px;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
-	text-align: center;
-	display: block;
-	margin: 40px 20px 20px 20px;
-}
-
-#plus {
-	width: auto;
+.searchButton {
+	padding: 10px;
+	margin: 2px;
+	background-color: white;
+	border: 2px solid #DDDDDD;
+	border-radius: 0 4px 4px 0;
+	font-size: 14px;
+	cursor: pointer;
 	height: auto;
-	font-size: 18px;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
 }
 
-#remember {
-	vertical-align: bottom;
-	width: 10px;
-	height: 10px;
+.steps {
+	border: 2px solid #DDDDDD;
+	margin: 20px;
+	margin: 8px 20px 8px 20px;
+}
+
+.toolsInput, .materialsInput {
+	width: 80%;
+	margin: 6px 15px 6px 20px;
+}
+
+
+
+#authorMiniature{
+	font-size: 16px;
+	padding: 0;
+	margin: 10px;
+	font-weight: bold;
+}
+
+#authorImgMiniature {
+	width: 14px;
+	height: 14px;
+	margin-right: 10px;
+	padding: 0;
+	display: inline-block;
 }
 
 #categories {
@@ -289,6 +297,61 @@ textarea {
 	letter-spacing: 0.7px;
 }
 
+#categoryShow {
+	margin: 6px 6px 30px 20px;
+	font-size: 16px;
+	display: inline-block;
+}
+
+#categoryLabel {
+	margin: 20px 6px 20px 20px;
+}
+
+#cell {
+	text-align: center;
+	width: 180px;
+	height: 550px;
+	border: 2px solid goldenrod;
+	border-radius: 8px;
+}
+
+#descriptionShow, #descriptionStepShow {
+	margin: 6px 20px 20px 20px;
+	text-align: justify;
+	line-height: 1.5;
+	font-size: 14px;
+}
+
+#fileToUpload {
+	margin: 6px 20px 6px 20px;
+}
+
+#imgShow {
+	margin: 0 20px 6px 20px;
+	width: 92%;
+	height: 300px;
+	border: 1px solid #333333;
+}
+
+#imgStepShow {
+	width: 91%;
+	height: 300px;
+	margin: 0px 20px 6px 20px;
+}
+
+#imgMiniature {
+	border-radius: 10px;
+	border: 1px solid #333333;
+	width: 100%;
+	height: 300px;
+}
+
+#logo{
+	height: 36px;
+	margin: 0;
+	padding: 0;
+}
+
 #materialsList, #toolsList, #stepsList {
 	text-decoration: none;
 	list-style: none;
@@ -306,26 +369,44 @@ textarea {
 	height: auto;
 }
 
-#imgMiniature {
-	border-radius: 10px;
-	border: 1px solid #333333;
-	width: 100%;
-	height: 300px;
+#passwordRemind {
+	font-size: 12px;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	text-align: center;
+	display: block;
+	margin: 40px 20px 20px 20px;
 }
 
-#authorMiniature{
-	font-size: 16px;
-	padding: 0;
-	margin: 10px;
-	font-weight: bold;
+#plus {
+	width: auto;
+	height: auto;
+	font-size: 18px;
 }
 
-#authorImgMiniature {
-	width: 14px;
-	height: 14px;
-	margin-right: 10px;
-	padding: 0;
-	display: inline-block;
+#remember {
+	vertical-align: bottom;
+	width: 10px;
+	height: 10px;
+}
+
+#rememberPassword {
+	margin: 6px 20px 6px 20px;
+	text-align: center;
+}
+
+#savePassword {
+	font-size: 12px;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	margin: auto;
+	vertical-align: middle;
+	*overflow: hidden;
+}
+
+#stepsIcon {
+	float: right;
+	margin-right: 20px;
 }
 
 #titleMiniature {
@@ -336,59 +417,6 @@ textarea {
 	text-align: justify;
 }
 
-#imgShow {
-	margin: 0 20px 6px 20px;
-	width: 92%;
-	height: 300px;
-	border: 1px solid #333333;
-}
-
-#descriptionShow, #descriptionStepShow {
-	margin: 6px 20px 20px 20px;
-	text-align: justify;
-	line-height: 1.5;
-	font-size: 14px;
-}
-
-.listShow {
-	margin: 10px 0 30px 0;
-}
-
-#imgStepShow {
-	width: 91%;
-	height: 300px;
-	margin: 0px 20px 6px 20px;
-}
-
-#categoryShow {
-	margin: 6px 6px 30px 20px;
-	font-size: 16px;
-	display: inline-block;
-}
-
-#categoryLabel {
-	margin: 20px 6px 20px 20px;
-}
-
-#fileToUpload {
+#tools, #materials {
 	margin: 6px 20px 6px 20px;
-}
-
-.alert {
-	margin: -12px 20px 10px 20px;
-	font-size: 14px;
-	color: #DC143C;
-	display: block;
-	border-radius: 4px;
-}
-
-.alertLogin {
-	margin: 6px 20px 6px 20px;
-	font-size: 14px;
-	background-color: #e91640;
-	color: white;
-	display: block;
-	padding: 20px 10px 20px 10px;
-	border: 2px solid #DC143C;
-	border-radius: 4px;
 }

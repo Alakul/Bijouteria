@@ -26,7 +26,7 @@ function addToList(obj){
 		if (materials<=5){
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="materials" name="materials" class="inputText" type="text" style="width: 80%; margin: 6px 15px 6px 20px;"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="materials" name="materials" class="inputText materialsInput" type="text"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			materials++;
 		}	
@@ -35,7 +35,7 @@ function addToList(obj){
 		if(tools<=5){
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="tools" name="tools" class="inputText" type="text" style="width: 80%; margin: 6px 15px 6px 20px;"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="tools" name="tools" class="inputText toolsInput" type="text"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			tools++;
 		}
@@ -48,7 +48,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-down" onclick="replaceDown(this);" style="float: right; margin-right: 20px;"></i><i class="fas fa-arrow-up" onclick="replaceUp(this);" style="float: right; margin-right: 20px;"></i><br><label>Zdjęcie</label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text"><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie</label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis</label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text" required><br>';
 			x.appendChild(childX);
 		}
 	}
