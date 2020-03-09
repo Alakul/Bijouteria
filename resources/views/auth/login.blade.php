@@ -10,11 +10,11 @@
                     </span>
                 @enderror<br>
 				<label>Email</label><br>
-				<input id="email" name="email" class="inputText" type="email" required autocomplete="email">
+				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" onkeypress="checkSpace(event)">
 				
 
 				<label>Hasło</label><br>
-				<input id="password" name="password" class="inputText" type="password" required autocomplete="current-password">
+				<input id="password" name="password" class="inputText" type="password" required autocomplete="current-password" minlength="8" maxlength="50" onkeypress="checkSpace(event)">
 				@error('password')
                     <span role="alert" class="alert">
                          <strong>{{ $message }}</strong>

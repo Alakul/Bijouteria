@@ -27,7 +27,7 @@ function addToList(obj){
 		if (materials<=5){
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="materials_'+materials+'" name="materials" class="inputText materialsInput" type="text" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="materials_'+materials+'" name="materials" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			materials++;
 		}	
@@ -36,7 +36,7 @@ function addToList(obj){
 		if(tools<=5){
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="tools_'+tools+'" name="tools" class="inputText toolsInput" type="text" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input id="tools_'+tools+'" name="tools" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			tools++;
 		}
@@ -49,7 +49,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><input id="description_'+steps+'" name="descriptionStep" class="inputText" type="text" required><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea id="description_'+steps+'" name="descriptionStep" class="inputText" type="text" maxlength="500" required></textarea><br>';
 			x.appendChild(childX);
 		}
 	}
@@ -131,12 +131,11 @@ function loadPreview(input, id){
 	var idInput=input.id;
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
 
-	if(fileExtensionValidate(input)==false){
+	if (fileExtensionValidate(input)==false){
 		document.getElementById('input_'+number).value='';
 		document.getElementById('imagePreview_'+number).setAttribute('src','#');
 		document.getElementById('imagePreview_'+number).style.height = "200px";
 		alert("Nieprawidłowe rozszerzenie pliku.");
-		
 	}
 
 	if (fileSizeValidate(input)==false){
@@ -151,7 +150,7 @@ function loadPreview(input, id){
 		id = id || '#imagePreview_'+number;
 		if (input.files && input.files[0]){
 			var reader = new FileReader();
-		
+
 			reader.onload = function (event){
 				$(id)
 				.attr('src', event.target.result)
@@ -187,8 +186,11 @@ function fileSizeValidate(file) {
 	}
 }
 
+var nameLimit=30;
 
-window.onload = function clearInputs(){
+
+
+function clearInputs(){
 	var list = document.getElementById("stepsList");
 	var items = list.getElementsByTagName("li");
 
@@ -225,6 +227,9 @@ function inputRequired(){
 	var list = document.getElementById("stepsList");
 	var items = list.getElementsByTagName("li");
 
+	document.getElementById('title').required = true;
+	document.getElementById('category').required = true;
+
 	for (var i = 0; i <= items.length; ++i){
 		document.getElementById('input_'+i).required = true;
 		document.getElementById('description_'+i).required = true;
@@ -242,7 +247,23 @@ function inputRequired(){
 	for (var i = 0; i < itemsTools.length; ++i){
 		document.getElementById('tools_'+i).required = true;
 	}
-	
-	document.getElementById('title').required = true;
-	document.getElementById('category').required = true;
+}
+
+function preventSymbolLogin(event) {
+
+	if (event.which == 46 || event.which == 95 || (event.which >= 48 && event.which <= 57) || (event.which >= 65 && event.which <= 90) || (event.which >= 97 && event.which <= 122)) {  	
+    	return true;
+	}
+	else {
+		event.preventDefault();
+		return false;
+	}
+}
+
+function checkSpace(event) {
+
+	if (event.which ==32) {
+    	event.preventDefault();
+    	return false;
+	}
 }

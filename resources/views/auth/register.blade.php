@@ -5,7 +5,7 @@
 			@csrf
 			<div class="inputArea">
 				<label>Login</label><br>
-				<input id="name" name="name" type="text" class="inputText" required autocomplete="name" autofocus>
+				<input id="name" name="name" type="text" class="inputText" required autocomplete="name" minlength="3" maxlength="20" onkeypress="preventSymbolLogin(event)">
 				@error('name')
                     <span role="alert" class="alert">
                         <strong>{{ $message }}</strong>
@@ -13,7 +13,7 @@
                 @enderror<br/>
 				
 				<label>Email</label><br>
-				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus>
+				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus onkeypress="checkSpace(event)">
 				@error('email')
                     <span role="alert" class="alert">
                         <strong>{{ $message }}</strong>
@@ -21,7 +21,7 @@
 				@enderror<br>
 				 
 				<label>Hasło</label><br>
-				<input id="password" name="password" class="inputText" type="password" required autocomplete="new-password">
+				<input id="password" name="password" class="inputText" type="password" required autocomplete="new-password" minlength="8" maxlength="50" onkeypress="checkSpace(event)">
 				@error('password')
                     <span role="alert" class="alert">
                          <strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
                  @enderror<br>
 
 				<label>Potwierdź hasło</label><br>
-				<input id="password-confirm" name="password_confirmation" class="inputText" type="password" required autocomplete="new-password"><br>
+				<input id="password-confirm" name="password_confirmation" class="inputText" type="password" required autocomplete="new-password" minlength="8" maxlength="50" onkeypress="checkSpace(event)"><br>
 				<button type="submit" class="buttonStyle" style="margin: 20px auto 20px auto; display: block;">ZAREJESTRUJ SIĘ</button>
 			</div>
 		</form>

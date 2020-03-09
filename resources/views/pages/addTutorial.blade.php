@@ -5,10 +5,10 @@
 		<h2>Dodaj poradnik</h2>
 		<div class="inputArea">
             <label>Tytuł <span class="asterisk">*</span></label><br>
-			<input id="title" name="title" class="inputText" type="text" required><br> 
+			<input id="title" name="title" class="inputText" type="text" maxlength="100" required><br> 
                 
             <label>Opis</label><br>
-            <textarea id="description_0" name="description" class="inputText" type="text"></textarea><br/>
+            <textarea id="description_0" name="description" class="inputText" type="text" maxlength="500"></textarea><br>
                 
             <label>Zdjęcie tytułowe <span class="asterisk">*</span></label><br>
             <input id="input_0" class="fileToUpload" name="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
@@ -23,18 +23,19 @@
                 <option value="necklaces">Naszyjniki</option>
                 <option value="hairAcessories">Ozdoby do włosów</option>
                 <option value="rings">Pierścionki</option>
+                <option value="pendants">Zawieszki</option>
                 <option value="others">Inne</option>
             </select>
 
             <label>Wymagane materiały <span class="asterisk">*</span></label>
             <ul id="materialsList">
-                <li><input id="materials_0" name="materials" class="inputText" type="text" required></li>
+                <li><input id="materials_0" name="materials" class="inputText" type="text" maxlength="100" required></li>
             </ul>
             <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button><br>
 
             <label>Wymagane narzędzia <span class="asterisk">*</span></label>
             <ul id="toolsList">
-                <li><input id="tools_0" name="tools" class="inputText" type="text" required></li>
+                <li><input id="tools_0" name="tools" class="inputText" type="text" maxlength="100" required></li>
             </ul>
             <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button><br>
 
@@ -50,7 +51,7 @@
                     <input id="input_1" class="fileToUpload"  type="file" name="fileToUpload" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
                     <img id="imagePreview_1" src="#" class="preview" height="200px"/><br>
                     <label>Opis <span class="asterisk">*</span></label>
-                    <input id="description_1" name="descriptionStep" class="inputText" type="text" required><br> 
+                    <textarea id="description_1" name="descriptionStep" class="inputText" type="text" maxlength="500" required></textarea><br> 
                     </li>
                 </ol>
             </div>
@@ -58,4 +59,9 @@
 			<button type="submit" class="buttonStyle" style="margin: 30px auto 30px auto; display: block;" onclick="inputRequired()">Opublikuj</button>
 		</div>
     </form>
+    <script>
+        $(document).load(function() {
+            clearInputs(); 
+        });
+    </script>
 @endsection

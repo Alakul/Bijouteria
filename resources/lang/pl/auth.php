@@ -12,6 +12,6 @@ return [
     |
     */
 
-    'failed'   => 'Błędny login lub hasło.',
+    'failed'   => 'Błędny email lub hasło.',
     'throttle' => 'Za dużo nieudanych prób logowania. Proszę spróbować za :seconds sekund.',
 ];
