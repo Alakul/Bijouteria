@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         //
         for ($i=0; $i<10; $i++)
         {
-            $user=new \App\User();
+            $user=new \App\Models\User();
             $user->name='User'.$i;
             $user->password=bcrypt('12345');
             $user->email='user'.$i.'@user.com';

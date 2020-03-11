@@ -13,7 +13,7 @@
                 @enderror<br/>
 				
 				<label>Email</label><br>
-				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus onkeypress="checkSpace(event)">
+				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" autofocus minlength="3" maxlength="320" onkeypress="checkSpace(event)">
 				@error('email')
                     <span role="alert" class="alert">
                         <strong>{{ $message }}</strong>

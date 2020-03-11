@@ -27,7 +27,7 @@ function addToList(obj){
 		if (materials<=5){
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="materials_'+materials+'" name="materials" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input name="materials_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			materials++;
 		}	
@@ -36,7 +36,7 @@ function addToList(obj){
 		if(tools<=5){
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input id="tools_'+tools+'" name="tools" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input name="tools_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			tools++;
 		}
@@ -49,7 +49,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input id="input_'+steps+'" class="fileToUpload"  type="file" name="fileToUpload" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea id="description_'+steps+'" name="descriptionStep" class="inputText" type="text" maxlength="500" required></textarea><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input name="input_'+steps+'" id="input_'+steps+' class="fileToUpload"  type="file" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea><br>';
 			x.appendChild(childX);
 		}
 	}
@@ -117,18 +117,18 @@ function changeId(){
 
 		items[i].firstElementChild.setAttribute('id','h3_'+temp);
 		document.getElementById('h3_'+temp).innerHTML="Krok "+temp+":";
-			
+		
+		items[i].children[7].setAttribute('name','input_'+temp);
 		items[i].children[7].setAttribute('id','input_'+temp);
 		items[i].children[9].setAttribute('id','imagePreview_'+temp);
-		items[i].children[12].setAttribute('id','description_'+temp);
+		items[i].children[12].setAttribute('name','description_'+temp);
 
 		temp++;
 	}
 }
 
 function loadPreview(input, id){
-	
-	var idInput=input.id;
+	var idInput = input.id;
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
 
 	if (fileExtensionValidate(input)==false){
@@ -194,63 +194,54 @@ function clearInputs(){
 	var list = document.getElementById("stepsList");
 	var items = list.getElementsByTagName("li");
 
+	document.getElementsByName('title').required = false;
+	document.getElementById('category').required = false;
+
 	for (var i = 0; i <= items.length; ++i){
 		document.getElementById('input_'+i).required = false;
-		document.getElementById('input_'+i).value='';
-
-		document.getElementById('description_'+i).value='';
-		document.getElementById('description_'+i).required = false;
+		document.getElementsByName('description_'+i).required = false;
 	}
 
 	var listMaterials = document.getElementById("materialsList");
 	var itemsMaterials = listMaterials.getElementsByTagName("li");
 	for (var i = 0; i < itemsMaterials.length; ++i){
-		document.getElementById('materials_'+i).value = '';
-		document.getElementById('materials_'+i).required = false;
+		document.getElementsByName('materials_'+i).required = false;
 	}
 
 	var listTools = document.getElementById("toolsList");
 	var itemsTools = listTools.getElementsByTagName("li");
 	for (var i = 0; i < itemsTools.length; ++i){
-		document.getElementById('tools_'+i).value = '';
-		document.getElementById('tools_'+i).required = false;
+		document.getElementsByName('tools_'+i).required = false;
 	}
-
-	document.getElementById('title').value='';
-	document.getElementById('title').required = false;
-	document.getElementById('category').value='';
-	document.getElementById('category').required = false;
 }
 
 function inputRequired(){
-
 	var list = document.getElementById("stepsList");
 	var items = list.getElementsByTagName("li");
 
-	document.getElementById('title').required = true;
+	document.getElementsByName('title').required = true;
 	document.getElementById('category').required = true;
+	document.getElementsByName('description_'+0).required = false;
 
 	for (var i = 0; i <= items.length; ++i){
 		document.getElementById('input_'+i).required = true;
-		document.getElementById('description_'+i).required = true;
+		document.getElementsByName('description_'+i).required = true;
 	}
-	document.getElementById('description_'+0).required = false;
 
 	var listMaterials = document.getElementById("materialsList");
 	var itemsMaterials = listMaterials.getElementsByTagName("li");
 	for (var i = 0; i < itemsMaterials.length; ++i){
-		document.getElementById('materials_'+i).required = true;
+		document.getElementsByName('materials_'+i).required = true;
 	}
 
 	var listTools = document.getElementById("toolsList");
 	var itemsTools = listTools.getElementsByTagName("li");
 	for (var i = 0; i < itemsTools.length; ++i){
-		document.getElementById('tools_'+i).required = true;
+		document.getElementsByName('tools_'+i).required = true;
 	}
 }
 
 function preventSymbolLogin(event) {
-
 	if (event.which == 46 || event.which == 95 || (event.which >= 48 && event.which <= 57) || (event.which >= 65 && event.which <= 90) || (event.which >= 97 && event.which <= 122)) {  	
     	return true;
 	}
@@ -261,7 +252,6 @@ function preventSymbolLogin(event) {
 }
 
 function checkSpace(event) {
-
 	if (event.which ==32) {
     	event.preventDefault();
     	return false;

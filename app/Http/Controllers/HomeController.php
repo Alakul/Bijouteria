@@ -26,25 +26,4 @@ class HomeController extends Controller
     {
         return view('pages/home');
     }
-
-    public function addTutorial()
-    {
-        return view('pages/addTutorial');
-    }
-
-    public function titleImageUpload(Request $request)
-    {
-        $this->validate($request, [
-            'fileToUpload' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
-        $image=$request->file('fileToUpload');
-        $imageNew=rand().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/images/'), $imageNew);
-
-        return back()
-            ->with('success','You have successfully upload image.')
-            ->with('fileToUpload',$imageNew);
-    }
-
 }

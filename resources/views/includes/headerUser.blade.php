@@ -17,7 +17,7 @@
 			<button class="searchButton"><i class='fas'>&#xf002;</i></button>
 		</form>
 	</li>
-	<li><a href="{{ url('/') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="fortissimo logo"></a></li>
+	<li><a href="{{ route('home') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="fortissimo logo"></a></li>
 	<li style="float: right;" id="user" onClick="listMenu(this)"><a class="buttons">{{ Auth::user()->name }}</a>
 		<ul class="listMenu" id="userMenu" style="right: 16px; top: 46px;">
 			<h4 class="listHeader">Użytkownik</h4>
@@ -31,5 +31,5 @@
             </form>
 		</ul>
 	</li>
-	<li style="float: right;"><a class="buttons" href="{{action('HomeController@addTutorial')}}"><i class="fa fa-plus"></i></a></li>
+	<li style="float: right;"><a class="buttons" href="{{ route('create') }}"><i class="fa fa-plus"></i></a></li>
 </ul>

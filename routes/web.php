@@ -11,15 +11,16 @@
 |
 
 */
-Route::get('/', function () {
-    return view('pages/home');
-});
+
 
 Route::get('/tutorial', function () {
     return view('pages/showTutorial');
 });
 
-Route::get('/addTutorial', 'HomeController@addTutorial');
-Route::post('titleImageUpload', 'HomeController@titleImageUpload')->name('image.upload.post');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/create', 'TutorialController@create')->name('create');
+
+Route::resource('tutorials', 'TutorialController');
+
 
 Auth::routes();

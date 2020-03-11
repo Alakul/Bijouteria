@@ -17,7 +17,7 @@
 			<button class="searchButton"><i class='fas'>&#xf002;</i></button>
 		</form>
 	</li>
-	<li><a href="{{ url('/') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="fortissimo logo"></a></li>
+	<li><a href="{{route('home') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="fortissimo logo"></a></li>
 	<li style="float: right;"><a href="{{ route('login') }}" class="buttonStyle">ZALOGUJ</a></li>
 	<li style="float: right;"><a href="{{ route('register') }}" class="buttonStyle">ZAREJESTRUJ SIĘ</a></li>
 </ul>

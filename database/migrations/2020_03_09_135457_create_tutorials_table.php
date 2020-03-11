@@ -15,10 +15,10 @@ class CreateTutorialsTable extends Migration
     {
         Schema::create('tutorials', function (Blueprint $table) {
             $table->bigIncrements('tutorial_id');
-            $table->string('user');
+            $table->string('user_id');
             $table->dateTime('date')->useCurrent();
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('title_picture');
             $table->string('category');
             $table->timestamps();
