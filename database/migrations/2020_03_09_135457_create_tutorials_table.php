@@ -14,14 +14,16 @@ class CreateTutorialsTable extends Migration
     public function up()
     {
         Schema::create('tutorials', function (Blueprint $table) {
-            $table->bigIncrements('tutorial_id');
-            $table->string('user_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
             $table->dateTime('date')->useCurrent();
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('title_picture');
             $table->string('category');
             $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

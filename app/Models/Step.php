@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tutorial extends Model
+class Step extends Model
 {
-    protected $table = 'tutorials';
+    protected $table = 'steps';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'title', 'description', 'title_picture', 'category',
+        'step', 'picture', 'description',
     ];
 }

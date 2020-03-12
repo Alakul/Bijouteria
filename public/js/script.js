@@ -25,22 +25,21 @@ function addToList(obj){
 	var id=obj.id;
 	if (id=='materialsButton'){
 		if (materials<=5){
+			materials++;
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
 			childX.innerHTML = '<input name="materials_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
-			materials++;
 		}	
 	}
 	else if	(id=='toolsButton'){
 		if(tools<=5){
+			tools++;
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
 			childX.innerHTML = '<input name="tools_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
-			tools++;
 		}
-		
 	}
 	else if	(id=='stepsButton'){
 		if(steps<=5){
@@ -49,7 +48,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input name="input_'+steps+'" id="input_'+steps+' class="fileToUpload"  type="file" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input name="image_'+steps+'" id="image_'+steps+'" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea><br>';
 			x.appendChild(childX);
 		}
 	}
@@ -60,10 +59,12 @@ function deleteFromList(obj){
 	if (id=='materialsIcon'){
 		materials--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
+		changeIdMaterials();
 	}
 	else if (id=='toolsIcon'){
 		tools--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
+		changeIdTools();
 	}
 	else if (id=='stepsIcon'){
 		steps--;
@@ -106,6 +107,29 @@ function replaceDown(obj){
 	}
 }
 
+function changeIdMaterials(){
+	var list = document.getElementById("materialsList");
+	var items = list.getElementsByTagName("li");
+		
+	var temp=1;
+	for (var i = 0; i < items.length; ++i){	
+		items[i].children[0].setAttribute('name','materials_'+temp);
+		temp++;
+	}
+}
+
+function changeIdTools(){
+	var list = document.getElementById("toolsList");
+	var items = list.getElementsByTagName("li");
+		
+	var temp=1;
+	for (var i = 0; i < items.length; ++i){	
+		items[i].children[0].setAttribute('name','tools_'+temp);
+		temp++;
+	}
+}
+
+
 function changeId(){
 	var list = document.getElementById("stepsList");
 	var items = list.getElementsByTagName("li");
@@ -118,8 +142,8 @@ function changeId(){
 		items[i].firstElementChild.setAttribute('id','h3_'+temp);
 		document.getElementById('h3_'+temp).innerHTML="Krok "+temp+":";
 		
-		items[i].children[7].setAttribute('name','input_'+temp);
-		items[i].children[7].setAttribute('id','input_'+temp);
+		items[i].children[7].setAttribute('name','image_'+temp);
+		items[i].children[7].setAttribute('id','image_'+temp);
 		items[i].children[9].setAttribute('id','imagePreview_'+temp);
 		items[i].children[12].setAttribute('name','description_'+temp);
 
@@ -132,14 +156,14 @@ function loadPreview(input, id){
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
 
 	if (fileExtensionValidate(input)==false){
-		document.getElementById('input_'+number).value='';
+		document.getElementById('image_'+number).value='';
 		document.getElementById('imagePreview_'+number).setAttribute('src','#');
 		document.getElementById('imagePreview_'+number).style.height = "200px";
 		alert("Nieprawidłowe rozszerzenie pliku.");
 	}
 
 	if (fileSizeValidate(input)==false){
-		document.getElementById('input_'+number).value='';
+		document.getElementById('image_'+number).value='';
 		document.getElementById('imagePreview_'+number).setAttribute('src','#');
 		document.getElementById('imagePreview_'+number).style.height = "200px";
 		alert('Maksymalny rozmiar pliku: 2 MB.');
@@ -198,7 +222,7 @@ function clearInputs(){
 	document.getElementById('category').required = false;
 
 	for (var i = 0; i <= items.length; ++i){
-		document.getElementById('input_'+i).required = false;
+		document.getElementById('image_'+i).required = false;
 		document.getElementsByName('description_'+i).required = false;
 	}
 
@@ -224,7 +248,7 @@ function inputRequired(){
 	document.getElementsByName('description_'+0).required = false;
 
 	for (var i = 0; i <= items.length; ++i){
-		document.getElementById('input_'+i).required = true;
+		document.getElementById('image_'+i).required = true;
 		document.getElementsByName('description_'+i).required = true;
 	}
 
@@ -239,6 +263,15 @@ function inputRequired(){
 	for (var i = 0; i < itemsTools.length; ++i){
 		document.getElementsByName('tools_'+i).required = true;
 	}
+
+	var materialsLength=document.getElementById("materialsList").getElementsByTagName("li").length;
+	document.cookie="materials="+materialsLength;
+
+	var toolsLength=document.getElementById("toolsList").getElementsByTagName("li").length;
+	document.cookie="tools="+toolsLength;
+
+	var stepsLength=document.getElementById("stepsList").getElementsByTagName("li").length;
+	document.cookie="steps="+stepsLength;
 }
 
 function preventSymbolLogin(event) {

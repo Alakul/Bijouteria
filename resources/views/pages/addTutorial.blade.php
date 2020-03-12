@@ -11,7 +11,7 @@
             <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>
                 
             <label>Zdjęcie tytułowe <span class="asterisk">*</span></label><br>
-            <input name="input_0" id="input_0" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
+            <input name="image_0" id="image_0" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
             <img id="imagePreview_0" src="#" class="preview" height="200px"/><br>
 
             <label for="category">Kategoria <span class="asterisk">*</span></label>
@@ -29,13 +29,13 @@
 
             <label>Wymagane materiały <span class="asterisk">*</span></label>
             <ul id="materialsList">
-                <li><input name="materials_0" class="inputText" type="text" maxlength="100" required></li>
+                <li><input name="materials_1" class="inputText" type="text" maxlength="100" required></li>
             </ul>
             <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button><br>
 
             <label>Wymagane narzędzia <span class="asterisk">*</span></label>
             <ul id="toolsList">
-                <li><input name="tools_0" class="inputText" type="text" maxlength="100" required></li>
+                <li><input name="tools_1" class="inputText" type="text" maxlength="100" required></li>
             </ul>
             <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button><br>
 
@@ -48,10 +48,10 @@
                     <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i>
                     <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
                     <label>Zdjęcie <span class="asterisk">*</span></label><br>
-                    <input name="input_1" id="input_1" class="fileToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
+                    <input name="image_1" id="image_1" class="fileToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
                     <img id="imagePreview_1" src="#" class="preview" height="200px"/><br>
                     <label>Opis <span class="asterisk">*</span></label>
-                    <textarea name="description_1" class="inputText" type="text" maxlength="1000" required></textarea><br> 
+                    <textarea name="description_1" id="description_1" class="inputText" type="text" maxlength="1000" required></textarea><br> 
                     </li>
                 </ol>
             </div>
