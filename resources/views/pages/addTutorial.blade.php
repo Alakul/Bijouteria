@@ -17,14 +17,14 @@
             <label for="category">Kategoria <span class="asterisk">*</span></label>
             <select name="category" id="category" required>
                 <option value="">Wybierz</option>
-                <option value="bracelets">Bransoletki</option>
-                <option value="brooches">Broszki</option>
-                <option value="earrings">Kolczyki</option>
-                <option value="necklaces">Naszyjniki</option>
-                <option value="hairAcessories">Ozdoby do włosów</option>
-                <option value="rings">Pierścionki</option>
-                <option value="pendants">Zawieszki</option>
-                <option value="others">Inne</option>
+                <option value="bransoletki">Bransoletki</option>
+                <option value="broszki">Broszki</option>
+                <option value="kolczyki">Kolczyki</option>
+                <option value="naszyjniki">Naszyjniki</option>
+                <option value="ozdoby do włosów">Ozdoby do włosów</option>
+                <option value="pierścionki">Pierścionki</option>
+                <option value="zawieszki">Zawieszki</option>
+                <option value="inne">Inne</option>
             </select>
 
             <label>Wymagane materiały <span class="asterisk">*</span></label>

@@ -6,6 +6,7 @@ use App\Models\Material;
 use App\Models\Tool;
 use App\Models\Step;
 use Illuminate\Http\Request;
+use DB;
 
 class TutorialController extends Controller
 {
@@ -14,10 +15,10 @@ class TutorialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tutorial $tutorial)
     {
-        $tutorialsList=Tutorial::all();
-        return view('pages/home', ['tutorials' => $tutorialsList]);
+        $tutorials = $tutorial->all();
+        return view('pages/home',['tutorials'=>$tutorials]);
     }
 
     /**
@@ -95,7 +96,12 @@ class TutorialController extends Controller
      */
     public function show($id)
     {
-        //
+        $tutorials = Tutorial::find($id);
+        $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('material', 'asc')->get();
+        $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('tool', 'asc')->get();
+        $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
+
+        return view('pages/showTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools, 'steps'=>$steps]);
     }
 
     /**

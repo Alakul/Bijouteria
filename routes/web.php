@@ -13,14 +13,12 @@
 */
 
 
-Route::get('/tutorial', function () {
-    return view('pages/showTutorial');
-});
-
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'TutorialController@index')->name('home');
 Route::get('/create', 'TutorialController@create')->name('create');
+Route::get('/show/{id}', 'TutorialController@show')->name('show');
+
+
 
 Route::resource('tutorials', 'TutorialController');
-
 
 Auth::routes();

@@ -1,35 +1,42 @@
 @extends('layouts.app')
 @section('content')
+    @isset ($tutorials, $materials, $tools, $steps)
     <div class="formStyle">
-		<h2>Naszyjnik księżyc</h2>
+		<h2>{{ $tutorials->title }}</h2>
 		<div class="inputArea">
             
-            <img id="imgShow">
-            <p id="descriptionShow">Naszyjnik wykonany metodą makrama ze sznurka grubość 1mm oraz czarnymi koralikami. Idealny na prezent.</p>
+            <img id="imgShow" src="/images/{{ $tutorials->title_picture }}">
+            <p id="descriptionShow">{{ $tutorials->description }}</p>
 
             <label id="categoryLabel">Kategoria:</label>
-            <p id="categoryShow">Naszyjniki</p><br>
+            <p id="categoryShow">{{ $tutorials->category }}</p><br>
 
             <label>Wymagane materiały:</label>
             <ul id="materialsListShow" class="listShow">
-                <li>Bla Bla</li>
-                <li>Bla Bla</li>
+                @foreach ($materials as $material)
+                    <li>{{ $material->material}}</li>
+                @endforeach
             </ul>
             
             <label>Wymagane narzędzia:</label>
             <ul id="toolsListShow" class="listShow">
-                <li>Bla</li>
+                @foreach ($tools as $tool)
+                    <li>{{ $tool->tool}}</li>
+                @endforeach
             </ul>
            
             <div>
                 <ul id="stepsList">
-                    <li id="steps">
-                        <h3>Krok 1:</h3><br>
-                        <img id="imgStepShow">
-                        <p id="descriptionStepShow">Utnij 2 metry sznurka razy 2 a następnie złóż w połowie. Wykonaj węzeł beczka.</p>
-                    </li>
+                    @foreach ($steps as $step)
+                        <li id="steps">
+                            <h3>Krok {{ $step->step}}:</h3><br>
+                            <img id="imgStepShow" src="/images/{{ $step->picture }}">
+                            <p id="descriptionStepShow">{{ $step->description}}</p>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 		</div>
     </div>
+    @endisset
 @endsection
