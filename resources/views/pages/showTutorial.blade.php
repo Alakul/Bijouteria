@@ -5,7 +5,7 @@
 		<h2>{{ $tutorials->title }}</h2>
 		<div class="inputArea">
             
-            <img id="imgShow" src="/images/{{ $tutorials->title_picture }}">
+            <img id="imgShow" class="imgShow" src="/images/{{ $tutorials->title_picture }}">
             <p id="descriptionShow">{{ $tutorials->description }}</p>
 
             <label id="categoryLabel">Kategoria:</label>
@@ -25,12 +25,12 @@
                 @endforeach
             </ul>
            
-            <div>
+            <div id="stepShow">
                 <ul id="stepsList">
                     @foreach ($steps as $step)
                         <li id="steps">
                             <h3>Krok {{ $step->step}}:</h3><br>
-                            <img id="imgStepShow" src="/images/{{ $step->picture }}">
+                            <img id="imgStepShow" class="imgShow" src="/images/{{ $step->picture }}">
                             <p id="descriptionStepShow">{{ $step->description}}</p>
                         </li>
                     @endforeach

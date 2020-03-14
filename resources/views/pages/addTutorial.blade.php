@@ -5,7 +5,7 @@
 		<h2>Dodaj poradnik</h2>
 		<div class="inputArea">
             <label>Tytuł <span class="asterisk">*</span></label><br>
-			<input name="title" class="inputText" type="text" maxlength="100" required><br> 
+			<input name="title" class="inputText" type="text" minlength="100" maxlength="100" required><br> 
                 
             <label>Opis</label><br>
             <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>
@@ -43,15 +43,15 @@
             <div>
                 <ol id="stepsList">
                     <li id="step_1" class="steps">
-                    <h3 id="h3_1">Krok 1:</h3>
-                    <i id="stepsIcon"></i>
-                    <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i>
-                    <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
-                    <label>Zdjęcie <span class="asterisk">*</span></label><br>
-                    <input name="image_1" id="image_1" class="fileToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
-                    <img id="imagePreview_1" src="#" class="preview" height="200px"/><br>
-                    <label>Opis <span class="asterisk">*</span></label>
-                    <textarea name="description_1" id="description_1" class="inputText" type="text" maxlength="1000" required></textarea><br> 
+                        <h3 id="h3_1">Krok 1:</h3>
+                        <i id="stepsIcon"></i>
+                        <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i>
+                        <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
+                        <label>Zdjęcie <span class="asterisk">*</span></label><br>
+                        <input name="image_1" id="image_1" class="fileToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
+                        <img id="imagePreview_1" src="#" class="preview" height="200px"/><br>
+                        <label>Opis <span class="asterisk">*</span></label>
+                        <textarea name="description_1" id="description_1" class="inputText" type="text" maxlength="1000" required></textarea><br> 
                     </li>
                 </ol>
             </div>

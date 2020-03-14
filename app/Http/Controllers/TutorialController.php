@@ -17,7 +17,9 @@ class TutorialController extends Controller
      */
     public function index(Tutorial $tutorial)
     {
-        $tutorials = $tutorial->all();
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->get();
+        
         return view('pages/home',['tutorials'=>$tutorials]);
     }
 
