@@ -290,3 +290,8 @@ function checkSpace(event) {
     	return false;
 	}
 }
+
+function chooseCategory(obj){
+	var id=obj.id;
+	document.cookie="category="+id;
+}

@@ -17,8 +17,9 @@ class TutorialController extends Controller
      */
     public function index(Tutorial $tutorial)
     {
+        $category= $_COOKIE['category'];
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->get();
+        ->select('tutorials.*', 'users.name')->get();//->where('category', [$category])
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }

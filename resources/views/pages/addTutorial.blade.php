@@ -5,7 +5,7 @@
 		<h2>Dodaj poradnik</h2>
 		<div class="inputArea">
             <label>Tytuł <span class="asterisk">*</span></label><br>
-			<input name="title" class="inputText" type="text" minlength="100" maxlength="100" required><br> 
+			<input name="title" class="inputText" type="text" minlength="3" maxlength="100" required><br> 
                 
             <label>Opis</label><br>
             <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>

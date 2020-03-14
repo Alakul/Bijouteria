@@ -164,6 +164,14 @@ textarea {
 	border-radius: 4px;
 }
 
+.imgMiniature {
+	border-radius: 10px;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+	width: 100%;
+	height: auto;
+}
+
 .listMenu {
     list-style-type:none;
     padding:0;
@@ -248,6 +256,17 @@ textarea {
 	margin: 6px 15px 6px 20px;
 }
 
+.titleMiniature {
+	font-size: 16px;
+	padding: 0;
+	margin: 6px;
+	font-weight: bold;
+	text-align: justify;
+}
+
+
+
+
 
 
 #authorMiniature{
@@ -313,13 +332,6 @@ textarea {
 	font-size: 14px;
 }
 
-#imgMiniature {
-	border-radius: 10px;
-	border: 1px solid #333333;
-	width: 100%;
-	height: auto;
-}
-
 #logo{
 	height: 36px;
 	margin: 0;
@@ -331,16 +343,6 @@ textarea {
 	list-style: none;
 	padding-left: 0;
 	margin: 0;
-}
-
-#miniature {
-	text-align: left;
-	margin: 20px;
-	padding: 0;
-	float: left;
-	display: block;
-	width: 25%;
-	height: auto;
 }
 
 #passwordRemind {
@@ -387,14 +389,6 @@ textarea {
 	margin-right: 20px;
 }
 
-#titleMiniature {
-	font-size: 16px;
-	padding: 0;
-	margin: 10px;
-	font-weight: bold;
-	text-align: justify;
-}
-
 #tools, #materials {
 	margin: 6px 20px 6px 20px;
 }
@@ -421,4 +415,73 @@ textarea {
 	float: right;
 	width: 40%;
 	height: auto;
-} 
+}
+
+
+
+
+
+
+
+
+
+
+
+.gallery {
+	column-rule: 0px solid #eee;
+	column-gap: 20px;
+	width: 96%;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.gallery .miniature {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 30px;
+	max-width: 100%;
+	width: 100%;
+}
+
+.miniature {
+	text-decoration: none;
+	color: #333333;
+}
+
+.gallery .miniature .imgMiniature {
+	max-width: 100%;
+	height:auto;
+	display:block;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.gallery.galleryColumns {
+	-webkit-column-count: 4;
+	-moz-column-count: 4;
+	column-count: 4;
+}
+
+@media only screen and (max-width: 1023px) {
+	.gallery.galleryColumns {
+	  -webkit-column-count: 2;
+	  /* Chrome, Safari, Opera */
+	  -moz-column-count: 2;
+	  /* Firefox */
+	  column-count: 2;
+	}
+}
+  
+@media only screen and (max-width: 720px) {
+	.gallery.galleryColumns {
+	  -webkit-column-count: 1;
+	  /* Chrome, Safari, Opera */
+	  -moz-column-count: 1;
+	  /* Firefox */
+	  column-count: 1;
+	}
+}
+  
+  
+
+
