@@ -269,6 +269,7 @@ textarea {
 
 
 
+
 #authorMiniature{
 	font-size: 16px;
 	padding: 0;
@@ -393,7 +394,33 @@ textarea {
 	margin: 6px 20px 6px 20px;
 }
 
+#user {
+	padding: 4px 14px 4px 14px;
+	font-size: 18px;
+	margin: 0px;
+	cursor: pointer;
+	display: block;
+}
 
+#username {
+	height: inherit;
+	display: flex; 
+}
+
+#userAvatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 8px;
+}
+
+#userLogin {
+	font-size: 18px;
+	padding: 0;
+	margin: auto;
+	font-weight: bold;
+}
 
 
 
@@ -403,18 +430,18 @@ textarea {
 #leftbox { 
 	float: left;
 	width: 40%;
-	height: auto; 
+	height: 40px;
 } 
 #middlebox { 
 	float: left;
 	width: 20%;
-	height: auto;
+	height: 40px;
 	text-align: center;
 } 
 #rightbox { 
 	float: right;
 	width: 40%;
-	height: auto;
+	height: 40px;
 }
 
 

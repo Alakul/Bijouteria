@@ -12,7 +12,6 @@ function listMenu(obj) {
 		var x = document.getElementById("userMenu");
 	}
 
-  
     if (x.style.display === "block"){
         x.style.display = "none";
     }
@@ -151,6 +150,7 @@ function changeId(){
 	}
 }
 
+var nameLimit=30;
 function loadPreview(input, id){
 	var idInput = input.id;
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
@@ -171,14 +171,13 @@ function loadPreview(input, id){
 
 	if (fileExtensionValidate(input)==true && fileSizeValidate(input)==true){
 
-		id = id || '#imagePreview_'+number;
 		if (input.files && input.files[0]){
 			var reader = new FileReader();
 
 			reader.onload = function (event){
-				$(id)
-				.attr('src', event.target.result)
-				.height('auto');
+				var output = document.getElementById('imagePreview_'+number);
+				output.src = reader.result;
+				output.setAttribute('height', 'auto');
 			};
 
 			reader.readAsDataURL(input.files[0]);
@@ -209,10 +208,6 @@ function fileSizeValidate(file) {
 		}
 	}
 }
-
-var nameLimit=30;
-
-
 
 function clearInputs(){
 	var list = document.getElementById("stepsList");

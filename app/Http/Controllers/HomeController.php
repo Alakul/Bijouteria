@@ -27,11 +27,6 @@ class HomeController extends Controller
         return view('pages/home');
     }
 
-    public function profile()
-    {
-        return view('pages/profile');
-    }
-
     public function settings()
     {
         return view('pages/settings');

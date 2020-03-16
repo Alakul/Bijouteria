@@ -14,11 +14,15 @@
 
 
 Route::get('/', 'TutorialController@index')->name('home');
+Route::get('/profile', 'TutorialController@profile')->name('profile');
 Route::get('/create', 'TutorialController@create')->name('create');
 Route::get('/show/{id}', 'TutorialController@show')->name('show');
 
+
+
 Route::get('/settings', 'HomeController@settings')->name('settings');
-Route::get('/profile', 'HomeController@profile')->name('profile');
+
+
 
 Route::resource('tutorials', 'TutorialController');
 

@@ -60,8 +60,8 @@
 		</div>
     </form>
     <script>
-        $(document).load(function() {
+        window.onload = function() {
             clearInputs(); 
-        });
+        };
     </script>
 @endsection

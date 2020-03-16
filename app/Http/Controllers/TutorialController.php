@@ -17,11 +17,23 @@ class TutorialController extends Controller
      */
     public function index(Tutorial $tutorial)
     {
+        if (!isset($_COOKIE['category'])){
+            setcookie('category', 'bransoletki', (time() + (3600*2)), '/');
+        }
+
         $category= $_COOKIE['category'];
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
         ->select('tutorials.*', 'users.name')->get();//->where('category', [$category])
         
         return view('pages/home',['tutorials'=>$tutorials]);
+    }
+
+    public function profile(Tutorial $tutorial)
+    {
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->get();
+        
+        return view('pages/profile',['tutorials'=>$tutorials]);
     }
 
     /**

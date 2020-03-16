@@ -24,8 +24,8 @@
 	</div>
 
 	<div id="rightbox">
-		<div style="float: right;" id="user" onClick="listMenu(this)"><a class="buttons">{{ Auth::user()->name }}</a>
-			<ul class="listMenu" id="userMenu" style="right: 16px; top: 46px;">
+		<div id="user" style="float: right;" onClick="listMenu(this)"><a id="username"><img id="userAvatar" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/1200px-FullMoon2010.jpg"><p id="userLogin">{{ Auth::user()->name }}</p></a>
+			<ul class="listMenu" id="userMenu" style="right: 16px; top: 50px;">
 				<h4 class="listHeader">Użytkownik</h4>
 				<li><a href="{{ route('profile') }}">Profil</a></li>
 				<li><a href="{{ route('home') }}">Ulubione</a></li>
@@ -37,6 +37,7 @@
 				</form>
 			</ul>
 		</div>
+		
 		<a style="float: right;" href="{{ route('create') }}" class="buttons"><i class="fa fa-plus"></i></a>
 	</div>
 </div>
