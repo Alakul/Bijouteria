@@ -24,10 +24,12 @@ Route::get('/showProfile/{id}', 'TutorialController@showProfile')->name('showPro
 Route::post('/store', 'CommentController@store')->name('storeComment');
 
 
+
 Route::get('/settings', 'HomeController@settings')->name('settings');
 Route::get('/editProfile', 'HomeController@editProfile')->name('editProfile');
 
 
+Route::resource('profiles', 'ProfileController');
 Route::resource('comments', 'CommentController');
 Route::resource('tutorials', 'TutorialController');
 

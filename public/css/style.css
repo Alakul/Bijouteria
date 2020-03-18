@@ -36,6 +36,7 @@ header {
     border-top-width: 1px;
 	border-bottom-width: 1px;
 	border-color: #DDDDDD;
+	z-index: 1;
 }
 
 i {
@@ -529,6 +530,7 @@ textarea {
 .miniature {
 	text-decoration: none;
 	color: #333333;
+	position: relative;
 }
 
 .gallery .miniature .imgMiniature {
@@ -538,6 +540,22 @@ textarea {
 	margin: 0 auto;
 	width: 100%;
 }
+
+
+
+#buttonMiniature {
+	width: auto;
+	height: auto;
+	position: absolute;
+	margin: 10px;
+	right: 0;
+	display: none;
+}
+
+.miniature:hover #buttonMiniature {
+	display: block;
+}
+
 
 .gallery.galleryColumns {
 	-webkit-column-count: 4;

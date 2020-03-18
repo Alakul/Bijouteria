@@ -18,7 +18,7 @@ class TutorialController extends Controller
      */
     public function index(Tutorial $tutorial)
     {
-        if (!isset($_COOKIE['category'])){
+        if (!isset($_COOKIE['category'])) {
             setcookie('category', 'bransoletki', (time() + (3600*2)), '/');
             $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
             ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();
@@ -128,10 +128,18 @@ class TutorialController extends Controller
     public function showProfile($id)
     {
         $users=User::find($id);
-        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('users.id', [$id])->get();
+        if ($id == auth()->id()) {
+            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+            ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->get();
+        
+            return view('pages/profile',['tutorials'=>$tutorials]);
+        }
+        else {
+            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+            ->select('tutorials.*', 'users.name')->where('users.id', [$id])->get();
 
-        return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users]);
+            return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users]);
+        }
     }
 
     /**
