@@ -74,7 +74,7 @@ class RegisterController extends Controller
 
         $profile = new Profile();
         $profile->user_id = $userId;
-        $profile->avatar = "img/avatar-default.png";
+        $profile->avatar = "avatar-default.png";
         $profile->info = null;
         $profile->save();
 

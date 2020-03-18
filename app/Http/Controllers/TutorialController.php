@@ -6,6 +6,7 @@ use App\Models\Material;
 use App\Models\Tool;
 use App\Models\Step;
 use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 use DB;
 
@@ -65,7 +66,7 @@ class TutorialController extends Controller
 
         $image=$request->file('image_0');
         $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/images/'), $imageNew);
+        $image->move(public_path('/tutorials/'), $imageNew);
 
         $tutorial->title_picture = $imageNew;
         $tutorial->category = $request->input('category');
@@ -97,7 +98,7 @@ class TutorialController extends Controller
 
             $image=$request->file('image_'.$i);
             $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/images/'), $imageNew);
+            $image->move(public_path('/tutorials/'), $imageNew);
 
             $step->picture = $imageNew;
             $step->description = $request->input('description_'.$i);
