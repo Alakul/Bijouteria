@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    @isset ($tutorials, $materials, $tools, $steps)
+    @isset ($tutorials, $materials, $tools, $steps, $comments)
     <div class="formStyle">
 		<h2>{{ $tutorials->title }}</h2>
 		<div class="inputArea">
@@ -37,6 +37,34 @@
                 </ul>
             </div>
 		</div>
+    </div>
+
+    
+    <div class="formStyle" style="">
+        <h3 style="margin-bottom: 30px;">Komentarze</h3>
+        <form method="POST" action="{{ action('CommentController@store') }}" enctype="multipart/form-data">
+            {{ csrf_field() }}
+
+            <label>Napisz komentarz</label><br>
+            <textarea name="comment" class="inputText" style="margin: 10px 20px 10px 20px;" type="text" maxlength="300"></textarea>
+            <button type="submit" class="buttonStyle" style="margin: 0 auto 30px auto; display: block;">Opublikuj</button>
+            <input type="hidden" name="tutorial_id" value="{{ $tutorials-> id}}">
+        </form>
+
+
+        <table  class="commentList">
+            @foreach ($comments as $comment)
+                <tr class="comment">
+                    <td class="commentAvatar"><a href="{{ route('showProfile', ['id' => $comment->id]) }}"><img class="commentImg" src="https://image.ceneostatic.pl/data/products/40255890/i-evanescence-fallen-cd.jpg"></a></td>
+                    <td class="commentText">
+                        <label style="margin: 0;">{{ $comment->name }}</label><br>
+                        <label style="margin: 0;">{{ $comment->user_id }}</label><br>
+                        <p style="color: gray;">{{ $comment->date }}</p>
+                        <p style="font-size: 16px;">{{ $comment->comment }}</p>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
     </div>
     @endisset
 @endsection

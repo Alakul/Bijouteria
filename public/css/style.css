@@ -5,6 +5,7 @@ body {
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 	color: #333333;
+	background-color: #DDDDDD;
 }
 
 h2 {
@@ -129,11 +130,50 @@ textarea {
 	display: block;
 }
 
+.comment {
+	height: auto;
+	margin: 0;
+	border: 2px solid #DDDDDD;
+}
+
+.commentList {
+	margin: 20px;
+	height: auto;
+	width: 91%;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+.commentAvatar {
+	padding: 10px;
+	vertical-align: text-top;
+	width: 20%;
+}
+
+.commentText {
+	padding: 6px;
+	margin: 0;
+}
+
+.commentText > p{
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+	vertical-align: top;
+}
+
+.commentImg{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+
 .formStyle{
 	margin: 30px auto 30px auto;
 	border: 1px solid #DDDDDD;
 	width: 500px;
 	padding: 15px;
+	background-color: white;
 }
 
 .fileToUpload {
@@ -165,7 +205,6 @@ textarea {
 }
 
 .imgMiniature {
-	border-radius: 10px;
 	border: 2px solid #DDDDDD;
 	border-radius: 4px;
 	width: 100%;
@@ -289,6 +328,10 @@ textarea {
 	font-weight: normal;
 }
 
+#categories:hover #categoriesMenu {
+	display: block;
+}
+
 #category {
 	padding: 6px;
 	margin: 6px 20px 30px 20px;
@@ -361,6 +404,15 @@ textarea {
 	font-size: 18px;
 }
 
+
+#profile {
+	height: 300px;
+	border: solid 2px;
+	text-align: center;
+	margin: auto;
+}
+
+
 #remember {
 	vertical-align: bottom;
 	width: 10px;
@@ -399,6 +451,10 @@ textarea {
 	font-size: 18px;
 	margin: 0px;
 	cursor: pointer;
+	display: block;
+}
+
+#user:hover #userMenu{
 	display: block;
 }
 
@@ -465,7 +521,7 @@ textarea {
 .gallery .miniature {
 	display: inline-block;
 	vertical-align: top;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	max-width: 100%;
 	width: 100%;
 }
@@ -477,7 +533,7 @@ textarea {
 
 .gallery .miniature .imgMiniature {
 	max-width: 100%;
-	height:auto;
+	height: 100%;
 	display:block;
 	margin: 0 auto;
 	width: 100%;

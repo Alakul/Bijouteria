@@ -5,6 +5,7 @@ use App\Models\Tutorial;
 use App\Models\Material;
 use App\Models\Tool;
 use App\Models\Step;
+use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 
@@ -19,11 +20,14 @@ class TutorialController extends Controller
     {
         if (!isset($_COOKIE['category'])){
             setcookie('category', 'bransoletki', (time() + (3600*2)), '/');
+            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+            ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();
         }
-
-        $category= $_COOKIE['category'];
-        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->get();//->where('category', [$category])
+        else {
+            $category= $_COOKIE['category'];
+            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+            ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();//->where('category', [$category])
+        }
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
@@ -115,8 +119,19 @@ class TutorialController extends Controller
         $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('material', 'asc')->get();
         $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('tool', 'asc')->get();
         $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
+        $comments = DB::table('comments')->join('users', 'comments.user_id', '=', 'users.id')
+        ->select('comments.*', 'users.name')->where('tutorial_id', [$id])->orderBy('date', 'desc')->get();
 
-        return view('pages/showTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools, 'steps'=>$steps]);
+        return view('pages/showTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools, 'steps'=>$steps, 'comments'=>$comments]);
+    }
+
+    public function showProfile($id)
+    {
+        $users=User::find($id);
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->where('users.id', [$id])->get();
+
+        return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users]);
     }
 
     /**
