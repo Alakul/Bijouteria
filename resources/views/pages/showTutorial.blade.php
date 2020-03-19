@@ -56,7 +56,7 @@
         <table class="commentList">
             @foreach ($comments as $comment)
                 <tr class="comment">
-                    <td class="commentAvatar"><a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><img class="commentImg" src="https://image.ceneostatic.pl/data/products/40255890/i-evanescence-fallen-cd.jpg"></a></td>
+                    <td class="commentAvatar"><a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><img class="commentImg" src="/avatars/{{ $comment->avatar }}"></a></td>
                     <td class="commentText">
                         <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><label style="margin: 0;">{{ $comment->name }}</label></a><br>
                         <p style="color: gray;">{{ $comment->date }}</p>

@@ -33,13 +33,6 @@ class TutorialController extends Controller
         return view('pages/home',['tutorials'=>$tutorials]);
     }
 
-    public function profile(Tutorial $tutorial)
-    {
-        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->get();
-        
-        return view('pages/profile',['tutorials'=>$tutorials]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -120,27 +113,11 @@ class TutorialController extends Controller
         $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('material', 'asc')->get();
         $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('tool', 'asc')->get();
         $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
-        $comments = DB::table('comments')->join('users', 'comments.user_id', '=', 'users.id')
-        ->select('comments.*', 'users.name')->where('tutorial_id', [$id])->orderBy('date', 'desc')->get();
+        $comments = DB::table('comments')->join('users', 'users.id', '=', 'comments.user_id')
+        ->join('profiles', 'users.id', '=', 'profiles.user_id')
+        ->select('comments.*', 'users.name', 'profiles.*')->where('tutorial_id', [$id])->orderBy('date', 'desc')->get();
 
         return view('pages/showTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools, 'steps'=>$steps, 'comments'=>$comments]);
-    }
-
-    public function showProfile($id)
-    {
-        $users=User::find($id);
-        if ($id == auth()->id()) {
-            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->get();
-        
-            return view('pages/profile',['tutorials'=>$tutorials]);
-        }
-        else {
-            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->where('users.id', [$id])->get();
-
-            return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users]);
-        }
     }
 
     /**
@@ -174,6 +151,9 @@ class TutorialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tutorials = Tutorial::find($id);
+        $tutorials -> delete();
+
+        return back();
     }
 }

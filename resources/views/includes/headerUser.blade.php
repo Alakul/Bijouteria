@@ -38,6 +38,6 @@
 			</ul>
 		</div>
 		
-		<a style="float: right;" href="{{ route('create') }}" class="buttons"><i class="fa fa-plus"></i></a>
+		<a style="float: right;" href="{{ route('createTutorial') }}" class="buttons"><i class="fa fa-plus"></i></a>
 	</div>
 </div>

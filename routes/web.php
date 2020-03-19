@@ -14,19 +14,15 @@
 
 
 Route::get('/', 'TutorialController@index')->name('home');
-Route::get('/profile', 'TutorialController@profile')->name('profile');
-Route::get('/create', 'TutorialController@create')->name('create');
-Route::get('/show/{id}', 'TutorialController@show')->name('show');
-Route::get('/showProfile/{id}', 'TutorialController@showProfile')->name('showProfile');
-
-
-
-Route::post('/store', 'CommentController@store')->name('storeComment');
-
-
+Route::get('/create', 'TutorialController@create')->name('createTutorial');
+Route::get('/show/{id}', 'TutorialController@show')->name('showTutorial');
+Route::get('/delete/{id}', 'TutorialController@destroy')->name('deleteTutorial');
 
 Route::get('/settings', 'HomeController@settings')->name('settings');
-Route::get('/editProfile', 'HomeController@editProfile')->name('editProfile');
+
+Route::get('/editProfile/{id}', 'ProfileController@index')->name('editProfile');
+Route::get('/showProfile/{id}', 'ProfileController@show')->name('showProfile');
+Route::get('/profile', 'ProfileController@profile')->name('profile');
 
 
 Route::resource('profiles', 'ProfileController');

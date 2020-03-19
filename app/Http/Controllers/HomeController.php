@@ -31,9 +31,4 @@ class HomeController extends Controller
     {
         return view('pages/settings');
     }
-
-    public function editProfile()
-    {
-        return view('pages/editProfile');
-    }
 }
