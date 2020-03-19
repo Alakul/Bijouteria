@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $id=auth()->id();
         $image=$request->file('image_0');
         $imageNew=$id.'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/avatars/'), $imageNew);
+        $image->move(public_path('/avatarsIMG'), $imageNew);
 
         $profile->avatar = $imageNew;
         $profile->info = $request->input('info');
@@ -64,16 +64,15 @@ class ProfileController extends Controller
         $users=User::find($id);
         if ($id == auth()->id()) {
             $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->get();
+            ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->orderBy('date', 'desc')->get();
             $profiles = Profile::where('user_id', [auth()->id()])->first();
             
             return view('pages/profile',['tutorials'=>$tutorials, 'profiles'=>$profiles]);
         }
         else {
             $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->where('users.id', [$id])->get();
+            ->select('tutorials.*', 'users.name')->where('users.id', [$id])->orderBy('date', 'desc')->get();
             $profiles = Profile::where('user_id', [$id])->first();
-
 
             return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users, 'profiles'=>$profiles]);
         }
@@ -82,7 +81,7 @@ class ProfileController extends Controller
     public function profile(Tutorial $tutorial)
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->get();
+        ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->orderBy('date', 'desc')->get();
         $profiles = Profile::where('user_id', [auth()->id()])->first();
 
         return view('pages/profile',['tutorials'=>$tutorials, 'profiles'=>$profiles]);
@@ -100,7 +99,7 @@ class ProfileController extends Controller
 
         $image=$request->file('avatar');
         $imageNew=$id.'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/avatars/'), $imageNew);
+        $image->move(public_path('/avatarsIMG'), $imageNew);
 
         $profile->info = $request->input('info');
         $profile->save();

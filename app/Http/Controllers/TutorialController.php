@@ -59,7 +59,7 @@ class TutorialController extends Controller
 
         $image=$request->file('image_0');
         $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/tutorials/'), $imageNew);
+        $image->move(public_path('/tutorialsIMG'), $imageNew);
 
         $tutorial->title_picture = $imageNew;
         $tutorial->category = $request->input('category');
@@ -91,7 +91,7 @@ class TutorialController extends Controller
 
             $image=$request->file('image_'.$i);
             $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/tutorials/'), $imageNew);
+            $image->move(public_path('/tutorialsIMG'), $imageNew);
 
             $step->picture = $imageNew;
             $step->description = $request->input('description_'.$i);
@@ -117,7 +117,11 @@ class TutorialController extends Controller
         ->join('profiles', 'users.id', '=', 'profiles.user_id')
         ->select('comments.*', 'users.name', 'profiles.*')->where('tutorial_id', [$id])->orderBy('date', 'desc')->get();
 
-        return view('pages/showTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools, 'steps'=>$steps, 'comments'=>$comments]);
+        $profiles = Profile::where('user_id', $tutorials->user_id)->first();
+        $users=User::find($tutorials->user_id);
+
+        return view('pages/showTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools,
+        'steps'=>$steps, 'comments'=>$comments, 'profiles'=>$profiles, 'users'=>$users]);
     }
 
     /**
