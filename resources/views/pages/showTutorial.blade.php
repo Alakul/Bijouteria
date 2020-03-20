@@ -6,21 +6,21 @@
 		<h2>{{ $tutorials->title }}</h2>
 		<div class="inputArea">
             
-            <img id="imgShow" class="imgShow" src="/tutorialsIMG/{{ $tutorials->title_picture }}">
-            <p id="descriptionShow">{{ $tutorials->description }}</p>
+            <img class="showImg" src="/tutorialsIMG/{{ $tutorials->title_picture }}">
+            <p class="showDescription">{{ $tutorials->description }}</p>
 
             <label id="categoryLabel">Kategoria:</label>
-            <p id="categoryShow">{{ $tutorials->category }}</p><br>
+            <p class="showCategory">{{ $tutorials->category }}</p><br>
 
             <label>Wymagane materiały:</label>
-            <ul id="materialsListShow" class="listShow">
+            <ul id="materialsListShow" class="showList">
                 @foreach ($materials as $material)
                     <li>{{ $material->material}}</li>
                 @endforeach
             </ul>
             
             <label>Wymagane narzędzia:</label>
-            <ul id="toolsListShow" class="listShow">
+            <ul id="toolsListShow" class="showList">
                 @foreach ($tools as $tool)
                     <li>{{ $tool->tool}}</li>
                 @endforeach
@@ -29,20 +29,20 @@
             <div id="stepShow">
                 <ul id="stepsList">
                     @foreach ($steps as $step)
-                        <li id="steps">
+                        <li class="showSteps">
                             <h3>Krok {{ $step->step}}:</h3><br>
-                            <img id="imgStepShow" class="imgShow" src="/tutorialsIMG/{{ $step->picture }}">
-                            <p id="descriptionStepShow">{{ $step->description}}</p>
+                            <img id="imgStepShow" class="showImg" src="/tutorialsIMG/{{ $step->picture }}">
+                            <p class="showDescriptionStep">{{ $step->description}}</p>
                         </li>
                     @endforeach
                 </ul>
             </div>
 		</div>
     </div>
-        <div style="float: right; background-color: red; width: 50% height: 100%;">
-        <p>{{ $users->name}}</p>
+        <div style="float: right; background-color: red; width: 50%, height: 100%;">
+        <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><label style="margin: 0;">{{ $users->name }}</label></a><br>
         <p>{{ $profiles->info}}</p>
-        <img src="/avatarsIMG/{{ $profiles->avatar }}">
+        <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><img src="/avatarsIMG/{{ $profiles->avatar }}"></a>
         <p>data: {{ $tutorials->date}}</p>
         </div>
     </div>

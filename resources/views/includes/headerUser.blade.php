@@ -1,7 +1,7 @@
 <div>
 	<div id="leftbox">
 		<div style="float: left; margin-right: 14px;" id="categories" onClick=""><a class="buttons"><i class="fas fa-bars"></i></a>
-			<ul class="listMenu" id="categoriesMenu" style="top: 45px;">
+			<ul class="menuList" id="categoriesMenu" style="top: 45px;">
 				<h4 class="listHeader">Kategorie</h4>
 				<li><a id="bransoletki" onclick="chooseCategory(this);" href="{{ route('home') }}">Bransoletki</a></li>
 				<li><a id="broszki" onclick="chooseCategory(this);" href="{{ route('home') }}">Broszki</a></li>
@@ -24,8 +24,8 @@
 	</div>
 
 	<div id="rightbox">
-		<div id="user" style="float: right;" onClick=""><a id="username"><img id="userAvatar" src="https://image.ceneostatic.pl/data/products/40255890/i-evanescence-fallen-cd.jpg"><p id="userLogin">{{ Auth::user()->name }}</p></a>
-			<ul class="listMenu" id="userMenu" style="right: 16px; top: 45px;">
+		<div id="user" style="float: right;" onClick=""><a id="userName"><img id="userAvatar" src="https://image.ceneostatic.pl/data/products/40255890/i-evanescence-fallen-cd.jpg"><p id="userLogin">{{ Auth::user()->name }}</p></a>
+			<ul class="menuList" id="userMenu" style="right: 16px; top: 45px;">
 				<h4 class="listHeader">Użytkownik</h4>
 				<li><a href="{{ route('profile') }}">Profil</a></li>
 				<li><a href="{{ route('home') }}">Ulubione</a></li>

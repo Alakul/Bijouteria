@@ -14,15 +14,15 @@
 
 
 Route::get('/', 'TutorialController@index')->name('home');
-Route::get('/create', 'TutorialController@create')->name('createTutorial');
+Route::get('/create', 'TutorialController@create')->name('createTutorial')->middleware('auth');
 Route::get('/show/{id}', 'TutorialController@show')->name('showTutorial');
-Route::get('/delete/{id}', 'TutorialController@destroy')->name('deleteTutorial');
+Route::get('/delete/{id}', 'TutorialController@destroy')->name('deleteTutorial')->middleware('auth');
 
-Route::get('/settings', 'HomeController@settings')->name('settings');
+Route::get('/settings', 'HomeController@settings')->name('settings')->middleware('auth');
 
-Route::get('/editProfile/{id}', 'ProfileController@index')->name('editProfile');
+Route::get('/editProfile/{id}', 'ProfileController@index')->name('editProfile')->middleware('auth');
 Route::get('/showProfile/{id}', 'ProfileController@show')->name('showProfile');
-Route::get('/profile', 'ProfileController@profile')->name('profile');
+Route::get('/profile', 'ProfileController@profile')->name('profile')->middleware('auth');
 
 
 Route::resource('profiles', 'ProfileController');

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <form method="POST" action="{{ action('TutorialController@store') }}" class="formStyle" enctype="multipart/form-data">
-        {{ csrf_field() }}
+        {{csrf_field()}}
 		<h2>Ustawienia</h2>
 		<div class="inputArea"> 
             <label>Zmień email</label><br>
             <input name="image_0" id="image_0" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
-            <img id="imagePreview_0" src="#" class="preview" height="200px"/><br>
+            <img id="imagePreview_0" src="#" class="previewImg" height="200px"/><br>
 
             <label>Zmień hasło</label><br>
             <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>

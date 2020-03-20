@@ -1,7 +1,7 @@
 <div>
 	<div id="leftbox">
 		<div style="float: left; margin-right: 14px;" id="categories" onClick=""><a class="buttons"><i class="fas fa-bars"></i></a>
-			<ul class="listMenu" id="categoriesMenu" style="top: 45px;">
+			<ul class="menuList" id="categoriesMenu" style="top: 45px;">
 				<h4 class="listHeader">Kategorie</h4>
 				<li><a id="bransoletki" onclick="chooseCategory(this);" href="{{ route('home') }}">Bransoletki</a></li>
 				<li><a id="broszki" onclick="chooseCategory(this);" href="{{ route('home') }}">Broszki</a></li>

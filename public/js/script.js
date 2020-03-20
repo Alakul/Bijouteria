@@ -3,7 +3,7 @@ var tools=1;
 var steps=1;
 
 
-function listMenu(obj) {
+function menuList(obj) {
 	var id=obj.id;
 	if (id=='categories'){
 		var x = document.getElementById("categoriesMenu");	
@@ -47,7 +47,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input name="image_'+steps+'" id="image_'+steps+'" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="preview" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input name="image_'+steps+'" id="image_'+steps+'" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="previewImg" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea><br>';
 			x.appendChild(childX);
 		}
 	}
@@ -156,18 +156,33 @@ function loadPreview(input, id){
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
 
 	if (fileExtensionValidate(input)==false){
-		document.getElementById('image_'+number).value='';
-		document.getElementById('imagePreview_'+number).setAttribute('src','#');
-		document.getElementById('imagePreview_'+number).style.height = "200px";
+		if (idInput=="avatar"){
+			document.getElementById('avatar').value='';
+			document.getElementById('avatarPreview').setAttribute('src','#');
+			document.getElementById('avatarPreview').style.height = "200px";
+		}
+		else {
+			document.getElementById('image_'+number).value='';
+			document.getElementById('imagePreview_'+number).setAttribute('src','#');
+			document.getElementById('imagePreview_'+number).style.height = "200px";
+		}
 		alert("Nieprawidłowe rozszerzenie pliku.");
 	}
-
-	if (fileSizeValidate(input)==false){
-		document.getElementById('image_'+number).value='';
-		document.getElementById('imagePreview_'+number).setAttribute('src','#');
-		document.getElementById('imagePreview_'+number).style.height = "200px";
+	else if (fileSizeValidate(input)==false){
+		if (idInput=="avatar"){
+			document.getElementById('avatar').value='';
+			document.getElementById('avatarPreview').setAttribute('src','#');
+			document.getElementById('avatarPreview').style.height = "200px";
+		}
+		else {
+			document.getElementById('image_'+number).value='';
+			document.getElementById('imagePreview_'+number).setAttribute('src','#');
+			document.getElementById('imagePreview_'+number).style.height = "200px";
+		}
 		alert('Maksymalny rozmiar pliku: 2 MB.');
 	}
+
+
 
 	if (fileExtensionValidate(input)==true && fileSizeValidate(input)==true){
 
@@ -175,7 +190,12 @@ function loadPreview(input, id){
 			var reader = new FileReader();
 
 			reader.onload = function (event){
-				var output = document.getElementById('imagePreview_'+number);
+				if (idInput=="avatar"){
+					var output = document.getElementById("avatarPreview");
+				}
+				else {
+					var output = document.getElementById('imagePreview_'+number);
+				}
 				output.src = reader.result;
 				output.setAttribute('height', 'auto');
 			};
@@ -268,6 +288,8 @@ function inputRequired(){
 	var stepsLength=document.getElementById("stepsList").getElementsByTagName("li").length;
 	document.cookie="steps="+stepsLength;
 }
+
+
 
 function preventSymbolLogin(event) {
 	if (event.which == 46 || event.which == 95 || (event.which >= 48 && event.which <= 57) || (event.which >= 65 && event.which <= 90) || (event.which >= 97 && event.which <= 122)) {  	

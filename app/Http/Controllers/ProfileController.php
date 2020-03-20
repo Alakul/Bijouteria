@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Profile;
 use App\Models\User;
 use App\Models\Tutorial;
@@ -15,9 +14,9 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
+    public function index()
     {
-        return view('pages/editProfile',['id'=>$id]);
+        return view('pages/editProfile');
     }
 
     /**
@@ -38,19 +37,17 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $profile = new Profile();
-        $profile->user_id = auth()->id();
+        $profile = Profile::where('user_id', auth()->id())->first();
 
-        $id=auth()->id();
-        $image=$request->file('image_0');
-        $imageNew=$id.'.'.$image->getClientOriginalExtension();
+        $image=$request->file('avatar');
+        $imageNew=auth()->id().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('/avatarsIMG'), $imageNew);
 
         $profile->avatar = $imageNew;
         $profile->info = $request->input('info');
         $profile->save();
 
-        return redirect('/');
+        return redirect('/profile');
     }
 
     /**
@@ -101,6 +98,7 @@ class ProfileController extends Controller
         $imageNew=$id.'.'.$image->getClientOriginalExtension();
         $image->move(public_path('/avatarsIMG'), $imageNew);
 
+        $profile->avatar = $imageNew;
         $profile->info = $request->input('info');
         $profile->save();
 

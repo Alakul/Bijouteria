@@ -61,6 +61,7 @@ textarea {
 
 
 
+/* Alert */
 .alert {
 	margin: -12px 20px 10px 20px;
 	font-size: 14px;
@@ -68,7 +69,6 @@ textarea {
 	display: block;
 	border-radius: 4px;
 }
-
 .alertLogin {
 	margin: 6px 20px 6px 20px;
 	font-size: 14px;
@@ -80,42 +80,8 @@ textarea {
 	border-radius: 4px;
 }
 
-.asterisk{
-	color: red;
-}
 
-.buttonStyle {
-	padding: 10px;
-	border: 2px solid goldenrod;
-	font-weight: bold;
-	border-radius: 4px;
-	font-size: 14px;
-	color: white;
-    background-color: goldenrod; 
-	text-decoration: none;
-	cursor: pointer;
-	height: auto;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
-}	
-
-.buttonStyle:hover {
-    color: white;
-    background-color: goldenrod; 
-}
-
-.buttonStyle:active {
-    color: gray;
-} 
-
-.buttons {
-	padding: 8px 14px 8px 14px;
-	font-size: 18px;
-	display: block;
-	cursor: pointer;
-	font-weight: bold;
-}
-
+/* Button */
 .buttonAdd {
 	padding: 8px;
 	margin: auto auto 10px auto;
@@ -130,13 +96,52 @@ textarea {
 	border-radius: 4px;
 	display: block;
 }
+.buttonStyle {
+	padding: 10px;
+	border: 2px solid goldenrod;
+	font-weight: bold;
+	border-radius: 4px;
+	font-size: 14px;
+	color: white;
+    background-color: goldenrod; 
+	text-decoration: none;
+	cursor: pointer;
+	height: auto;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+}	
+.buttonStyle:hover {
+    color: white;
+    background-color: goldenrod; 
+}
+.buttonStyle:active {
+    color: gray;
+} 
+.buttons {
+	padding: 8px 14px 8px 14px;
+	font-size: 18px;
+	display: block;
+	cursor: pointer;
+	font-weight: bold;
+}
 
+
+/* Comment */
 .comment {
 	height: auto;
 	margin: 0;
 	border: 2px solid #DDDDDD;
 }
-
+.commentAvatar {
+	padding: 10px;
+	vertical-align: text-top;
+	width: 20%;
+}
+.commentImg{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
 .commentList {
 	margin: 20px;
 	height: auto;
@@ -144,18 +149,10 @@ textarea {
 	padding: 0;
 	border-collapse: collapse;
 }
-
-.commentAvatar {
-	padding: 10px;
-	vertical-align: text-top;
-	width: 20%;
-}
-
 .commentText {
 	padding: 6px;
 	margin: 0;
 }
-
 .commentText > p{
 	font-size: 14px;
 	padding: 0;
@@ -163,12 +160,11 @@ textarea {
 	vertical-align: top;
 }
 
-.commentImg{
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-}
 
+/* Form */
+.asterisk{
+	color: red;
+}
 .formStyle{
 	margin: 30px auto 30px auto;
 	border: 1px solid #DDDDDD;
@@ -177,10 +173,105 @@ textarea {
 	background-color: white;
 }
 
+
+/* Gallery */
+.gallery {
+	column-rule: 0px solid #eee;
+	column-gap: 20px;
+	width: 96%;
+	margin: 0 auto;
+	padding: 20px;
+}
+.gallery .miniature {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 20px;
+	max-width: 100%;
+	width: 100%;
+}
+.gallery .miniature .miniatureImg {
+	max-width: 100%;
+	height: 100%;
+	display:block;
+	margin: 0 auto;
+	width: 100%;
+}
+.gallery.galleryColumns {
+	-webkit-column-count: 4;
+	-moz-column-count: 4;
+	column-count: 4;
+}
+.miniature {
+	text-decoration: none;
+	color: #333333;
+	position: relative;
+}
+.miniatureButton {
+	width: auto;
+	height: auto;
+	position: absolute;
+	margin: 10px;
+	right: 0;
+	display: none;
+}
+.miniature:hover .miniatureButton {
+	display: block;
+}
+.miniatureImg {
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+	width: 100%;
+	height: auto;
+}
+
+@media only screen and (max-width: 1023px) {
+	.gallery.galleryColumns {
+	  -webkit-column-count: 2;
+	  /* Chrome, Safari, Opera */
+	  -moz-column-count: 2;
+	  /* Firefox */
+	  column-count: 2;
+	}
+}
+@media only screen and (max-width: 720px) {
+	.gallery.galleryColumns {
+	  -webkit-column-count: 1;
+	  /* Chrome, Safari, Opera */
+	  -moz-column-count: 1;
+	  /* Firefox */
+	  column-count: 1;
+	}
+}
+
+
+/* Icon */
+#plus {
+	width: auto;
+	height: auto;
+	font-size: 18px;
+}
+#stepsIcon {
+	float: right;
+	margin-right: 20px;
+}
+
+
+/* Image */
 .fileToUpload {
 	margin: 6px 20px 6px 20px;
 }
+.previewImg {
+	margin: 6px 20px 20px 20px;
+	width: 91%;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+}
 
+
+/* Input */
+.inputArea {
+	margin: 30px 0 30px 0;
+}
 .inputText {
 	padding: 10px;
 	margin: 6px 20px 20px 20px;
@@ -194,25 +285,43 @@ textarea {
 	width: 87%;
 }
 
-.inputArea {
-	margin: 30px 0 30px 0;
+
+/* Login */
+#passwordRemind {
+	font-size: 12px;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	text-align: center;
+	display: block;
+	margin: 40px 20px 20px 20px;
+}
+#remember {
+	vertical-align: bottom;
+	width: 10px;
+	height: 10px;
+}
+#rememberPassword {
+	margin: 6px 20px 6px 20px;
+	text-align: center;
+}
+#savePassword {
+	font-size: 12px;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	margin: auto;
+	vertical-align: middle;
+	*overflow: hidden;
 }
 
-.imgShow {
-	margin: 0px 20px 0px 20px;
-	width: 91%;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
-}
 
-.imgMiniature {
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
-	width: 100%;
-	height: auto;
+/* Menu */
+.listHeader {
+	font-weight: bold;
+	margin: 0;
+	padding: 6px;
+	text-align: center;
 }
-
-.listMenu {
+.menuList {
     list-style-type:none;
     padding:0;
     margin:0;
@@ -222,28 +331,18 @@ textarea {
 	border-radius: 4px;
 	background-color: white;
 }
-
-.listMenu > li {
+.menuList > li {
     position: block;
 	padding: 0;
 	font-size: 13px;
 	text-align: left;
 	border-top: 1px solid #DDDDDD;
 }
-
-.listMenu > li:hover {
+.menuList > li:hover {
     color: white;
     background-color: goldenrod;
 }
-
-.listHeader {
-	font-weight: bold;
-	margin: 0;
-	padding: 6px;
-	text-align: center;
-}
-
-.listMenu > li > a {
+.menuList > li > a {
 	display: block;
 	height: auto;
 	padding: 6px 10px 6px 10px;
@@ -251,18 +350,6 @@ textarea {
 	text-decoration: none;
 	color: #333333;
 }
-
-.listShow {
-	margin: 10px 0 30px 0;
-}
-
-.preview {
-	margin: 6px 20px 20px 20px;
-	width: 91%;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
-}
-
 .searchBar {
 	padding: 10px;
 	background-color: white;
@@ -273,7 +360,6 @@ textarea {
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 }
-
 .searchButton {
 	padding: 10px;
 	background-color: white;
@@ -285,205 +371,17 @@ textarea {
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 }
-
-.steps {
-	border: 2px solid #DDDDDD;
-	margin: 20px;
-}
-
-.toolsInput, .materialsInput {
-	width: 80%;
-	margin: 6px 15px 6px 20px;
-}
-
-.titleMiniature {
-	font-size: 16px;
-	padding: 0;
-	margin: 6px;
-	font-weight: bold;
-	text-align: justify;
-}
-
-
-
-
-
-
-
-#authorMiniature{
-	font-size: 16px;
-	padding: 0;
-	margin: 10px;
-	font-weight: bold;
-}
-
-#authorImgMiniature {
-	width: 14px;
-	height: 14px;
-	margin-right: 10px;
-	padding: 0;
-	display: inline-block;
-}
-
 #categories {
 	font-weight: normal;
 }
-
 #categories:hover #categoriesMenu {
 	display: block;
 }
-
-#category {
-	padding: 6px;
-	margin: 6px 20px 30px 20px;
-	background-color: white;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
-	font-size: 14px;
-	color: #333333;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
-	display: block;
-}
-
-#category > option {
-	color: #333333;
-	font-family: 'Roboto';
-	letter-spacing: 0.7px;
-}
-
-#categoryShow {
-	margin: 6px 6px 30px 20px;
-	font-size: 16px;
-	display: inline-block;
-}
-
-#categoryLabel {
-	margin: 20px 6px 20px 20px;
-}
-
-#cell {
-	text-align: center;
-	width: 180px;
-	height: 550px;
-	border: 2px solid goldenrod;
-	border-radius: 8px;
-}
-
-#descriptionShow, #descriptionStepShow {
-	margin: 6px 20px 20px 20px;
-	text-align: justify;
-	line-height: 1.5;
-	font-size: 14px;
-}
-
 #logo{
 	height: 36px;
 	margin: 0;
 	padding: 0;
 }
-
-#materialsList, #toolsList, #stepsList {
-	text-decoration: none;
-	list-style: none;
-	padding-left: 0;
-	margin: 0;
-}
-
-#passwordRemind {
-	font-size: 12px;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
-	text-align: center;
-	display: block;
-	margin: 40px 20px 20px 20px;
-}
-
-#plus {
-	width: auto;
-	height: auto;
-	font-size: 18px;
-}
-
-
-#profile {
-	height: 300px;
-	border: solid 2px;
-	text-align: center;
-	margin: auto;
-}
-
-
-#remember {
-	vertical-align: bottom;
-	width: 10px;
-	height: 10px;
-}
-
-#rememberPassword {
-	margin: 6px 20px 6px 20px;
-	text-align: center;
-}
-
-#steps {
-	margin: 50px 0 0 0;
-}
-
-#savePassword {
-	font-size: 12px;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
-	margin: auto;
-	vertical-align: middle;
-	*overflow: hidden;
-}
-
-#stepsIcon {
-	float: right;
-	margin-right: 20px;
-}
-
-#tools, #materials {
-	margin: 6px 20px 6px 20px;
-}
-
-#user {
-	padding: 4px 14px 4px 14px;
-	font-size: 18px;
-	margin: 0px;
-	cursor: pointer;
-	display: block;
-}
-
-#user:hover #userMenu{
-	display: block;
-}
-
-#username {
-	height: inherit;
-	display: flex; 
-}
-
-#userAvatar {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	vertical-align: middle;
-	margin-right: 8px;
-}
-
-#userLogin {
-	font-size: 18px;
-	padding: 0;
-	margin: auto;
-	font-weight: bold;
-}
-
-
-
-
-
-
 #leftbox { 
 	float: left;
 	width: 40%;
@@ -500,89 +398,101 @@ textarea {
 	width: 40%;
 	height: 40px;
 }
-
-
-
-
-
-
-
-
-
-
-
-.gallery {
-	column-rule: 0px solid #eee;
-	column-gap: 20px;
-	width: 96%;
-	margin: 0 auto;
-	padding: 20px;
+#userAvatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 8px;
 }
-
-.gallery .miniature {
-	display: inline-block;
-	vertical-align: top;
-	margin-bottom: 20px;
-	max-width: 100%;
-	width: 100%;
+#userLogin {
+	font-size: 18px;
+	padding: 0;
+	margin: auto;
+	font-weight: bold;
 }
-
-.miniature {
-	text-decoration: none;
-	color: #333333;
-	position: relative;
+#userName {
+	height: inherit;
+	display: flex; 
 }
-
-.gallery .miniature .imgMiniature {
-	max-width: 100%;
-	height: 100%;
-	display:block;
-	margin: 0 auto;
-	width: 100%;
+#user {
+	padding: 4px 14px 4px 14px;
+	font-size: 18px;
+	margin: 0px;
+	cursor: pointer;
+	display: block;
 }
-
-
-
-#buttonMiniature {
-	width: auto;
-	height: auto;
-	position: absolute;
-	margin: 10px;
-	right: 0;
-	display: none;
-}
-
-.miniature:hover #buttonMiniature {
+#user:hover #userMenu{
 	display: block;
 }
 
 
-.gallery.galleryColumns {
-	-webkit-column-count: 4;
-	-moz-column-count: 4;
-	column-count: 4;
+/* Profile */
+.profileImg {
+	height: 120px;
+	width: 120px;
+	float: left;
 }
 
-@media only screen and (max-width: 1023px) {
-	.gallery.galleryColumns {
-	  -webkit-column-count: 2;
-	  /* Chrome, Safari, Opera */
-	  -moz-column-count: 2;
-	  /* Firefox */
-	  column-count: 2;
-	}
+
+/* Tutorial ADD*/
+.steps {
+	border: 2px solid #DDDDDD;
+	margin: 20px;
 }
-  
-@media only screen and (max-width: 720px) {
-	.gallery.galleryColumns {
-	  -webkit-column-count: 1;
-	  /* Chrome, Safari, Opera */
-	  -moz-column-count: 1;
-	  /* Firefox */
-	  column-count: 1;
-	}
+.toolsInput, .materialsInput {
+	width: 80%;
+	margin: 6px 15px 6px 20px;
 }
-  
-  
+#category {
+	padding: 6px;
+	margin: 6px 20px 30px 20px;
+	background-color: white;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+	font-size: 14px;
+	color: #333333;
+	font-family: 'Roboto' ;
+	letter-spacing: 0.7px;
+	display: block;
+}
+#category > option {
+	color: #333333;
+	font-family: 'Roboto';
+	letter-spacing: 0.7px;
+}
+#materialsList, #toolsList, #stepsList {
+	text-decoration: none;
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
 
 
+/* Tutorial SHOW*/
+.showCategory {
+	margin: 6px 6px 30px 20px;
+	font-size: 16px;
+	display: inline-block;
+}
+.showDescription, .showDescriptionStep {
+	margin: 6px 20px 20px 20px;
+	text-align: justify;
+	line-height: 1.5;
+	font-size: 14px;
+}
+.showImg {
+	margin: 0px 20px 0px 20px;
+	width: 91%;
+	border: 2px solid #DDDDDD;
+	border-radius: 4px;
+}
+.showList {
+	margin: 10px 0 30px 0;
+}
+.showSteps {
+	margin: 50px 0 0 0;
+}
+#categoryLabel {
+	margin: 20px 6px 20px 20px;
+}

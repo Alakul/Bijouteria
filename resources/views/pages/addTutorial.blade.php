@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 	<form method="POST" action="{{ action('TutorialController@store') }}" class="formStyle" enctype="multipart/form-data">
-        {{ csrf_field() }}
+        {{csrf_field()}}
 		<h2>Dodaj poradnik</h2>
 		<div class="inputArea">
             <label>Tytuł <span class="asterisk">*</span></label><br>
@@ -12,7 +12,7 @@
                 
             <label>Zdjęcie tytułowe <span class="asterisk">*</span></label><br>
             <input name="image_0" id="image_0" class="fileToUpload" type="file" required onchange="loadPreview(this);"><br>
-            <img id="imagePreview_0" src="#" class="preview" height="200px"/><br>
+            <img id="imagePreview_0" src="#" class="previewImg" height="200px"/><br>
 
             <label for="category">Kategoria <span class="asterisk">*</span></label>
             <select name="category" id="category" required>
@@ -49,7 +49,7 @@
                         <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
                         <label>Zdjęcie <span class="asterisk">*</span></label><br>
                         <input name="image_1" id="image_1" class="fileToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><br>
-                        <img id="imagePreview_1" src="#" class="preview" height="200px"/><br>
+                        <img id="imagePreview_1" src="#" class="previewImg" height="200px"/><br>
                         <label>Opis <span class="asterisk">*</span></label>
                         <textarea name="description_1" id="description_1" class="inputText" type="text" maxlength="1000" required></textarea><br> 
                     </li>
