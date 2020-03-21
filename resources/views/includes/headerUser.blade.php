@@ -1,8 +1,7 @@
 <div>
 	<div id="leftbox">
-		<div style="float: left; margin-right: 14px;" id="categories" onClick=""><a class="buttons"><i class="fas fa-bars"></i></a>
-			<ul class="menuList" id="categoriesMenu" style="top: 45px;">
-				<h4 class="listHeader">Kategorie</h4>
+		<div id="categories" class="menuElement" style="margin-right: 14px; float: left;" onClick=""><i class="fas fa-bars"></i><p class="menuText" style="margin-left: 10px;">Kategorie</p>
+			<ul id="categoriesMenu" class="menuList" style="top: 40px;">
 				<li><a id="bransoletki" onclick="chooseCategory(this);" href="{{ route('home') }}">Bransoletki</a></li>
 				<li><a id="broszki" onclick="chooseCategory(this);" href="{{ route('home') }}">Broszki</a></li>
 				<li><a id="kolczyki" onclick="chooseCategory(this);" href="{{ route('home') }}">Kolczyki</a></li>
@@ -15,7 +14,7 @@
 		</div>
 		<form action="action_page.php">
 			<input class="searchBar" setype="text" placeholder="Szukaj...">
-			<button class="searchButton"><i class='fas'>&#xf002;</i></button>
+			<button class="searchButton"><i class='fas' style="color: white;">&#xf002;</i></button>
 		</form>
 	</div>
 
@@ -24,9 +23,8 @@
 	</div>
 
 	<div id="rightbox">
-		<div id="user" style="float: right;" onClick=""><a id="userName"><img id="userAvatar" src="https://image.ceneostatic.pl/data/products/40255890/i-evanescence-fallen-cd.jpg"><p id="userLogin">{{ Auth::user()->name }}</p></a>
-			<ul class="menuList" id="userMenu" style="right: 16px; top: 45px;">
-				<h4 class="listHeader">Użytkownik</h4>
+		<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">{{ Auth::user()->name }}</p>
+			<ul id="userMenu" class="menuList" style="right: 16px; top: 45px;">
 				<li><a href="{{ route('profile') }}">Profil</a></li>
 				<li><a href="{{ route('home') }}">Ulubione</a></li>
 				<li><a href="{{ route('settings') }}">Ustawienia</a></li>
@@ -38,6 +36,6 @@
 			</ul>
 		</div>
 		
-		<a style="float: right;" href="{{ route('createTutorial') }}" class="buttons"><i class="fa fa-plus"></i></a>
+		<a href="{{ route('createTutorial') }}" class="menuElement" style="float: right;"><i class="fa fa-plus"></i></a>
 	</div>
 </div>

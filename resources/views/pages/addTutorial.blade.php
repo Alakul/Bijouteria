@@ -61,7 +61,8 @@
     </form>
     <script>
         window.onload = function() {
-            clearInputs(); 
+            clearInputs();
+            loadPreview();
         };
     </script>
 @endsection

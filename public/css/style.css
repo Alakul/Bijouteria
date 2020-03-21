@@ -25,9 +25,9 @@ header {
 	background-color: white;
 	margin-left: auto;
     margin-right: auto;
-    display: block;
-	padding: 10px;
+	display: block;
 	width: auto;
+	padding: 10px;
 	height: 40px;
     top: 0;
     position: sticky;
@@ -98,31 +98,22 @@ textarea {
 }
 .buttonStyle {
 	padding: 10px;
-	border: 2px solid goldenrod;
 	font-weight: bold;
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: 16px;
 	color: white;
-    background-color: goldenrod; 
+    background-color: #e1b74c;
 	text-decoration: none;
 	cursor: pointer;
 	height: auto;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
+	width: auto;
+	font-family: 'Roboto';
 }	
 .buttonStyle:hover {
-    color: white;
     background-color: goldenrod; 
 }
 .buttonStyle:active {
     color: gray;
-} 
-.buttons {
-	padding: 8px 14px 8px 14px;
-	font-size: 18px;
-	display: block;
-	cursor: pointer;
-	font-weight: bold;
 }
 
 
@@ -205,6 +196,9 @@ textarea {
 	text-decoration: none;
 	color: #333333;
 	position: relative;
+}
+.miniature:hover {
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 .miniatureButton {
 	width: auto;
@@ -322,12 +316,13 @@ textarea {
 	text-align: center;
 }
 .menuList {
-    list-style-type:none;
-    padding:0;
-    margin:0;
-    display: none;
+    list-style-type: none;
+    padding: 0;
+	margin: 0;
+	display: none;
 	position: absolute;
-	border: 2px solid #DDDDDD;
+	z-index: 1;
+	width: inherit;
 	border-radius: 4px;
 	background-color: white;
 }
@@ -336,46 +331,77 @@ textarea {
 	padding: 0;
 	font-size: 13px;
 	text-align: left;
-	border-top: 1px solid #DDDDDD;
+	border-top: 1px solid white;
 }
 .menuList > li:hover {
-    color: white;
-    background-color: goldenrod;
+    background-color: #F0F0F0;
 }
 .menuList > li > a {
 	display: block;
 	height: auto;
-	padding: 6px 10px 6px 10px;
+	padding: 10px 14px 10px 14px;
 	margin: 0;
+	font-weight: bold;
 	text-decoration: none;
+	font-size: 13px;
 	color: #333333;
 }
 .searchBar {
 	padding: 10px;
-	background-color: white;
-	border: 2px solid #DDDDDD;
+	background-color: #F0F0F0;
+	border: 2px solid #F0F0F0;
 	border-radius: 4px 0 0 4px;
 	font-size: 14px;
+	height: inherit;
 	font-weight: bold;
-	font-family: 'Roboto' ;
+	font-family: 'Roboto';
 	letter-spacing: 0.7px;
+	color: #333333;
+}
+.searchBar:focus {
+	border: 2px solid #DDDDDD;
 }
 .searchButton {
 	padding: 10px;
-	background-color: white;
-	border: 2px solid #DDDDDD;
+	background-color: #e1b74c;
+	border: 2px solid #e1b74c;
 	border-radius: 0 4px 4px 0;
 	font-size: 14px;
+	height: inherit;
 	cursor: pointer;
-	height: auto;
 	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
 }
+.searchButton:hover {
+	background-color: goldenrod;
+	border: 2px solid goldenrod;
+}
+.menuElement {
+	height: inherit;
+	width: auto;
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 0 14px;
+	border-radius: 4px;
+	background-color: white;
+	color: #333333;
+	font-size: 16px;
+	text-decoration: none;
+}
+.menuElement:hover {
+	background-color: #F0F0F0;
+}
 #categories {
-	font-weight: normal;
+	position: relative;
 }
 #categories:hover #categoriesMenu {
 	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.menuText {
+	font-size: 16px;
+	font-weight: bold;
 }
 #logo{
 	height: 36px;
@@ -415,15 +441,9 @@ textarea {
 	height: inherit;
 	display: flex; 
 }
-#user {
-	padding: 4px 14px 4px 14px;
-	font-size: 18px;
-	margin: 0px;
-	cursor: pointer;
-	display: block;
-}
 #user:hover #userMenu{
 	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
 
@@ -438,7 +458,7 @@ textarea {
 /* Tutorial ADD*/
 .steps {
 	border: 2px solid #DDDDDD;
-	margin: 20px;
+	margin: 6px 20px 20px 20px;
 }
 .toolsInput, .materialsInput {
 	width: 80%;

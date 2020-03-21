@@ -3,7 +3,7 @@ var tools=1;
 var steps=1;
 
 
-function menuList(obj) {
+function listMenu(obj) {
 	var id=obj.id;
 	if (id=='categories'){
 		var x = document.getElementById("categoriesMenu");	
@@ -151,7 +151,7 @@ function changeId(){
 }
 
 var nameLimit=30;
-function loadPreview(input, id){
+function loadPreview(input){
 	var idInput = input.id;
 	var number = idInput.substring(idInput.indexOf('_')+1, idInput.length);
 
@@ -182,8 +182,6 @@ function loadPreview(input, id){
 		alert('Maksymalny rozmiar pliku: 2 MB.');
 	}
 
-
-
 	if (fileExtensionValidate(input)==true && fileSizeValidate(input)==true){
 
 		if (input.files && input.files[0]){
@@ -204,6 +202,7 @@ function loadPreview(input, id){
 		}
 	}
 }
+
 
 var validExtension = ".png, .gif, .jpeg, .jpg";
 function fileExtensionValidate(file) {
