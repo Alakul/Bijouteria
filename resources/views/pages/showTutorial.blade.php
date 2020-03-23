@@ -3,7 +3,7 @@
     @isset ($tutorials, $materials, $tools, $steps, $comments, $profiles, $users)
     <div style="height: auto; background-color: yellow;">
     <div class="formStyle" sty>
-		<h2>{{ $tutorials->title }}</h2>
+		<h2 class="headline">{{ $tutorials->title }}</h2>
 		<div class="inputArea">
             
             <img class="showImg" src="/tutorialsIMG/{{ $tutorials->title_picture }}">

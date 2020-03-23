@@ -2,21 +2,16 @@ body {
 	margin: 0px;
 	padding: 0px;
 	width: auto;
-	font-family: 'Roboto' ;
+	font-family: Lucida, sans-serif;
 	letter-spacing: 0.7px;
 	color: #333333;
 	background-color: #DDDDDD;
 }
 
-h2 {
-	margin: 20px;
-	padding: 0;
-	color: #333333;
-	text-align: center;
-}
+
 
 h3 {
-	margin: 20px 20px 0 20px;
+	margin: 0;
 	padding: 0;
 	color: #333333;
 }
@@ -45,11 +40,11 @@ i {
 }
 
 label {
-	margin: 20px;
-	padding: 2px;
+	margin: 0 0 0 10px;
+	padding: 0;
 	color: #333333;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 textarea {
@@ -65,49 +60,57 @@ textarea {
 .alert {
 	margin: -12px 20px 10px 20px;
 	font-size: 14px;
-	color: #DC143C;
-	display: block;
 	border-radius: 4px;
+	display: block;
+	color: #DC143C;
 }
 .alertLogin {
 	margin: 6px 20px 6px 20px;
+	padding: 20px 10px 20px 10px;
 	font-size: 14px;
+	border-radius: 4px;
+	border: 2px solid #DC143C;
+	display: block;
 	background-color: #e91640;
 	color: white;
-	display: block;
-	padding: 20px 10px 20px 10px;
-	border: 2px solid #DC143C;
-	border-radius: 4px;
 }
 
 
 /* Button */
 .buttonAdd {
-	padding: 8px;
+	padding: 10px;
+	font-size: 15px;
+	border-radius: 4px;
+	border: 2px solid silver;
 	margin: auto auto 10px auto;
-	height: auto;
+	font-family: Lucida, sans-serif;
 	width: auto;
 	cursor: pointer;
 	font-weight: bold;
 	text-decoration: none;
-	color: #333333;
-	background-color: white;
-	border: 2px solid #DDDDDD;
-	border-radius: 4px;
 	display: block;
+	background-color: silver;
+}
+.buttonAdd:hover {
+	background-color: gray;
+	border: 2px solid gray;
 }
 .buttonStyle {
-	padding: 10px;
-	font-weight: bold;
+	padding: 12px;
 	border-radius: 4px;
-	font-size: 16px;
-	color: white;
-    background-color: #e1b74c;
+	font-size: 15px;
+	letter-spacing: 0.4px;
+	font-weight: bold;
 	text-decoration: none;
 	cursor: pointer;
 	height: auto;
 	width: auto;
-	font-family: 'Roboto';
+	border: none;
+	font-family: Lucida, sans-serif;
+	color: white;
+	background-color: #e1b74c;
+	margin: auto;
+	display: block;
 }	
 .buttonStyle:hover {
     background-color: goldenrod; 
@@ -119,14 +122,14 @@ textarea {
 
 /* Comment */
 .comment {
-	height: auto;
 	margin: 0;
 	border: 2px solid #DDDDDD;
+	height: auto;
 }
 .commentAvatar {
 	padding: 10px;
-	vertical-align: text-top;
 	width: 20%;
+	vertical-align: text-top;
 }
 .commentImg{
 	width: 60px;
@@ -135,10 +138,10 @@ textarea {
 }
 .commentList {
 	margin: 20px;
-	height: auto;
-	width: 91%;
 	padding: 0;
+	width: 91%;
 	border-collapse: collapse;
+	height: auto;
 }
 .commentText {
 	padding: 6px;
@@ -159,9 +162,16 @@ textarea {
 .formStyle{
 	margin: 30px auto 30px auto;
 	border: 1px solid #DDDDDD;
-	width: 500px;
-	padding: 15px;
+	max-width: 500px;
+	padding: 50px 30px 50px 30px;
 	background-color: white;
+}
+.headline {
+	margin: auto auto 30px auto;
+	padding: 0;
+	color: #333333;
+	text-align: center;
+	font-size: 24px;
 }
 
 
@@ -251,57 +261,99 @@ textarea {
 
 
 /* Image */
-.fileToUpload {
-	margin: 6px 20px 6px 20px;
+.imageToUpload {
+	display: none;
+}
+.imageInput {
+	margin: 6px 0 6px 0;
+}
+.imageButton {
+	padding: 12px;
+	border-radius: 4px;
+	font-size: 14px;
+	letter-spacing: 0.4px;
+	width: auto;
+	font-weight: bold;
+	text-decoration: none;
+	cursor: pointer;
+	height: auto;
+	border: none;
+	font-family: Lucida, sans-serif;
+	color: white;
+	background-color: silver;
+	display: block;
+}
+.fileName {
+	font-size: 13px;
+	padding: 0 12px 0 12px;
+	display: table-cell;
+	font-family: Lucida, sans-serif;
+	vertical-align: middle;
+	line-height: 1.5;
 }
 .previewImg {
-	margin: 6px 20px 20px 20px;
-	width: 91%;
-	border: 2px solid #DDDDDD;
+	margin: 6px 0 10px 0;
+	width: 100%;
+	box-sizing: border-box;
 	border-radius: 4px;
+	height: auto;
+}
+.steps > .inputText {
+	margin: 4px 0px 0px 0px;
 }
 
 
 /* Input */
 .inputArea {
-	margin: 30px 0 30px 0;
+	margin: auto;
+	width: inherit;
+	padding: 0;
 }
 .inputText {
-	padding: 10px;
-	margin: 6px 20px 20px 20px;
+	padding: 12px 10px 12px 10px;
+	margin: 4px 0px 30px 0px;
+	width: 100%;
 	background-color: white;
 	border: 2px solid #DDDDDD;
 	border-radius: 4px;
-	font-size: 14px;
-	color: #333333;
-	font-family: 'Roboto' ;
+	font-size: 15px;
 	letter-spacing: 0.7px;
-	width: 87%;
+	font-family: Lucida, sans-serif;
+	box-sizing: border-box;
+	color: #333333;
+}
+.inputText:hover {
+	border: 2px solid silver;
+}
+.inputText:focus {
+	border: 2px solid silver;
 }
 
 
 /* Login */
 #passwordRemind {
 	font-size: 12px;
-	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
+	margin: 40px auto auto auto;
+	font-family: Lucida, sans-serif;
 	text-align: center;
 	display: block;
-	margin: 40px 20px 20px 20px;
+	width: auto;
 }
 #remember {
-	vertical-align: bottom;
+	vertical-align: middle;
 	width: 10px;
 	height: 10px;
 }
 #rememberPassword {
-	margin: 6px 20px 6px 20px;
+	margin: auto;
+	width: 100%;
 	text-align: center;
 }
 #savePassword {
 	font-size: 12px;
-	font-family: 'Roboto' ;
 	letter-spacing: 0.7px;
+	font-family: Lucida, sans-serif;
 	margin: auto;
 	vertical-align: middle;
 	*overflow: hidden;
@@ -325,6 +377,7 @@ textarea {
 	width: inherit;
 	border-radius: 4px;
 	background-color: white;
+	top: 50px;
 }
 .menuList > li {
     position: block;
@@ -341,36 +394,38 @@ textarea {
 	height: auto;
 	padding: 10px 14px 10px 14px;
 	margin: 0;
-	font-weight: bold;
 	text-decoration: none;
 	font-size: 13px;
 	color: #333333;
 }
 .searchBar {
 	padding: 10px;
-	background-color: #F0F0F0;
-	border: 2px solid #F0F0F0;
-	border-radius: 4px 0 0 4px;
-	font-size: 14px;
-	height: inherit;
-	font-weight: bold;
-	font-family: 'Roboto';
+	font-size: 15px;
 	letter-spacing: 0.7px;
+	border-radius: 4px 0 0 4px;
+	border: 2px solid #F0F0F0;
+	height: inherit;
+	font-family: Lucida, sans-serif;
+	background-color: #F0F0F0;
 	color: #333333;
+	margin-left: 10px;
+}
+.searchBar:hover {
+	border: 2px solid gainsboro;
 }
 .searchBar:focus {
-	border: 2px solid #DDDDDD;
+	border: 2px solid gainsboro;
 }
 .searchButton {
 	padding: 10px;
-	background-color: #e1b74c;
-	border: 2px solid #e1b74c;
+	font-size: 15px;
+	letter-spacing: 0.7px;
 	border-radius: 0 4px 4px 0;
-	font-size: 14px;
+	border: 2px solid #e1b74c;
 	height: inherit;
 	cursor: pointer;
-	font-family: 'Roboto' ;
-	letter-spacing: 0.7px;
+	font-family: Lucida, sans-serif;
+	background-color: #e1b74c;
 }
 .searchButton:hover {
 	background-color: goldenrod;
@@ -392,31 +447,29 @@ textarea {
 .menuElement:hover {
 	background-color: #F0F0F0;
 }
-#categories {
-	position: relative;
-}
-#categories:hover #categoriesMenu {
-	display: block;
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
 .menuText {
 	font-size: 16px;
 	font-weight: bold;
+}
+
+#categories:hover #categoriesMenu {
+	display: block;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 #logo{
 	height: 36px;
 	margin: 0;
 	padding: 0;
 }
-#leftbox { 
-	float: left;
+#leftbox {
 	width: 40%;
 	height: 40px;
-} 
-#middlebox { 
 	float: left;
+} 
+#middlebox {
 	width: 20%;
 	height: 40px;
+	float: left;
 	text-align: center;
 } 
 #rightbox { 
@@ -458,7 +511,8 @@ textarea {
 /* Tutorial ADD*/
 .steps {
 	border: 2px solid #DDDDDD;
-	margin: 6px 20px 20px 20px;
+	margin: 6px 0 20px 0;
+	padding: 20px;
 }
 .toolsInput, .materialsInput {
 	width: 80%;
@@ -466,19 +520,19 @@ textarea {
 }
 #category {
 	padding: 6px;
-	margin: 6px 20px 30px 20px;
+	margin: 6px 0 30px 0;
 	background-color: white;
 	border: 2px solid #DDDDDD;
 	border-radius: 4px;
 	font-size: 14px;
 	color: #333333;
-	font-family: 'Roboto' ;
+	font-family: Lucida, sans-serif;
 	letter-spacing: 0.7px;
 	display: block;
 }
 #category > option {
 	color: #333333;
-	font-family: 'Roboto';
+	font-family: Lucida, sans-serif;
 	letter-spacing: 0.7px;
 }
 #materialsList, #toolsList, #stepsList {

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 		<form method="POST" action="{{ route('login') }}" class="formStyle">
-			<h2>Logowanie</h2>
+			<h2 class="headline">Logowanie</h2>
 			@csrf
 			<div class="inputArea">
 				@error('email')
@@ -25,7 +25,7 @@
 					<input id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
 					<label id="savePassword" for="remember">Zapamiętaj hasło</label>
 				</div>
-				<button type="submit" class="buttonStyle" style="margin: 36px auto 10px auto; display: block;">ZALOGUJ SIĘ</button>
+				<button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">ZALOGUJ SIĘ</button>
 			</div>
 
 			@if (Route::has('password.request'))

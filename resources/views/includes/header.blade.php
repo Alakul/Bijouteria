@@ -1,7 +1,8 @@
 <div>
 <div id="leftbox">
-		<div id="categories" class="menuElement" style="margin-right: 14px; float: left;" onClick=""><i class="fas fa-bars"></i><p class="menuText" style="margin-left: 10px;">Kategorie</p>
-			<ul id="categoriesMenu" class="menuList" style="top: 40px;">
+<a class="menuElement" style="margin-right: 10px; float: left; display: none;"><i class="fas fa-bars"></i></a>
+		<div id="categories" class="menuElement" style="margin-right: 14px; float: left;" onClick=""><p class="menuText">Kategorie</p>
+			<ul id="categoriesMenu" class="menuList" style="left: 10px;">
 				<li><a id="bransoletki" onclick="chooseCategory(this);" href="{{ route('home') }}">Bransoletki</a></li>
 				<li><a id="broszki" onclick="chooseCategory(this);" href="{{ route('home') }}">Broszki</a></li>
 				<li><a id="kolczyki" onclick="chooseCategory(this);" href="{{ route('home') }}">Kolczyki</a></li>

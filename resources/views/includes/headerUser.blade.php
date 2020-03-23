@@ -1,7 +1,8 @@
 <div>
 	<div id="leftbox">
-		<div id="categories" class="menuElement" style="margin-right: 14px; float: left;" onClick=""><i class="fas fa-bars"></i><p class="menuText" style="margin-left: 10px;">Kategorie</p>
-			<ul id="categoriesMenu" class="menuList" style="top: 40px;">
+		<a class="menuElement" style="margin-right: 10px; float: left; display: none;"><i class="fas fa-bars"></i></a>
+		<div id="categories" class="menuElement" style="margin-right: 14px; float: left;" onClick=""><p class="menuText">Kategorie</p>
+			<ul id="categoriesMenu" class="menuList" style="left: 10px;">
 				<li><a id="bransoletki" onclick="chooseCategory(this);" href="{{ route('home') }}">Bransoletki</a></li>
 				<li><a id="broszki" onclick="chooseCategory(this);" href="{{ route('home') }}">Broszki</a></li>
 				<li><a id="kolczyki" onclick="chooseCategory(this);" href="{{ route('home') }}">Kolczyki</a></li>
@@ -12,6 +13,7 @@
 				<li><a id="inne" onclick="chooseCategory(this);" href="{{ route('home') }}">Inne</a></li>
 			</ul>
 		</div>
+
 		<form action="action_page.php">
 			<input class="searchBar" setype="text" placeholder="Szukaj...">
 			<button class="searchButton"><i class='fas' style="color: white;">&#xf002;</i></button>
@@ -24,7 +26,7 @@
 
 	<div id="rightbox">
 		<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">{{ Auth::user()->name }}</p>
-			<ul id="userMenu" class="menuList" style="right: 16px; top: 45px;">
+			<ul id="userMenu" class="menuList" style="right: 10px">
 				<li><a href="{{ route('profile') }}">Profil</a></li>
 				<li><a href="{{ route('home') }}">Ulubione</a></li>
 				<li><a href="{{ route('settings') }}">Ustawienia</a></li>

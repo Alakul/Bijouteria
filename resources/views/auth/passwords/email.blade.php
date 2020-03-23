@@ -6,7 +6,7 @@
      @endif
     <center>
         <form method="POST" action="{{ route('password.email') }}" class="formStyle">
-            <h2>RESETUJ HASŁO</h2>
+            <h2 class="headline">Resetuj hasło</h2>
             @csrf
             <div class="inputArea">
                             
