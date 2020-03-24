@@ -3,7 +3,7 @@
 @section('content')
     @if (session('status'))
         {{ session('status') }}
-     @endif
+    @endif
     <center>
         <form method="POST" action="{{ route('password.email') }}" class="formStyle">
             <h2 class="headline">Resetuj hasło</h2>

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
 	<form method="POST" action="{{ action('TutorialController@store') }}" class="formStyle" enctype="multipart/form-data">
-        {{csrf_field()}}
-		<h2 class="headline">Dodaj poradnik</h2>
+        <h2 class="headline">Dodaj poradnik</h2>
+        {{ csrf_field() }}
 		<div class="inputArea">
             <br>
             <label>Tytuł <span class="asterisk">*</span></label><br>
@@ -13,12 +13,12 @@
                 
             <label>Zdjęcie tytułowe <span class="asterisk">*</span></label><br>
             <input name="image_0" id="image_0" class="imageToUpload" type="file" required onchange="loadPreview(this);">
-            <div id="imageInput_0" class="imageInput">
+            <div class="imageInput">
                 <div style="height: 100%; display: table-cell;">
                     <a id="imageButton_0" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
                 </div>
-                <span id="fileName_0" class="fileName">Nie wybrano pliku.</span>
-            </div>  
+                <span id="fileName_0" class="fileName" >Nie wybrano pliku.</span>
+            </div>
             <img id="imagePreview_0" src="#" class="previewImg" style="display: none;"/><br>
 
             <label for="category">Kategoria <span class="asterisk">*</span></label>
@@ -54,9 +54,9 @@
                         <i id="stepsIcon"></i>
                         <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i>
                         <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
-                        <label>Zdjęcie <span class="asterisk">*</span></label><br>
+                        <label>Zdjęcie <span class="asterisk">*</span></label>
                         <input name="image_1" id="image_1" class="imageToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required>
-                        <div id="imageInput_1" class="imageInput">
+                        <div class="imageInput">
                         <div style="height: 100%; display: table-cell;">
                             <a id="imageButton_1" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
                         </div>
@@ -64,7 +64,7 @@
                         </div>  
                         <img id="imagePreview_1" src="#" class="previewImg" style="display: none;"/><br>
                         <label>Opis <span class="asterisk">*</span></label>
-                        <textarea name="description_1" id="description_1" class="inputText" type="text" maxlength="1000" required></textarea><br> 
+                        <textarea name="description_1" class="inputText" type="text" maxlength="1000" required></textarea>
                     </li>
                 </ol>
             </div>

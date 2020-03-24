@@ -47,7 +47,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><br><input name="image_'+steps+'" id="image_'+steps+'" class="imageToUpload" type="file" required onchange="loadPreview(this);"><br><img id="imagePreview_'+steps+'" src="#" class="previewImg" height="200px"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea><br>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><input name="image_'+steps+'" class="imageToUpload" id="image_'+steps+'" type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><div class="imageInput"><div style="height: 100%; display: table-cell;"><a id="imageButton_'+steps+'"class="imageButton" onclick="imageInput(this);">Przeglądaj...</a></div><span id="fileName_'+steps+'" class="fileName">Nie wybrano pliku.</span></div><img id="imagePreview_'+steps+'" src="#" class="previewImg" style="display: none;"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea>';
 			x.appendChild(childX);
 		}
 	}
@@ -141,10 +141,12 @@ function changeId(){
 		items[i].firstElementChild.setAttribute('id','h3_'+temp);
 		document.getElementById('h3_'+temp).innerHTML="Krok "+temp+":";
 		
-		items[i].children[7].setAttribute('name','image_'+temp);
-		items[i].children[7].setAttribute('id','image_'+temp);
-		items[i].children[9].setAttribute('id','imagePreview_'+temp);
-		items[i].children[12].setAttribute('name','description_'+temp);
+		items[i].children[6].setAttribute('name','image_'+temp);
+		items[i].children[6].setAttribute('id','image_'+temp);
+		items[i].children[7].children[0].children[0].setAttribute('id','imageButton_'+temp);
+		items[i].children[7].children[1].setAttribute('id','fileName_'+temp);
+		items[i].children[8].setAttribute('id','imagePreview_'+temp);
+		items[i].children[11].setAttribute('name','description_'+temp);
 
 		temp++;
 	}
@@ -160,13 +162,14 @@ function loadPreview(input){
 			document.getElementById('avatar').value='';
 			document.getElementById('avatarPreview').setAttribute('src','#');
 			document.getElementById('avatarPreview').style.display = "none";
+			document.getElementById("avatarName").innerHTML = "Nie wybrano pliku.";
 		}
 		else {
-			document.getElementById('image_'+number).value='';
+			document.getElementsByName('image_'+number).value='';
 			document.getElementById('imagePreview_'+number).setAttribute('src','#');
 			document.getElementById('imagePreview_'+number).style.display = "none";
+			document.getElementById("fileName_"+number).innerHTML = "Nie wybrano pliku.";
 		}
-		document.getElementById("fileName_"+number).innerHTML = "Nie wybrano pliku.";
 		alert("Nieprawidłowe rozszerzenie pliku.");
 	}
 	else if (fileSizeValidate(input)==false){
@@ -174,13 +177,14 @@ function loadPreview(input){
 			document.getElementById('avatar').value='';
 			document.getElementById('avatarPreview').setAttribute('src','#');
 			document.getElementById('avatarPreview').style.display = "none";
+			document.getElementById("avatarName").innerHTML = "Nie wybrano pliku.";
 		}
 		else {
-			document.getElementById('image_'+number).value='';
+			document.getElementsByName('image_'+number).value='';
 			document.getElementById('imagePreview_'+number).setAttribute('src','#');
 			document.getElementById('imagePreview_'+number).style.display = "none";
+			document.getElementById("fileName_"+number).innerHTML = "Nie wybrano pliku.";
 		}
-		document.getElementById("fileName_"+number).innerHTML = "Nie wybrano pliku.";
 		alert('Maksymalny rozmiar pliku: 2 MB.');
 	}
 
@@ -202,9 +206,16 @@ function loadPreview(input){
 
 			reader.readAsDataURL(input.files[0]);
 		}
-		var fullPath = document.getElementById("image_"+number).value;
-		var fileName = fullPath.split(/(\\|\/)/g).pop();
-		document.getElementById("fileName_"+number).innerHTML = fileName;
+		if (idInput=="avatar"){
+			var fullPath = document.getElementById("avatar").value;
+			var fileName = fullPath.split(/(\\|\/)/g).pop();
+			document.getElementById("avatarName").innerHTML = fileName;
+		}
+		else {
+			var fullPath = document.getElementById("image_"+number).value;
+			var fileName = fullPath.split(/(\\|\/)/g).pop();
+			document.getElementById("fileName_"+number).innerHTML = fileName;
+		}
 	}
 	
 }
@@ -213,7 +224,12 @@ function imageInput(obj){
 	var idButton = obj.id;
 	var number = idButton.substring(idButton.indexOf('_')+1, idButton.length);
 
-	document.getElementById("image_"+number).click();
+	if (idButton=="avatarButton"){
+		document.getElementsByName("avatar")[0].click()
+	}
+	else {
+		document.getElementsByName("image_"+number)[0].click()
+	}
 }
 
 
@@ -249,7 +265,7 @@ function clearInputs(){
 	document.getElementById('category').required = false;
 
 	for (var i = 0; i <= items.length; ++i){
-		document.getElementById('image_'+i).required = false;
+		document.getElementsByName('image_'+i).required = false;
 		document.getElementsByName('description_'+i).required = false;
 	}
 
@@ -275,7 +291,7 @@ function inputRequired(){
 	document.getElementsByName('description_'+0).required = false;
 
 	for (var i = 0; i <= items.length; ++i){
-		document.getElementById('image_'+i).required = true;
+		document.getElementsByName('image_'+i).required = true;
 		document.getElementsByName('description_'+i).required = true;
 	}
 
@@ -324,4 +340,6 @@ function chooseCategory(obj){
 	var id=obj.id;
 	document.cookie="category="+id;
 }
+
+
 

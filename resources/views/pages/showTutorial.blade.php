@@ -42,7 +42,7 @@
         <div style="float: right; background-color: red; width: 50%, height: 100%;">
         <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><label style="margin: 0;">{{ $users->name }}</label></a><br>
         <p>{{ $profiles->info}}</p>
-        <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><img src="/avatarsIMG/{{ $profiles->avatar }}"></a>
+        <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><img width="100px" height="100px" src="/avatarsIMG/{{ $profiles->avatar }}"></a>
         <p>data: {{ $tutorials->date}}</p>
         </div>
     </div>
@@ -54,24 +54,26 @@
                 {{ csrf_field() }}
 
                 <label>Napisz komentarz</label><br>
-                <textarea name="comment" class="inputText" style="margin: 10px 20px 10px 20px;" type="text" maxlength="300" required></textarea>
-                <button type="submit" class="buttonStyle" style="margin: 0 auto 30px auto; display: block;">Opublikuj</button>
+                <textarea name="comment" class="inputText" type="text" maxlength="300" required></textarea>
+                <button type="submit" class="buttonStyle" style="margin: 0 auto 30px auto;">Opublikuj</button>
                 <input type="hidden" name="tutorial_id" value="{{ $tutorials-> id}}">
             </form>
         @endauth
         
-        <table class="commentList">
+        <ul class="commentList">
             @foreach ($comments as $comment)
-                <tr class="comment">
-                    <td class="commentAvatar"><a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><img class="commentImg" src="/avatarsIMG/{{ $comment->avatar }}"></a></td>
-                    <td class="commentText">
-                        <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><label style="margin: 0;">{{ $comment->name }}</label></a><br>
+                <li class="comment">
+                    <div class="commentAvatar">
+                        <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><img class="commentImg" src="/avatarsIMG/{{ $comment->avatar }}"></a>
+                    </div>
+                    <div class="commentContent">
+                        <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><label style="margin: 0;">{{ $comment->name }}</label></a>
                         <p style="color: gray;">{{ $comment->date }}</p>
-                        <p style="font-size: 16px;">{{ $comment->comment }}</p>
-                    </td>
-                </tr>
+                        <p style="font-size: 16px; margin-bottom: 0;">{{ $comment->comment }}</p>
+                    </div>
+                </li>
             @endforeach
-        </table>
+        </ul>
     </div>
     @endisset
 @endsection
