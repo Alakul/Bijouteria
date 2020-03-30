@@ -18,7 +18,7 @@
         <label>Informacje o Twoim profilu</label><br>
         <textarea name="info" class="inputText" type="text" maxlength="1000"></textarea><br>
 
-		<button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;" onclick="inputRequired()">Zapisz</button>
+		<button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">Zapisz</button>
 	</div>
 </form>
 @endsection

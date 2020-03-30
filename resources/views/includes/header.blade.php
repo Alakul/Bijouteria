@@ -24,7 +24,7 @@
 	</div>
 
 	<div id="rightbox">
-		<a style="float: right; margin-left: 14px;" href="{{ route('login') }}" class="buttonStyle">ZALOGUJ</a>
-		<a style="float: right;" href="{{ route('register') }}" class="buttonStyle">ZAREJESTRUJ SIĘ</a>
+		<a style="float: right; margin-left: 14px;" href="{{ route('login') }}" class="buttonStyle">LOGOWANIE</a>
+		<a style="float: right;" href="{{ route('register') }}" class="buttonStyle">REJESTRACJA</a>
 	</div>
 </div>

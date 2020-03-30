@@ -115,7 +115,7 @@ class TutorialController extends Controller
         $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
         $comments = DB::table('comments')->join('users', 'users.id', '=', 'comments.user_id')
         ->join('profiles', 'users.id', '=', 'profiles.user_id')
-        ->select('comments.*', 'users.name', 'profiles.*')->where('tutorial_id', [$id])->orderBy('date', 'desc')->get();
+        ->select('comments.*', 'users.name', 'profiles.avatar')->where('tutorial_id', [$id])->orderBy('date', 'desc')->get();
 
         $profiles = Profile::where('user_id', $tutorials->user_id)->first();
         $users=User::find($tutorials->user_id);

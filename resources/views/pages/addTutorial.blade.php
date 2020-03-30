@@ -36,13 +36,13 @@
 
             <label>Wymagane materiały <span class="asterisk">*</span></label>
             <ul id="materialsList">
-                <li><input name="materials_1" class="inputText" type="text" maxlength="100" required></li>
+                <li><input name="materials_1" class="inputText" type="text" maxlength="100" required style="margin-bottom: 8px;"></li>
             </ul>
             <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button><br>
 
             <label>Wymagane narzędzia <span class="asterisk">*</span></label>
             <ul id="toolsList">
-                <li><input name="tools_1" class="inputText" type="text" maxlength="100" required></li>
+                <li><input name="tools_1" class="inputText" type="text" maxlength="100" required style="margin-bottom: 8px;"></li>
             </ul>
             <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button><br>
 
@@ -51,11 +51,11 @@
                 <ol id="stepsList">
                     <li id="step_1" class="steps">
                         <h3 id="h3_1">Krok 1:</h3>
-                        <i id="stepsIcon"></i>
-                        <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i>
+                        <i id="stepsIcon" style="display: none;"></i>
+                        <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);" style="margin-right: 0;"></i>
                         <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
                         <label>Zdjęcie <span class="asterisk">*</span></label>
-                        <input name="image_1" id="image_1" class="imageToUpload"  type="file" onfocus="inputRequired(this)" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required>
+                        <input name="image_1" id="image_1" class="imageToUpload"  type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required>
                         <div class="imageInput">
                         <div style="height: 100%; display: table-cell;">
                             <a id="imageButton_1" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
@@ -72,9 +72,4 @@
 			<button type="submit" class="buttonStyle" style="margin: 30px auto 0px auto;" onclick="inputRequired()">Opublikuj</button>
 		</div>
     </form>
-    <script>
-        window.onload = function() {
-            clearInputs();
-        };
-    </script>
 @endsection

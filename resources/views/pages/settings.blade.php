@@ -11,7 +11,7 @@
             <label>Zmień hasło</label><br>
             <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>
 
-			<button type="submit" class="buttonStyle" style="margin: 30px auto 30px auto; display: block;" onclick="inputRequired()">Zapisz</button>
+			<button type="submit" class="buttonStyle" style="margin: 30px auto 30px auto; display: block;">Zapisz</button>
 		</div>
     </form>
 @endsection

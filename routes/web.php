@@ -17,6 +17,7 @@ Route::get('/', 'TutorialController@index')->name('home');
 Route::get('/create', 'TutorialController@create')->name('createTutorial')->middleware('auth');
 Route::get('/show/{id}', 'TutorialController@show')->name('showTutorial');
 Route::get('/delete/{id}', 'TutorialController@destroy')->name('deleteTutorial')->middleware('auth');
+Route::get('/deleteComment/{id}', 'CommentController@destroy')->name('deleteComment')->middleware('auth');
 
 Route::get('/settings', 'HomeController@settings')->name('settings')->middleware('auth');
 

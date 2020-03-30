@@ -31,7 +31,7 @@
 
 				<label>Potwierdź hasło</label><br>
 				<input id="password-confirm" name="password_confirmation" class="inputText" type="password" required autocomplete="new-password" minlength="8" maxlength="50" onkeypress="checkSpace(event)"><br>
-				<button type="submit" class="buttonStyle" style="margin: 20px auto auto auto;">ZAREJESTRUJ SIĘ</button>
+				<button type="submit" class="buttonStyle" style="margin: 20px auto auto auto;">Zarejestruj się</button>
 			</div>
 		</form>
 @endsection

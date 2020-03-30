@@ -25,7 +25,7 @@
 					<input id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
 					<label id="savePassword" for="remember">Zapamiętaj hasło</label>
 				</div>
-				<button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">ZALOGUJ SIĘ</button>
+				<button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">Zaloguj się</button>
 			</div>
 
 			@if (Route::has('password.request'))
