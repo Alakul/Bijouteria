@@ -17,6 +17,9 @@ a {
 	color: #333333;
 	text-decoration: none;
 }
+.a {
+	text-decoration: underline;
+}
 
 header {
 	background-color: white;
@@ -54,7 +57,6 @@ textarea {
 	max-height: 150px;
 	line-height: 1.5;
 }
-
 
 
 
@@ -131,8 +133,8 @@ textarea {
 	font-family: Lucida, sans-serif;
 }
 .commentAvatar {
-	padding: 8px;
-	height: 100%;
+	padding: 10px;
+	margin: auto;
 	display: table-cell;
 	background-color: white;
 }
@@ -141,21 +143,23 @@ textarea {
   	width: 60px;
 	height: 60px;
 	border-radius: 4px;
+	vertical-align: middle;
+}
+.commentImg:hover {
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
 }
 .commentList {
-	margin: 20px 0 0 0;
+	margin: 40px 0 0 0;
 	padding: 0;
 	width: 100%;
 	box-sizing: border-box;
 	height: auto;
-	
 }
 .commentText {
-	padding: 4px;
 	margin: 0;
 }
 .commentText > p{
-	font-size: 14px;
+	font-size: 10px;
 	padding: 0;
 	margin: 0;
 }
@@ -163,10 +167,25 @@ textarea {
 	width: 100%;
 	height: 100%;
 	display: table-cell;
-	background-color: white;
 	vertical-align: top;
-	padding: 8px;
-	line-height: 0.5;
+	padding: 10px 10px 10px 0;
+}
+.commentDate {
+	font-size: 13px;
+	color: #606060;
+	margin: 0;
+}
+.commentComment {
+	font-size: 14px;
+	margin: 6px 0 0 0;
+}
+.commentUser {
+	font-weight: bold;
+	font-size: 14px;
+	margin: 0;
+}
+.commentUser:hover {
+	text-decoration: underline;
 }
 
 
@@ -287,6 +306,24 @@ textarea {
 	background-color: #F0F0F0;
 	border-radius: 4px;
 }
+#backIcon {
+	font-size: 20px;
+	padding: 10px;
+	margin: 0;
+}
+#back {
+	float: left; background-color: red;
+	height: auto;
+	position: fixed;
+	left: 0;
+	margin: 12px;
+	background-color: white;
+	border-radius: 8px;
+}
+#back:hover {
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
 
 /* Image */
 #avatarPreview {
@@ -592,6 +629,16 @@ textarea {
 
 
 /* Tutorial SHOW*/
+.showAvatar {
+	vertical-align: middle;
+	border-radius: 4px;
+	object-fit: cover;
+	height: 80px;
+	width: 80px;
+}
+.showAvatar:hover {
+	box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
+}
 .showCategory {
 	margin: 6px 6px 30px 20px;
 	font-size: 16px;
@@ -610,6 +657,19 @@ textarea {
 	border-radius: 8px;
 	box-sizing: border-box;
 }
+.showUser {
+	font-size: 16px;
+	margin: 0 0 8px 0;
+	font-weight: bold;
+}
+.showUser:hover {
+	text-decoration: underline;
+}
+.showDetails {
+	width: 100%;
+	vertical-align: middle;
+	padding: 0 10px 0 10px;
+}
 .showList {
 	margin: 10px 0 30px 0;
 }
@@ -617,7 +677,7 @@ textarea {
 	margin: 50px 0 0 0;
 }
 .showColumn {
-	height: 100%;
+	height: auto;
 	display: table-cell;
 	width: auto;
 }
