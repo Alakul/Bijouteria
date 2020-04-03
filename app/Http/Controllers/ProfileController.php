@@ -16,7 +16,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('pages/editProfile');
+        $profiles = Profile::where('user_id', [auth()->id()])->first();
+        return view('pages/editProfile',['profiles'=>$profiles]);
     }
 
     /**
@@ -40,10 +41,12 @@ class ProfileController extends Controller
         $profile = Profile::where('user_id', auth()->id())->first();
 
         $image=$request->file('avatar');
-        $imageNew=auth()->id().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/avatarsIMG'), $imageNew);
-
-        $profile->avatar = $imageNew;
+        if ($image!=null){
+            $imageNew=auth()->id().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/avatarsIMG'), $imageNew);
+            $profile->avatar = $imageNew;
+        }
+        
         $profile->info = $request->input('info');
         $profile->save();
 

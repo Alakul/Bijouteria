@@ -20,11 +20,16 @@ Route::get('/show/{id}', 'TutorialController@show')->name('showTutorial');
 Route::get('/delete/{id}', 'TutorialController@destroy')->name('deleteTutorial')->middleware('auth');
 Route::get('/deleteComment/{id}', 'CommentController@destroy')->name('deleteComment')->middleware('auth');
 
-Route::get('/settings', 'HomeController@settings')->name('settings')->middleware('auth');
 
+Route::get('/profil', 'ProfileController@profile')->name('profile')->middleware('auth');
+Route::get('/ustawienia', 'HomeController@settings')->name('settings')->middleware('auth');
 Route::get('/editProfile/{id}', 'ProfileController@index')->name('editProfile')->middleware('auth');
+
 Route::get('/showProfile/{id}', 'ProfileController@show')->name('showProfile');
-Route::get('/profile', 'ProfileController@profile')->name('profile')->middleware('auth');
+
+
+
+Route::post('changePassword', 'ChangePasswordController@store')->name('changePassword');
 
 
 Route::resource('profiles', 'ProfileController');

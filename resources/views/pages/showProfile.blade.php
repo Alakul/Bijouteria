@@ -3,13 +3,13 @@
     @isset($tutorials, $users, $profiles)
     <div class="show">
         <a id="back"class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
-        <div class="formStyle" style="max-width: 600px; display: table; padding: 20px;">
+        <div id="profile" class="formStyle">
             <div class="showColumn">
                 <img class="profileImg" src="/avatarsIMG/{{ $profiles->avatar }}"/>
             </div>
-            <div class="showColumn" style="vertical-align: top; padding: 0 20px 0 20px;">
+            <div class="showColumn" style="vertical-align: top; padding: 0 0 0 20px;">
                 <p id="userLogin">{{ $users->name }}</p>
-                <p>{{ $profiles->info }}dd bla bla to nie jest to bla bla nananana</p>
+                <p style="font-size: 14px;">{{ $profiles->info }}ansdkasdldsa dididk dddkasdldsa ddkasdldsa dididk ddblk djs jkf jsk fjks dfjk sdsididk ddblk djs jkf jsk fjks dfjk sdsblk djs jkf jsk fjks dfjk sdsf</p>
             </div>
         </div>
     </div>

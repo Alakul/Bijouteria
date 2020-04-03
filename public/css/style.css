@@ -113,14 +113,20 @@ textarea {
 	background-color: #e1b74c;
 	margin: auto;
 	display: block;
-}	
+}
 .buttonStyle:hover {
     background-color: goldenrod; 
 }
 .buttonStyle:active {
     color: gray;
 }
-
+.buttonFavourites {
+	background-color: silver; 
+	margin: 10px 0 0 0;
+}
+.buttonFavourites:hover {
+	background-color: gray;
+}
 
 /* Comment */
 .comment {
@@ -253,6 +259,10 @@ textarea {
 	margin: 10px;
 	right: 0;
 	display: none;
+	background-color: silver;
+}
+.miniatureButton:hover {
+	background-color: gray;
 }
 .miniature:hover .miniatureButton {
 	display: block;
@@ -580,6 +590,16 @@ textarea {
 	height: 120px;
 	border-radius: 4px;
 	float: left;
+}
+#profileContent {
+	vertical-align: top;
+	padding: 0 0 0 20px;
+	width: 60%;
+}
+#profile {
+	max-width: 600px;
+	display: table;
+	padding: 20px;
 }
 
 

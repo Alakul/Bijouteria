@@ -2,7 +2,7 @@
 @section('content')
     @isset ($tutorials, $materials, $tools, $steps, $comments, $profiles, $users)
     <div class="show">
-        <a id="back"class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
+        <a id="back" class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
         <div class="showColumn">
             <div class="formStyle" style="max-width: 450px; width: 450px; margin-right: 10px;">
                 <h2 class="headline">{{ $tutorials->title }}</h2>
@@ -52,10 +52,10 @@
                     <p class="commentDate" style="margin-bottom: 2px; font-size: 11px;">Opublikowano:</p>
                     <p class="commentDate">{{ date('d.m.yy', strtotime($tutorials->date)) }}</p>
                 </div>
-                
-                
-            </div>  
-            <a class="buttonStyle" style="margin: 10px 0 0 0;"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>    
+            </div>
+            @auth
+                <a class="buttonStyle buttonFavourites"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>    
+            @endauth
         </div>
     </div>
 
@@ -67,7 +67,7 @@
 
                 <label>Napisz komentarz</label><br>
                 @guest
-                    <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a></p>
+                    <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>
                 @endguest
                 @auth
                     <textarea name="comment" class="inputText" type="text" maxlength="300" required style="margin-bottom: 8px;"></textarea>

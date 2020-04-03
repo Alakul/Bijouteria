@@ -3,13 +3,13 @@
     {{csrf_field()}}
     @isset($profiles)
         <div class="show">
-            <div class="formStyle" style="max-width: 600px; display: table; padding: 20px;">
+            <div id="profile" class="formStyle">
                 <div class="showColumn">
                     <img class="profileImg" src="/avatarsIMG/{{ $profiles->avatar }}"/>
                 </div>
-                <div class="showColumn" style="vertical-align: top; padding: 0 20px 0 20px;">
+                <div id="profileContent" class="showColumn">
                     <p id="userLogin">{{ Auth::user()->name }}</p>
-                    <p>{{ $profiles->info }}dd bla bla to nie jest to bla bla nananana</p>
+                    <p style="font-size: 14px;">{{ $profiles->info }}</p>
                 </div>
                 <div class="showColumn" style="vertical-align: middle;">
                     <a href="{{ route('editProfile', ['id' => auth()->id()]) }}" class="buttonStyle">Edytuj profil</a>

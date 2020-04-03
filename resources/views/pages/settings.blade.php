@@ -1,15 +1,24 @@
 @extends('layouts.app')
 @section('content')
-<form method="POST" action="{{ action('TutorialController@store') }}" class="formStyle" enctype="multipart/form-data">
-        {{csrf_field()}}
-		<h2 class="headline">Ustawienia</h2>
-		<div class="inputArea"> 
-            <label>Zmień email</label><br>
-            <input name="image_0" id="image_0" class="imageToUpload" type="file" required onchange="loadPreview(this);"><br>
-            <img id="imagePreview_0" src="#" class="previewImg" height="200px"/><br>
+<form method="POST" action="{{ route('changePassword') }}" class="formStyle" enctype="multipart/form-data">
+        @csrf
+        <h2 class="headline">Ustawienia</h2>
+        <h3 style="margin-bottom: 30px; text-align: center;">Zmień hasło</h3>
+		<div class="inputArea">
+            @foreach ($errors->all() as $error)
+                <span role="alert" class="alertLogin">
+                    <strong>{{ $error }}</strong>
+                </span>
+            @endforeach
 
-            <label>Zmień hasło</label><br>
-            <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>
+            <label>Obecne hasło</label><br>
+            <input  name="current_password" type="password" class="inputText" class="form-control" autocomplete="current-password">
+            
+            <label>Nowe hasło</label><br>
+            <input id="new_password" name="new_password" class="inputText" type="password" class="form-control" autocomplete="current-password">
+
+            <label>Potwierdź nowe hasło</label><br>
+            <input id="new_confirm_password" name="new_confirm_password" class="inputText" type="password" class="form-control" autocomplete="current-password">
 
 			<button type="submit" class="buttonStyle" style="margin: 30px auto 30px auto; display: block;">Zapisz</button>
 		</div>
