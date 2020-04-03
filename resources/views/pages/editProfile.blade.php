@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @isset ($profiles)
-    <form method="POST" action="{{ action('ProfileController@store') }}" class="formStyle" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('editProfile') }}" class="formStyle" enctype="multipart/form-data">
         {{csrf_field()}}
         <h2 class="headline">Edytuj profil</h2>
         <div class="inputArea"> 

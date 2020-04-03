@@ -50,7 +50,7 @@ class ProfileController extends Controller
         $profile->info = $request->input('info');
         $profile->save();
 
-        return redirect('/profile');
+        return back();
     }
 
     /**
@@ -62,20 +62,11 @@ class ProfileController extends Controller
     public function show($id)
     {
         $users=User::find($id);
-        if ($id == auth()->id()) {
-            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->orderBy('date', 'desc')->get();
-            $profiles = Profile::where('user_id', [auth()->id()])->first();
-            
-            return view('pages/profile',['tutorials'=>$tutorials, 'profiles'=>$profiles]);
-        }
-        else {
-            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->where('users.id', [$id])->orderBy('date', 'desc')->get();
-            $profiles = Profile::where('user_id', [$id])->first();
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->where('users.id', [$id])->orderBy('date', 'desc')->get();
+        $profiles = Profile::where('user_id', [$id])->first();
 
-            return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users, 'profiles'=>$profiles]);
-        }
+        return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users, 'profiles'=>$profiles]);
     }
 
     public function profile(Tutorial $tutorial)
@@ -105,7 +96,7 @@ class ProfileController extends Controller
         $profile->info = $request->input('info');
         $profile->save();
 
-        return redirect('/profile');
+        return back();
     }
 
     /**

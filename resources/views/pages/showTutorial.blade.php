@@ -62,7 +62,7 @@
     <div class="formStyle" style="max-width: 600px;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
-            <form method="POST" action="{{ action('CommentController@store') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('addComment') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <label>Napisz komentarz</label><br>
