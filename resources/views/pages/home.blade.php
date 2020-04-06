@@ -1,11 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
     <div class="gallery galleryColumns">
     @foreach ($tutorials as $tutorial)
         <div class="miniature">
             @auth
-                <a class="buttonStyle miniatureButton"><i class="fas fa-heart" style="color: white;"></i></a>
+                <a class="buttonStyle miniatureButton" style="right: 0;"><i class="fas fa-heart" style="color: white;"></i></a>
                 <p class="miniatureButton">{{ $tutorial->title}}</p>
             @endauth
             <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
@@ -15,5 +14,4 @@
         </div>
     @endforeach
 	</div>
-
 @endsection

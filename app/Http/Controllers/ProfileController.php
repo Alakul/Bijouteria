@@ -16,8 +16,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::where('user_id', [auth()->id()])->first();
-        return view('pages/editProfile',['profiles'=>$profiles]);
+        
     }
 
     /**
@@ -27,7 +26,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -38,19 +37,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        $profile = Profile::where('user_id', auth()->id())->first();
-
-        $image=$request->file('avatar');
-        if ($image!=null){
-            $imageNew=auth()->id().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/avatarsIMG'), $imageNew);
-            $profile->avatar = $imageNew;
-        }
         
-        $profile->info = $request->input('info');
-        $profile->save();
-
-        return back();
     }
 
     /**
@@ -84,19 +71,10 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
-        $profile = Profile::where('user_id', $id)->first();
-
-        $image=$request->file('avatar');
-        $imageNew=$id.'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/avatarsIMG'), $imageNew);
-
-        $profile->avatar = $imageNew;
-        $profile->info = $request->input('info');
-        $profile->save();
-
-        return back();
+        $profiles = Profile::where('user_id', [auth()->id()])->first();
+        return view('pages/editProfile',['profiles'=>$profiles]);
     }
 
     /**
@@ -106,9 +84,21 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $profile = Profile::where('user_id', auth()->id())->first();
+
+        $image=$request->file('avatar');
+        if ($image!=null){
+            $imageNew=auth()->id().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/avatarsIMG'), $imageNew);
+            $profile->avatar = $imageNew;
+        }
+        
+        $profile->info = $request->input('info');
+        $profile->save();
+
+        return back();
     }
 
     /**

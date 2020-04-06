@@ -6,7 +6,7 @@
         <h2 class="headline">Edytuj profil</h2>
         <div class="inputArea"> 
             <br>
-            <label>Zdjęcie</label><br>
+            <label>Zdjęcie</label>
             <input name="avatar" id="avatar" class="imageToUpload" type="file" onchange="loadPreview(this);">
             <div id="avatarInput" id="avatarInput" class="imageInput">
                 <div style="height: 100%; display: table-cell;">
@@ -16,8 +16,8 @@
             </div>  
             <img id="avatarPreview" src="/avatarsIMG/{{ $profiles->avatar }}" class="previewImg"/><br>
 
-            <label>Informacje o Twoim profilu</label><br>
-            <textarea name="info" class="inputText" type="text" maxlength="1000">{{ $profiles->info}}</textarea><br>
+            <label>Informacje o Twoim profilu</label>
+            <textarea name="info" class="inputText" type="text" maxlength="1000">{{ $profiles->info}}</textarea>
 
             <button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">Zapisz</button>
         </div>

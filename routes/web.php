@@ -17,8 +17,9 @@ Route::get('/', 'TutorialController@index')->name('home');
 
 Route::get('/usunPoradnik/{id}', 'TutorialController@destroy')->name('deleteTutorial')->middleware('auth');
 Route::get('/usunKomentarz/{id}', 'CommentController@destroy')->name('deleteComment')->middleware('auth');
-Route::get('/edytujProfil/{id}', 'ProfileController@index')->name('showEditProfile')->middleware('auth');
+Route::get('/edytujProfil/{id}', 'ProfileController@edit')->name('showEditProfile')->middleware('auth');
 Route::get('/poradnik/{id}', 'TutorialController@show')->name('showTutorial');
+Route::get('/poradnik/edytuj/{id}', 'TutorialController@edit')->name('showEditTutorial')->middleware('auth');
 Route::get('/uzytkownik/{id}', 'ProfileController@show')->name('showProfile');
 
 Route::get('/stworzPoradnik', 'TutorialController@create')->name('createTutorial')->middleware('auth');
@@ -28,7 +29,8 @@ Route::get('/ustawienia', 'HomeController@settings')->name('settings')->middlewa
 Route::post('zmienHaslo', 'ChangePasswordController@store')->name('changePassword');
 Route::post('dodajPoradnik', 'TutorialController@store')->name('addTutorial');
 Route::post('dodajKomentarz', 'CommentController@store')->name('addComment');
-Route::post('edytujProfil', 'ProfileController@store')->name('editProfile');
+Route::post('edytujProfil', 'ProfileController@update')->name('editProfile');
+Route::post('edytujPoradnik', 'TutorialController@update')->name('editTutorial');
 
 Route::resource('profiles', 'ProfileController');
 Route::resource('comments', 'CommentController');

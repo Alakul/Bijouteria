@@ -9,11 +9,11 @@
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror<br>
-				<label>Email</label><br>
+				<label>Email</label>
 				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" minlength="3" maxlength="320" onkeypress="checkSpace(event)">
 				
 
-				<label>Hasło</label><br>
+				<label>Hasło</label>
 				<input id="password" name="password" class="inputText" type="password" required autocomplete="current-password" minlength="8" maxlength="50" onkeypress="checkSpace(event)">
 				@error('password')
                     <span role="alert" class="alert">

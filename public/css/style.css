@@ -257,7 +257,6 @@ textarea {
 	height: auto;
 	position: absolute;
 	margin: 10px;
-	right: 0;
 	display: none;
 	background-color: silver;
 }
@@ -265,7 +264,7 @@ textarea {
 	background-color: gray;
 }
 .miniature:hover .miniatureButton {
-	display: block;
+	display: inline-block;
 }
 .miniatureImg {
 	border-radius: 8px;

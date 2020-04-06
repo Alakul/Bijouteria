@@ -27,8 +27,10 @@ function addToList(obj){
 			materials++;
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input name="materials_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input name="material_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
+			changeIdMaterials();
+			changeFirstElementMaterials();
 		}	
 	}
 	else if	(id=='toolsButton'){
@@ -36,8 +38,10 @@ function addToList(obj){
 			tools++;
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input name="tools_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input name="tool_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
+			changeIdTools();
+			changeFirstElementTools();
 		}
 	}
 	else if	(id=='stepsButton'){
@@ -49,6 +53,8 @@ function addToList(obj){
 			childX.setAttribute('class','steps');
 			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="margin-right: 0;"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><input name="image_'+steps+'" class="imageToUpload" id="image_'+steps+'" type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required><div class="imageInput"><div style="height: 100%; display: table-cell;"><a id="imageButton_'+steps+'"class="imageButton" onclick="imageInput(this);">Przeglądaj...</a></div><span id="fileName_'+steps+'" class="fileName">Nie wybrano pliku.</span></div><img id="imagePreview_'+steps+'" src="#" class="previewImg" style="display: none;"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea>';
 			x.appendChild(childX);
+			changeId();
+			changeFirstElementSteps();
 		}
 	}
 }
@@ -59,17 +65,54 @@ function deleteFromList(obj){
 		materials--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
 		changeIdMaterials();
+		changeFirstElementMaterials();
 	}
 	else if (id=='toolsIcon'){
 		tools--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
 		changeIdTools();
+		changeFirstElementTools();
 	}
 	else if (id=='stepsIcon'){
 		steps--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
 		changeId();
+		changeFirstElementSteps();
 	}
+}
+
+function changeFirstElementMaterials(){
+	if (materials==1){
+		document.getElementsByName("material_1")[0].nextElementSibling.style.display="none";
+		document.getElementsByName("material_1")[0].style.width="100%";
+	}
+	else {
+		document.getElementsByName("material_1")[0].nextElementSibling.style.display="inline-block";
+		document.getElementsByName("material_1")[0].style.width="92%";
+	}
+}
+
+function changeFirstElementTools(){
+	if (tools==1){
+		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="none";
+		document.getElementsByName("tool_1")[0].style.width="100%";
+	}
+	else {
+		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="inline-block";
+		document.getElementsByName("tool_1")[0].style.width="92%";
+	}
+}
+
+function changeFirstElementSteps(){
+	if (steps==1){
+		document.getElementById("step_1").children[1].style.display="none";
+		document.getElementById("step_1").children[2].style.marginRight="0";
+	}
+	else {
+		document.getElementById("step_1").children[1].style.display="inline-block";
+		document.getElementById("step_1").children[2].style.marginRight="10px";
+	}
+	console.log(document.getElementById("step_1").children[2].id);
 }
 
 function replaceUp(obj){
@@ -112,9 +155,10 @@ function changeIdMaterials(){
 		
 	var temp=1;
 	for (var i = 0; i < items.length; ++i){	
-		items[i].children[0].setAttribute('name','materials_'+temp);
+		items[i].children[0].setAttribute('name','material_'+temp);
 		temp++;
 	}
+	materials=temp-1;
 }
 
 function changeIdTools(){
@@ -123,11 +167,11 @@ function changeIdTools(){
 		
 	var temp=1;
 	for (var i = 0; i < items.length; ++i){	
-		items[i].children[0].setAttribute('name','tools_'+temp);
+		items[i].children[0].setAttribute('name','tool_'+temp);
 		temp++;
 	}
+	tools=temp-1;
 }
-
 
 function changeId(){
 	var list = document.getElementById("stepsList");
@@ -150,6 +194,8 @@ function changeId(){
 
 		temp++;
 	}
+	steps=temp-1;
+	console.log(steps);
 }
 
 var nameLimit=30;
@@ -258,27 +304,31 @@ function fileSizeValidate(file) {
 }
 
 function clearInputs(){
-	var list = document.getElementById("stepsList");
-	var items = list.getElementsByTagName("li");
-
-	document.getElementsByName('title').required = false;
-	document.getElementById('category').required = false;
-
-	for (var i = 0; i <= items.length; ++i){
-		document.getElementsByName('image_'+i).required = false;
-		document.getElementsByName('description_'+i).required = false;
-	}
-
 	var listMaterials = document.getElementById("materialsList");
 	var itemsMaterials = listMaterials.getElementsByTagName("li");
-	for (var i = 0; i < itemsMaterials.length; ++i){
-		document.getElementsByName('materials_'+i).required = false;
+	materials=itemsMaterials.length;
+
+	if (materials>1) {
+		document.getElementsByName("material_1")[0].nextElementSibling.style.display="inline-block";
+		document.getElementsByName("material_1")[0].style.width="92%";
 	}
 
 	var listTools = document.getElementById("toolsList");
 	var itemsTools = listTools.getElementsByTagName("li");
-	for (var i = 0; i < itemsTools.length; ++i){
-		document.getElementsByName('tools_'+i).required = false;
+	tools=itemsTools.length;
+
+	if (tools>1) {
+		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="inline-block";
+		document.getElementsByName("tool_1")[0].style.width="92%";
+	}
+
+	var list = document.getElementById("stepsList");
+	var items = list.getElementsByTagName("li");
+	steps=items.length;
+
+	if (steps>1) {
+		document.getElementById("step_1").children[1].style.display="inline-block";
+		document.getElementById("step_1").children[2].style.marginRight="10px";
 	}
 }
 
@@ -302,13 +352,13 @@ function inputRequired(){
 	var listMaterials = document.getElementById("materialsList");
 	var itemsMaterials = listMaterials.getElementsByTagName("li");
 	for (var i = 0; i < itemsMaterials.length; ++i){
-		document.getElementsByName('materials_'+i).required = true;
+		document.getElementsByName('material_'+i).required = true;
 	}
 
 	var listTools = document.getElementById("toolsList");
 	var itemsTools = listTools.getElementsByTagName("li");
 	for (var i = 0; i < itemsTools.length; ++i){
-		document.getElementsByName('tools_'+i).required = true;
+		document.getElementsByName('tool_'+i).required = true;
 	}
 
 	var materialsLength=document.getElementById("materialsList").getElementsByTagName("li").length;

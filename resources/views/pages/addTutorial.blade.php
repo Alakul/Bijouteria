@@ -5,13 +5,13 @@
         {{ csrf_field() }}
 		<div class="inputArea">
             <br>
-            <label>Tytuł <span class="asterisk">*</span></label><br>
-			<input name="title" class="inputText" type="text" minlength="3" maxlength="100" required><br> 
+            <label>Tytuł <span class="asterisk">*</span></label>
+			<input name="title" class="inputText" type="text" minlength="3" maxlength="100" required>
                 
-            <label>Opis</label><br>
-            <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea><br>
+            <label>Opis</label>
+            <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea>
                 
-            <label>Zdjęcie tytułowe <span class="asterisk">*</span></label><br>
+            <label>Zdjęcie tytułowe <span class="asterisk">*</span></label>
             <input name="image_0" id="image_0" class="imageToUpload" type="file" required onchange="loadPreview(this);">
             <div class="imageInput">
                 <div style="height: 100%; display: table-cell;">
@@ -36,22 +36,22 @@
 
             <label>Wymagane materiały <span class="asterisk">*</span></label>
             <ul id="materialsList">
-                <li><input name="materials_1" class="inputText" type="text" maxlength="100" required style="margin-bottom: 8px;"></li>
+                <li><input name="material_1" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></li>
             </ul>
-            <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button><br>
+            <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button>
 
             <label>Wymagane narzędzia <span class="asterisk">*</span></label>
             <ul id="toolsList">
-                <li><input name="tools_1" class="inputText" type="text" maxlength="100" required style="margin-bottom: 8px;"></li>
+                <li><input name="tool_1" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></li>
             </ul>
-            <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button><br>
+            <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button>
 
             <label>Poradnik</label>
             <div>
                 <ol id="stepsList">
                     <li id="step_1" class="steps">
                         <h3 id="h3_1">Krok 1:</h3>
-                        <i id="stepsIcon" style="display: none;"></i>
+                        <i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="margin-right: 0; display: none;"></i>
                         <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);" style="margin-right: 0;"></i>
                         <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
                         <label>Zdjęcie <span class="asterisk">*</span></label>

@@ -71,7 +71,7 @@ class TutorialController extends Controller
         for ($i = 1; $i <= $materialsLength; $i++) {
             $material = new Material();
             $material->tutorial_id = $tutorialId;
-            $material->material = $request->input('materials_'.$i);
+            $material->material = $request->input('material_'.$i);
             $material->save();
         }
 
@@ -79,7 +79,7 @@ class TutorialController extends Controller
         for ($i = 1; $i <= $toolsLength; $i++) {
             $tool = new Tool();
             $tool->tutorial_id = $tutorialId;
-            $tool->tool = $request->input('tools_'.$i);
+            $tool->tool = $request->input('tool_'.$i);
             $tool->save();
         }
 
@@ -132,7 +132,13 @@ class TutorialController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tutorials = Tutorial::find($id);
+        $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('material', 'asc')->get();
+        $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('tool', 'asc')->get();
+        $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
+
+        return view('pages/editTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools,
+        'steps'=>$steps]);
     }
 
     /**
@@ -144,7 +150,50 @@ class TutorialController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tutorial = Tutorial::where('id', $id)->first();
+        $tutorial->title = $request->input('title');
+        $tutorial->description = $request->input('description_0');
+
+        if ($image!=null){
+            $image=$request->file('image_0');
+            $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/tutorialsIMG'), $imageNew);
+            $tutorial->title_picture = $imageNew;
+        }
+        $tutorial->category = $request->input('category');
+        $tutorial->save();
+
+
+        $materialsLength= $_COOKIE['materials'];
+        for ($i = 1; $i <= $materialsLength; $i++) {
+            $material = new Material();
+            $material->tutorial_id = $tutorialId;
+            $material->material = $request->input('material_'.$i);
+            $material->save();
+        }
+
+        $toolsLength= $_COOKIE['tools'];
+        for ($i = 1; $i <= $toolsLength; $i++) {
+            $tool = new Tool();
+            $tool->tutorial_id = $tutorialId;
+            $tool->tool = $request->input('tool_'.$i);
+            $tool->save();
+        }
+
+        $stepsLength= $_COOKIE['steps'];
+        for ($i = 1; $i <= $stepsLength; $i++) {
+            $step = new Step();
+            $step->tutorial_id = $tutorialId;
+            $step->step = $i;
+
+            $image=$request->file('image_'.$i);
+            $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('/tutorialsIMG'), $imageNew);
+
+            $step->picture = $imageNew;
+            $step->description = $request->input('description_'.$i);
+            $step->save();
+        }
     }
 
     /**

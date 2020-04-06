@@ -32,7 +32,7 @@
                         <ul id="stepsList">
                             @foreach ($steps as $step)
                                 <li class="showSteps">
-                                    <h3>Krok {{ $step->step}}:</h3><br>
+                                    <h3>Krok {{ $step->step}}:</h3>
                                     <img id="imgStepShow" class="showImg" src="/tutorialsIMG/{{ $step->picture }}">
                                     <p class="showDescriptionStep">{{ $step->description}}</p>
                                 </li>
@@ -54,7 +54,11 @@
                 </div>
             </div>
             @auth
-                <a class="buttonStyle buttonFavourites"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>    
+                @if ($tutorials->user_id!=Auth::user()->id)
+                    <a class="buttonStyle buttonFavourites"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
+                @else
+                    <a class="buttonStyle buttonFavourites" href="{{ route('showEditTutorial', ['id' => $tutorials->id]) }}"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
+                @endif
             @endauth
         </div>
     </div>
