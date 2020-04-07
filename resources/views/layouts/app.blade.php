@@ -4,14 +4,8 @@
         @include('includes.head')
     </head>
     <body>
-        <header>
-            @guest                 
-                @if (Route::has('register'))              
-                    @include('includes.header')
-                @endif
-                @else
-                    @include('includes.headerUser')
-            @endguest    
+        <header>           
+            @include('includes.header') 
         </header>
         
         <main>

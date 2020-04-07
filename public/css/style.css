@@ -624,6 +624,7 @@ textarea {
 	color: #333333;
 	font-family: Lucida, sans-serif;
 	display: block;
+	width: 200px;
 
 	-webkit-appearance: none;
     -moz-appearance: none;

@@ -5,7 +5,7 @@
         @auth
             @if ($users->id!=Auth::user()->id)
                 <a id="back"class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
-            @endif 
+            @endif
         @endauth
         <div id="profile" class="formStyle">
             <div class="showColumn">
@@ -20,7 +20,7 @@
                     <div class="showColumn" style="vertical-align: middle;">
                         <a href="{{ route('showEditProfile', ['id' => auth()->id()]) }}" class="buttonStyle">Edytuj profil</a>
                     </div>
-                @endif 
+                @endif
             @endauth
         </div>
     </div>
@@ -33,7 +33,7 @@
                         <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('deleteTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
                     @else
                         <a class="buttonStyle miniatureButton"><i class="fas fa-heart" style="color: white;"></i></a>
-                    @endif 
+                    @endif
                 @endauth
                 <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
                     <img class="miniatureImg" src="/tutorialsIMG/{{ $tutorial->title_picture }}"/>

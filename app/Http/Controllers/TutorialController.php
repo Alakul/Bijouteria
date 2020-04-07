@@ -17,21 +17,15 @@ class TutorialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Tutorial $tutorial)
+    public function index()
     {
-        if (!isset($_COOKIE['category'])) {
-            setcookie('category', 'bransoletki', (time() + (3600*2)), '/');
-            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();
-        }
-        else {
-            $category= $_COOKIE['category'];
-            $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-            ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();//->where('category', [$category])
-        }
+
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
+
 
 
     /**
@@ -41,7 +35,9 @@ class TutorialController extends Controller
      */
     public function create()
     {
-        return view('pages/addTutorial');
+        $categories=DB::table('categories')->get();
+
+        return view('pages/addTutorial',['categories'=>$categories]);
     }
 
     /**
@@ -136,9 +132,10 @@ class TutorialController extends Controller
         $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('material', 'asc')->get();
         $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('tool', 'asc')->get();
         $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
+        $categories=DB::table('categories')->get();
 
         return view('pages/editTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools,
-        'steps'=>$steps]);
+        'steps'=>$steps, 'categories'=>$categories]);
     }
 
     /**

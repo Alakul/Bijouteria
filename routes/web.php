@@ -32,6 +32,7 @@ Route::post('dodajKomentarz', 'CommentController@store')->name('addComment');
 Route::post('edytujProfil', 'ProfileController@update')->name('editProfile');
 Route::post('edytujPoradnik', 'TutorialController@update')->name('editTutorial');
 
+Route::resource('categories', 'CategoryController');
 Route::resource('profiles', 'ProfileController');
 Route::resource('comments', 'CommentController');
 Route::resource('tutorials', 'TutorialController');

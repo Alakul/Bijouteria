@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,7 +25,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $categories=DB::table('categories')->get();
+        view()->composer('includes/header', function($view) use($categories) {
+        $view->with('categories',$categories);
+        });
+
         Schema::defaultStringLength(191);
     }
 }
