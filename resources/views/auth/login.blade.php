@@ -5,14 +5,13 @@
 			@csrf
 			<div class="inputArea">
 				@error('email')
-                    <span role="alert" class="alertLogin">
+                    <span role="alert" class="alertMessage">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror<br>
 				<label>Email</label>
 				<input id="email" name="email" class="inputText" type="email" required autocomplete="email" minlength="3" maxlength="320" onkeypress="checkSpace(event)">
 				
-
 				<label>Hasło</label>
 				<input id="password" name="password" class="inputText" type="password" required autocomplete="current-password" minlength="8" maxlength="50" onkeypress="checkSpace(event)">
 				@error('password')

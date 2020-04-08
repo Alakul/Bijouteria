@@ -146,5 +146,10 @@ return [
     */
 
     'attributes' => [
+        'password' => 'hasło',
+        'current_password' => 'obecne hasło',
+        'new_password' => 'nowe hasło',
+        'new_confirm_password' => 'potwierdź nowe hasło',
+        'name' => 'login',
     ],
 ];

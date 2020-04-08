@@ -31,6 +31,7 @@ function addToList(obj){
 			x.appendChild(childX);
 			changeIdMaterials();
 			changeFirstElementMaterials();
+			document.getElementsByName("materials_length")[0].value=materials;
 		}	
 	}
 	else if	(id=='toolsButton'){
@@ -42,6 +43,7 @@ function addToList(obj){
 			x.appendChild(childX);
 			changeIdTools();
 			changeFirstElementTools();
+			document.getElementsByName("tools_length")[0].value=tools;
 		}
 	}
 	else if	(id=='stepsButton'){
@@ -55,6 +57,7 @@ function addToList(obj){
 			x.appendChild(childX);
 			changeId();
 			changeFirstElementSteps();
+			document.getElementsByName("steps_length")[0].value=steps;
 		}
 	}
 }
@@ -66,18 +69,21 @@ function deleteFromList(obj){
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
 		changeIdMaterials();
 		changeFirstElementMaterials();
+		document.getElementsByName("materials_length")[0].value=materials;
 	}
 	else if (id=='toolsIcon'){
 		tools--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
 		changeIdTools();
 		changeFirstElementTools();
+		document.getElementsByName("tools_length")[0].value=tools;
 	}
 	else if (id=='stepsIcon'){
 		steps--;
 		obj.parentNode.parentNode.removeChild(obj.parentNode);
 		changeId();
 		changeFirstElementSteps();
+		document.getElementsByName("steps_length")[0].value=steps;
 	}
 }
 
@@ -301,24 +307,6 @@ function fileSizeValidate(file) {
 		}
 	}
 }
-
-
-function inputRequired(){
-
-	//image_0
-	//image_1 - max
-	//description_1 - max
-
-	var materialsLength=document.getElementById("materialsList").getElementsByTagName("li").length;
-	document.cookie="materials="+materialsLength;
-
-	var toolsLength=document.getElementById("toolsList").getElementsByTagName("li").length;
-	document.cookie="tools="+toolsLength;
-
-	var stepsLength=document.getElementById("stepsList").getElementsByTagName("li").length;
-	document.cookie="steps="+stepsLength;
-}
-
 
 function preventSymbolLogin(event) {
 	if (event.which == 46 || event.which == 95 || (event.which >= 48 && event.which <= 57) || (event.which >= 65 && event.which <= 90) || (event.which >= 97 && event.which <= 122)) {  	

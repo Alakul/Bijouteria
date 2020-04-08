@@ -6,10 +6,10 @@
         <h3 style="margin-bottom: 30px; text-align: center;">Zmień hasło</h3>
 		<div class="inputArea">
             @foreach ($errors->all() as $error)
-                <span role="alert" class="alertLogin">
+                <span role="alert" class="alertMessage">
                     <strong>{{ $error }}</strong>
                 </span>
-            @endforeach
+            @endforeach<br>
 
             <label>Obecne hasło</label>
             <input  name="current_password" type="password" class="inputText" class="form-control" autocomplete="current-password">

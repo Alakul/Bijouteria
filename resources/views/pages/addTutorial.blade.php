@@ -34,12 +34,14 @@
                 <ul id="materialsList">
                     <li><input name="material_1" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></li>
                 </ul>
+                <input type="hidden" name="materials_length" value="1">
                 <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button>
 
                 <label>Wymagane narzędzia <span class="asterisk">*</span></label>
                 <ul id="toolsList">
                     <li><input name="tool_1" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></li>
                 </ul>
+                <input type="hidden" name="tools_length" value="1">
                 <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button>
 
                 <label>Poradnik</label>
@@ -64,8 +66,9 @@
                         </li>
                     </ol>
                 </div>
+                <input type="hidden" name="steps_length" value="1">
                 <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button><br>
-                <button type="submit" class="buttonStyle" style="margin: 30px auto 0px auto;" onclick="inputRequired()">Opublikuj</button>
+                <button type="submit" class="buttonStyle" style="margin: 30px auto 0px auto;">Opublikuj</button>
             </div>
         </form>
     @endisset

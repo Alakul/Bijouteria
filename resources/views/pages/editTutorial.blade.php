@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     @isset($tutorials, $materials, $tools, $steps, $categories)
-	<form method="POST" action="{{ route('editTutorial') }}" class="formStyle" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('editTutorial', ['id'=> $tutorials->id]) }}" class="formStyle" enctype="multipart/form-data">
         <h2 class="headline">Edytuj poradnik</h2>
         {{ csrf_field() }}
 		<div class="inputArea">
@@ -33,26 +33,31 @@
                 @endforeach
             </select>
 
-            <label>Wymagane materiały <span class="asterisk">*</span></label>
+            <label class="margin">Wymagane materiały <span class="asterisk">*</span></label>
             <ul id="materialsList">
                 @foreach ($materials as $indexKey => $material)
                     <?php $indexKey++; ?>
-                        <li><input name="material_<?php echo $indexKey; ?>" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;" value="{{ $material->material}}"></li>
+                    <li><input name="material_<?php echo $indexKey; ?>" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;" value="{{ $material->material}}"></li>
+                    <?php $materials_length=$indexKey ?>
                 @endforeach
             </ul>
+            <input type="hidden" name="materials_length" value="<?php echo $materials_length; ?>">
 
-            <label>Wymagane narzędzia <span class="asterisk">*</span></label>
+            <label class="margin">Wymagane narzędzia <span class="asterisk">*</span></label>
             <ul id="toolsList">
                 @foreach ($tools as $indexKey => $tool)
                     <?php $indexKey++; ?>
                     <li><input name="tool_<?php echo $indexKey; ?>" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;" value="{{ $tool->tool}}"></li>
+                    <?php $tools_length=$indexKey ?>
                 @endforeach
             </ul>
+            <input type="hidden" name="tools_length" value="<?php echo $tools_length; ?>">
 
-            <label>Poradnik</label>
+            <label class="margin">Poradnik</label>
             <div>
                 <ol id="stepsList">
                     @foreach ($steps as $indexKey => $step)
+                        <?php $indexKey++; ?>
                         <li id="step_{{ $step->step }}" class="steps">
                             <h3 id="h3_{{ $step->step }}">Krok {{ $step->step }}:</h3>
                             <i style="display: none;"></i>
@@ -70,9 +75,11 @@
                             <label>Opis <span class="asterisk">*</span></label>
                             <textarea name="description_{{ $step->step }}" class="inputText" type="text" maxlength="1000" required>{{ $step->description }}</textarea>
                         </li>
+                        <?php $steps_length=$indexKey ?>
                     @endforeach
                 </ol>
             </div>
+            <input type="hidden" name="steps_length" value="<?php echo $steps_length; ?>">
 			<button type="submit" class="buttonStyle" style="margin: 30px auto 0px auto;" onclick="inputRequired()">Zapisz</button>
 		</div>
     </form>

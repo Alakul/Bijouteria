@@ -30,7 +30,7 @@ Route::post('zmienHaslo', 'ChangePasswordController@store')->name('changePasswor
 Route::post('dodajPoradnik', 'TutorialController@store')->name('addTutorial');
 Route::post('dodajKomentarz', 'CommentController@store')->name('addComment');
 Route::post('edytujProfil', 'ProfileController@update')->name('editProfile');
-Route::post('edytujPoradnik', 'TutorialController@update')->name('editTutorial');
+Route::post('edytujPoradnik/{id}', 'TutorialController@update')->name('editTutorial');
 
 Route::resource('categories', 'CategoryController');
 Route::resource('profiles', 'ProfileController');

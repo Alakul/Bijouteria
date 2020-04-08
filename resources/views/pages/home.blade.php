@@ -5,7 +5,7 @@
         <div class="miniature">
             @auth
                 <a class="buttonStyle miniatureButton" style="right: 0;"><i class="fas fa-heart" style="color: white;"></i></a>
-                <p class="miniatureButton">{{ $tutorial->title}}</p>
+                <p class="miniatureButton" style="background-color: white; color: black;">{{ Str::limit($tutorial->title, 28) }}</p>
             @endauth
             <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
                 <img class="miniatureImg" src="/tutorialsIMG/{{ $tutorial->title_picture }}"/>
