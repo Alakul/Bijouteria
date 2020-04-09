@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
     @isset($tutorials, $materials, $tools, $steps, $categories)
+    @if(session()->has('success'))
+        <div class=" alertSuccess">
+            {{ session()->get('success') }}
+        </div>
+    @endif
 	<form method="POST" action="{{ route('editTutorial', ['id'=> $tutorials->id]) }}" class="formStyle" enctype="multipart/form-data">
         <h2 class="headline">Edytuj poradnik</h2>
         {{ csrf_field() }}
@@ -61,8 +66,8 @@
                         <li id="step_{{ $step->step }}" class="steps">
                             <h3 id="h3_{{ $step->step }}">Krok {{ $step->step }}:</h3>
                             <i style="display: none;"></i>
-                            <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);" style="margin-right: 0;"></i>
-                            <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
+                            <i style="display: none;"></i>
+                            <i style="display: none;"></i><br>
                             <label>Zdjęcie <span class="asterisk">*</span></label>
                             <input name="image_{{ $step->step }}" id="image_{{ $step->step }}" class="imageToUpload"  type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);">
                             <div class="imageInput">

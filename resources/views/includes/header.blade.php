@@ -8,9 +8,9 @@
 				@endforeach
 			</ul>
 		</div>
-		<form action="action_page.php">
-			<input class="searchBar" setype="text" placeholder="Szukaj...">
-			<button class="searchButton"><i class='fas' style="color: white;">&#xf002;</i></button>
+		<form method="POST" action="">
+			<input name="search" class="searchBar" setype="text" placeholder="Szukaj...">
+			<button type="submit" class="searchButton"><i class='fas' style="color: white;">&#xf002;</i></button>
 		</form>
 	</div>
 

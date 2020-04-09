@@ -16,6 +16,7 @@ class CreateToolsTable extends Migration
         Schema::create('tools', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tutorial_id');
+            $table->tinyInteger('lp');
             $table->string('tool');
             $table->timestamps();
 

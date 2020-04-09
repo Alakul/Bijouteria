@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
     @isset ($profiles)
+    @if(session()->has('success'))
+        <div class=" alertSuccess">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <form method="POST" action="{{ route('editProfile') }}" class="formStyle" enctype="multipart/form-data">
         {{csrf_field()}}
         <h2 class="headline">Edytuj profil</h2>

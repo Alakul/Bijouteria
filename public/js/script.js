@@ -27,7 +27,8 @@ function addToList(obj){
 			materials++;
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input name="material_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.setAttribute('id','materialRow_'+materials);
+			childX.innerHTML = '<input name="material_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="margin-right: 6px; display: inline-block;"></i><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="margin-right: 0; display: inline-block;"></i>';
 			x.appendChild(childX);
 			changeIdMaterials();
 			changeFirstElementMaterials();
@@ -39,7 +40,8 @@ function addToList(obj){
 			tools++;
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
-			childX.innerHTML = '<input name="tool_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.setAttribute('id','toolRow_'+tools);
+			childX.innerHTML = '<input name="tool_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="margin-right: 6px; display: inline-block;"></i><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
 			x.appendChild(childX);
 			changeIdTools();
 			changeFirstElementTools();
@@ -90,22 +92,28 @@ function deleteFromList(obj){
 function changeFirstElementMaterials(){
 	if (materials==1){
 		document.getElementsByName("material_1")[0].nextElementSibling.style.display="none";
+		document.getElementsByName("material_1")[0].nextElementSibling.nextElementSibling.style.display="none";
 		document.getElementsByName("material_1")[0].style.width="100%";
 	}
 	else {
 		document.getElementsByName("material_1")[0].nextElementSibling.style.display="inline-block";
-		document.getElementsByName("material_1")[0].style.width="92%";
+		document.getElementsByName("material_1")[0].nextElementSibling.nextElementSibling.style.display="inline-block";
+		document.getElementsByName("material_1")[0].style.width="85%";
+		document.getElementsByName("material_1")[0].style.marginRight="5px";
 	}
 }
 
 function changeFirstElementTools(){
 	if (tools==1){
 		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="none";
+		document.getElementsByName("tool_1")[0].nextElementSibling.nextElementSibling.style.display="none";
 		document.getElementsByName("tool_1")[0].style.width="100%";
 	}
 	else {
+		document.getElementsByName("tool_1")[0].nextElementSibling.marginRight="6px";
 		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="inline-block";
-		document.getElementsByName("tool_1")[0].style.width="92%";
+		document.getElementsByName("tool_1")[0].nextElementSibling.nextElementSibling.style.display="inline-block";
+		document.getElementsByName("tool_1")[0].style.width="85%";
 	}
 }
 
@@ -118,7 +126,6 @@ function changeFirstElementSteps(){
 		document.getElementById("step_1").children[1].style.display="inline-block";
 		document.getElementById("step_1").children[2].style.marginRight="10px";
 	}
-	console.log(document.getElementById("step_1").children[2].id);
 }
 
 function replaceUp(obj){
@@ -135,7 +142,29 @@ function replaceUp(obj){
 		list.insertBefore(document.getElementById("step_"+number),list.childNodes[numberPrevious]);
 		changeId();
 	}
-	
+}
+
+function replaceUpList(obj){
+	var element= obj.previousElementSibling.name;
+	var elementName = element.substring(0, element.indexOf('_'));
+	var number = element.substring(element.indexOf('_')+1, element.length);
+	var numberPrevious=number-1;
+
+	if (numberPrevious==0){
+		return;
+	}
+	else {
+		if (elementName=="material"){
+			var list = document.getElementById('materialsList');
+			list.insertBefore(document.getElementById("materialRow_"+number),list.childNodes[numberPrevious]);
+			changeIdMaterials();
+		}
+		else if (elementName=="tool"){
+			var list = document.getElementById('toolsList');
+			list.insertBefore(document.getElementById("toolRow_"+number),list.childNodes[numberPrevious]);
+			changeIdTools();
+		}
+	}
 }
 
 function replaceDown(obj){
@@ -161,6 +190,7 @@ function changeIdMaterials(){
 		
 	var temp=1;
 	for (var i = 0; i < items.length; ++i){	
+		items[i].setAttribute('id','materialRow_'+temp);
 		items[i].children[0].setAttribute('name','material_'+temp);
 		temp++;
 	}
@@ -173,6 +203,7 @@ function changeIdTools(){
 		
 	var temp=1;
 	for (var i = 0; i < items.length; ++i){	
+		items[i].setAttribute('id','toolRow_'+temp);
 		items[i].children[0].setAttribute('name','tool_'+temp);
 		temp++;
 	}

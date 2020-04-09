@@ -11,13 +11,13 @@
             <div class="showColumn">
                 <img class="profileImg" src="/avatarsIMG/{{ $profiles->avatar }}"/>
             </div>
-            <div class="showColumn" style="vertical-align: top; padding: 0 20px 0 20px;">
+            <div class="showColumn" style="vertical-align: top; padding: 0 20px 0 20px; width: 60%;">
                 <p id="userLogin">{{ $users->name }}</p>
                 <p style="font-size: 14px;">{{ $profiles->info }}</p>
             </div>
             @auth
                 @if ($users->id==Auth::user()->id)
-                    <div class="showColumn" style="vertical-align: middle;">
+                    <div class="showColumn" style="vertical-align: middle; text-align: center; width: 30%;">
                         <a href="{{ route('showEditProfile', ['id' => auth()->id()]) }}" class="buttonStyle">Edytuj profil</a>
                     </div>
                 @endif
@@ -35,6 +35,7 @@
                         <a class="buttonStyle miniatureButton"><i class="fas fa-heart" style="color: white;"></i></a>
                     @endif
                 @endauth
+                <p class="miniatureButton" style="background-color: white; bottom: 0; font-weight: bold; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
                 <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
                     <img class="miniatureImg" src="/tutorialsIMG/{{ $tutorial->title_picture }}"/>
                 </a>

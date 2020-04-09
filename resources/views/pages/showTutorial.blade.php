@@ -57,13 +57,13 @@
                 @if ($tutorials->user_id!=Auth::user()->id)
                     <a class="buttonStyle buttonFavourites"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
                 @else
-                    <a class="buttonStyle buttonFavourites" href="{{ route('showEditTutorial', ['id' => $tutorials->id]) }}"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
+                    <a class="buttonStyle buttonFavourites" href="{{ route('showEditTutorial', ['id' => $tutorials->id]) }}" style="text-align: center;"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
                 @endif
             @endauth
         </div>
     </div>
 
-    <div class="formStyle" style="max-width: 600px;">
+    <div class="formStyle" style="max-width: 600px; margin-top: 30px;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
             <form method="POST" action="{{ route('addComment') }}" enctype="multipart/form-data">
@@ -79,7 +79,6 @@
                 @endauth
                 <input type="hidden" name="tutorial_id" value="{{ $tutorials-> id}}">
             </form>
-        
         
         <ul class="commentList">
             @foreach ($comments as $comment)

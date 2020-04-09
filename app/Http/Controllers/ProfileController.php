@@ -98,7 +98,7 @@ class ProfileController extends Controller
         $profile->info = $request->input('info');
         $profile->save();
 
-        return back();
+        return redirect()->back()->with('success', 'Profil został zedytowany.');
     }
 
     /**

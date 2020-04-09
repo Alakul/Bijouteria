@@ -67,6 +67,7 @@ class TutorialController extends Controller
         for ($i = 1; $i <= $materialsLength; $i++) {
             $material = new Material();
             $material->tutorial_id = $tutorialId;
+            $material->lp = $i;
             $material->material = $request->input('material_'.$i);
             $material->save();
         }
@@ -75,6 +76,7 @@ class TutorialController extends Controller
         for ($i = 1; $i <= $toolsLength; $i++) {
             $tool = new Tool();
             $tool->tutorial_id = $tutorialId;
+            $tool->lp = $i;
             $tool->tool = $request->input('tool_'.$i);
             $tool->save();
         }
@@ -94,7 +96,7 @@ class TutorialController extends Controller
             $step->save();
         }
         
-        return redirect('/');
+        return redirect()->back()->with('success', 'Poradnik został opublikowany.');
     }
 
     /**
@@ -106,8 +108,8 @@ class TutorialController extends Controller
     public function show($id)
     {
         $tutorials = Tutorial::find($id);
-        $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('material', 'asc')->get();
-        $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('tool', 'asc')->get();
+        $materials = DB::table('materials')->where('tutorial_id', [$id])->orderBy('lp', 'asc')->get();
+        $tools = DB::table('tools')->where('tutorial_id', [$id])->orderBy('lp', 'asc')->get();
         $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
         $comments = DB::table('comments')->join('users', 'users.id', '=', 'comments.user_id')
         ->join('profiles', 'users.id', '=', 'profiles.user_id')
@@ -163,15 +165,16 @@ class TutorialController extends Controller
 
         $materialsLength = $request->input('materials_length');
         for ($i = 1; $i <= $materialsLength; $i++) {
-            $material = Material::where('tutorial_id', $id)->first();
-            $material->tutorial_id = $id;
+            $material = Material::where('tutorial_id', $id)->where('lp', '=', $i)->first();
             $material->material = $request->input('material_'.$i);
+            $material->lp = $i;
             $material->save();
         }
 
         $toolsLength = $request->input('tools_length');
         for ($i = 1; $i <= $toolsLength; $i++) {
-            $tool = Tool::where('tutorial_id', $id)->first();
+            $tool = Tool::where('tutorial_id', $id)->where('lp', '=', $i)->first();
+            $tool->lp = $i;
             $tool->tool = $request->input('tool_'.$i);
             $tool->save();
         }
@@ -179,6 +182,7 @@ class TutorialController extends Controller
         $stepsLength = $request->input('steps_length');
         for ($i = 1; $i <= $stepsLength; $i++) {
             $step = Step::where('tutorial_id', '=', $id)->where('step', '=', $i)->first();
+            $step->step = $i;
 
             $image=$request->file('image_'.$i);
             if ($image!=null){
@@ -189,7 +193,10 @@ class TutorialController extends Controller
             $step->description = $request->input('description_'.$i);
             $step->save();
         }
+
+        return redirect()->back()->with('success', 'Zmiany zostały zapisane.');
     }
+
 
     /**
      * Remove the specified resource from storage.

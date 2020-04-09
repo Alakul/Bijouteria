@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
     @isset ($categories)
+    @if(session()->has('success'))
+        <div class=" alertSuccess">
+            {{ session()->get('success') }}
+        </div>
+    @endif
         <form method="POST" action="{{ route('addTutorial') }}" class="formStyle" enctype="multipart/form-data">
             <h2 class="headline">Dodaj poradnik</h2>
             {{ csrf_field() }}
@@ -32,14 +37,22 @@
 
                 <label>Wymagane materiały <span class="asterisk">*</span></label>
                 <ul id="materialsList">
-                    <li><input name="material_1" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></li>
+                    <li id="materialRow_1">
+                        <input name="material_1" class="inputText materialsInput" type="text" maxlength="100" required style="width: 100%;">
+                        <i id="materialsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="display: none;"></i>
+                        <i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i>
+                    </li>
                 </ul>
                 <input type="hidden" name="materials_length" value="1">
                 <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button>
 
                 <label>Wymagane narzędzia <span class="asterisk">*</span></label>
                 <ul id="toolsList">
-                    <li><input name="tool_1" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></li>
+                    <li id="toolRow_1">
+                        <input name="tool_1" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;">
+                        <i id="toolsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);" style="display: none; margin-right: 0;"></i>
+                        <i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none; margin-right: 0;"></i>
+                    </li>
                 </ul>
                 <input type="hidden" name="tools_length" value="1">
                 <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus" style="color: white;"></i></button>
@@ -53,7 +66,7 @@
                             <i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);" style="margin-right: 0;"></i>
                             <i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br>
                             <label>Zdjęcie <span class="asterisk">*</span></label>
-                            <input name="image_1" id="image_1" class="imageToUpload"  type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required>
+                            <input name="image_1" id="image_1" class="imageToUpload" type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required>
                             <div class="imageInput">
                             <div style="height: 100%; display: table-cell;">
                                 <a id="imageButton_1" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
