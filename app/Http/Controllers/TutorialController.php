@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use DB;
+use File;
 
 class TutorialController extends Controller
 {
@@ -19,7 +20,6 @@ class TutorialController extends Controller
      */
     public function index()
     {
-
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
         ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();
         
@@ -162,7 +162,6 @@ class TutorialController extends Controller
         $tutorial->category = $request->input('category');
         $tutorial->save();
 
-
         $materialsLength = $request->input('materials_length');
         for ($i = 1; $i <= $materialsLength; $i++) {
             $material = Material::where('tutorial_id', $id)->where('lp', '=', $i)->first();
@@ -207,8 +206,18 @@ class TutorialController extends Controller
     public function destroy($id)
     {
         $tutorials = Tutorial::find($id);
-        $tutorials -> delete();
+        $image = $tutorials->title_picture;
+        $filename = public_path().'/tutorialsIMG/'.$image;
+        File::delete($filename);
 
+        $steps = DB::table('steps')->where('tutorial_id', $id)->get();
+        foreach($steps as $step){
+            $image = $step->picture;
+            $filename = public_path().'/tutorialsIMG/'.$image;
+            File::delete($filename);
+        }
+
+        $tutorials -> delete();
         return back();
     }
 }
