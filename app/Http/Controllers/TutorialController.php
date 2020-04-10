@@ -10,6 +10,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use DB;
 use File;
+use Storage;
 
 class TutorialController extends Controller
 {
@@ -54,8 +55,8 @@ class TutorialController extends Controller
         $tutorial->description = $request->input('description_0');
 
         $image=$request->file('image_0');
-        $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-        $image->move(public_path('/tutorialsIMG'), $imageNew);
+        $imageNew=rand().time().'.'.$image->getClientOriginalExtension();
+        Storage::disk('public')->putFileAs('tutorialsIMG', $image, $imageNew, 'public');
 
         $tutorial->title_picture = $imageNew;
         $tutorial->category = $request->input('category');
@@ -88,8 +89,8 @@ class TutorialController extends Controller
             $step->step = $i;
 
             $image=$request->file('image_'.$i);
-            $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/tutorialsIMG'), $imageNew);
+            $imageNew=rand().time().'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tutorialsIMG', $image, $imageNew, 'public');
 
             $step->picture = $imageNew;
             $step->description = $request->input('description_'.$i);
@@ -154,9 +155,12 @@ class TutorialController extends Controller
         $tutorial->description = $request->input('description_0');
 
         $image=$request->file('image_0');
-        if ($image!=null){ 
-            $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/tutorialsIMG'), $imageNew);
+        if ($image!=null){
+            $imageOld = $tutorial->title_picture;
+            unlink(storage_path('app/public/tutorialsIMG/'.$imageOld));
+
+            $imageNew=rand().time().'.'.$image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('tutorialsIMG', $image, $imageNew, 'public');
             $tutorial->title_picture = $imageNew;
         }
         $tutorial->category = $request->input('category');
@@ -181,12 +185,14 @@ class TutorialController extends Controller
         $stepsLength = $request->input('steps_length');
         for ($i = 1; $i <= $stepsLength; $i++) {
             $step = Step::where('tutorial_id', '=', $id)->where('step', '=', $i)->first();
-            $step->step = $i;
 
             $image=$request->file('image_'.$i);
             if ($image!=null){
-                $imageNew=rand()."-".time().'.'.$image->getClientOriginalExtension();
-                $image->move(public_path('/tutorialsIMG'), $imageNew);
+                $imageOld = $step->picture;
+                unlink(storage_path('app/public/tutorialsIMG/'.$imageOld));
+
+                $imageNew=rand().time().'.'.$image->getClientOriginalExtension();
+                Storage::disk('public')->putFileAs('tutorialsIMG', $image, $imageNew, 'public');
                 $step->picture = $imageNew;
             }
             $step->description = $request->input('description_'.$i);
@@ -205,19 +211,17 @@ class TutorialController extends Controller
      */
     public function destroy($id)
     {
-        $tutorials = Tutorial::find($id);
-        $image = $tutorials->title_picture;
-        $filename = public_path().'/tutorialsIMG/'.$image;
-        File::delete($filename);
+        $tutorial = Tutorial::find($id);
+        $image = $tutorial->title_picture;
+        unlink(storage_path('app/public/tutorialsIMG/'.$image));
 
         $steps = DB::table('steps')->where('tutorial_id', $id)->get();
         foreach($steps as $step){
             $image = $step->picture;
-            $filename = public_path().'/tutorialsIMG/'.$image;
-            File::delete($filename);
+            unlink(storage_path('app/public/tutorialsIMG/'.$image));
         }
 
-        $tutorials -> delete();
+        $tutorial -> delete();
         return back();
     }
 }

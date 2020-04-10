@@ -9,7 +9,7 @@
         @endauth
         <div id="profile" class="formStyle">
             <div class="showColumn">
-                <img class="profileImg" src="/avatarsIMG/{{ $profiles->avatar }}"/>
+                <img class="profileImg" src="/storage/avatarsIMG/{{ $profiles->avatar }}"/>
             </div>
             <div class="showColumn" style="vertical-align: top; padding: 0 20px 0 20px; width: 60%;">
                 <p id="userLogin">{{ $users->name }}</p>
@@ -37,7 +37,7 @@
                 @endauth
                 <p class="miniatureButton" style="background-color: white; bottom: 0; font-weight: bold; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
                 <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
-                    <img class="miniatureImg" src="/tutorialsIMG/{{ $tutorial->title_picture }}"/>
+                    <img class="miniatureImg" src="/storage/tutorialsIMG/{{ $tutorial->title_picture }}"/>
                 </a>
             </div>
         @endforeach

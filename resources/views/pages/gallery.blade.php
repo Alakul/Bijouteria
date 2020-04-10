@@ -8,7 +8,7 @@
                 <p class="miniatureButton">{{ $tutorial->title}}</p>
             @endauth
             <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
-                <img class="miniatureImg" src="/tutorialsIMG/{{ $tutorial->title_picture }}"/>
+                <img class="miniatureImg" src="/storage/tutorialsIMG/{{ $tutorial->title_picture }}"/>
             </a>
         </div>
     @endforeach

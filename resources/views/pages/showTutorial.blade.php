@@ -8,7 +8,7 @@
                 <h2 class="headline">{{ $tutorials->title }}</h2>
                 <div class="inputArea">
                     
-                    <img class="showImg" src="/tutorialsIMG/{{ $tutorials->title_picture }}">
+                    <img class="showImg" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}">
                     <p class="showDescription">{{ $tutorials->description }}</p>
 
                     <label id="categoryLabel">Kategoria:</label>
@@ -33,7 +33,7 @@
                             @foreach ($steps as $step)
                                 <li class="showSteps">
                                     <h3>Krok {{ $step->step}}:</h3>
-                                    <img id="imgStepShow" class="showImg" src="/tutorialsIMG/{{ $step->picture }}">
+                                    <img id="imgStepShow" class="showImg" src="/storage/tutorialsIMG/{{ $step->picture }}">
                                     <p class="showDescriptionStep">{{ $step->description}}</p>
                                 </li>
                             @endforeach
@@ -45,7 +45,7 @@
         <div class="showColumn">
             <div class="formStyle" style="padding: 12px; margin-bottom: 0;">
                 <div class="showColumn" style=" height: 100%;">
-                <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}" style=" vertical-align: middle;"><img class="showAvatar" src="/avatarsIMG/{{ $profiles->avatar }}"></a>
+                <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}" style=" vertical-align: middle;"><img class="showAvatar" src="/storage/avatarsIMG/{{ $profiles->avatar }}"></a>
                 </div>
                 <div class="showColumn showDetails">
                     <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><p class="showUser">{{ $users->name }}</p></a>
@@ -84,7 +84,7 @@
             @foreach ($comments as $comment)
                 <li class="comment">
                     <div class="commentAvatar">
-                        <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><img class="commentImg" src="/avatarsIMG/{{ $comment->avatar }}"></a>
+                        <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}"><img class="commentImg" src="/storage/avatarsIMG/{{ $comment->avatar }}"></a>
                     </div>
                     <div class="commentContent">
                         <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}" class="commentUser">{{ $comment->name }}</a>

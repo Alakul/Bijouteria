@@ -19,7 +19,7 @@
                 </div>
                 <span id="avatarName" class="fileName">Nie wybrano pliku.</span>
             </div>  
-            <img id="avatarPreview" src="/avatarsIMG/{{ $profiles->avatar }}" class="previewImg"/><br>
+            <img id="avatarPreview" src="/storage/avatarsIMG/{{ $profiles->avatar }}" class="previewImg"/><br>
 
             <label>Informacje o Twoim profilu</label>
             <textarea name="info" class="inputText" type="text" maxlength="1000">{{ $profiles->info}}</textarea>

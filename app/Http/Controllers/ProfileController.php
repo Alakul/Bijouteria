@@ -7,6 +7,7 @@ use App\Models\Tutorial;
 use Illuminate\Http\Request;
 use DB;
 use File;
+use Storage;
 
 class ProfileController extends Controller
 {
@@ -93,11 +94,10 @@ class ProfileController extends Controller
         if ($image!=null){
             if ($profile->avatar!="avatar-default.png"){
                 $imageOld = $profile->avatar;
-                $filename = public_path().'/avatarsIMG/'.$imageOld;
-                File::delete($filename);
+                unlink(storage_path('app/public/avatarsIMG/'.$imageOld));
             }
             $imageNew=auth()->id().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('/avatarsIMG'), $imageNew);
+            Storage::disk('public')->putFileAs('avatarsIMG', $image, $imageNew, 'public');
             $profile->avatar = $imageNew;
         }
 

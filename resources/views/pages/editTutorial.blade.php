@@ -25,7 +25,7 @@
                 </div>
                 <span id="fileName_0" class="fileName" >Nie wybrano pliku.</span>
             </div>
-            <img id="imagePreview_0" src="/tutorialsIMG/{{ $tutorials->title_picture }}" class="previewImg"/><br>
+            <img id="imagePreview_0" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}" class="previewImg"/><br>
 
             <label for="category">Kategoria <span class="asterisk">*</span></label>
             <select name="category" id="category" required>
@@ -76,7 +76,7 @@
                                 </div>
                                 <span id="fileName_{{ $step->step }}" class="fileName">Nie wybrano pliku.</span>
                             </div>  
-                            <img id="imagePreview_{{ $step->step }}" src="/tutorialsIMG/{{ $step->picture }}" class="previewImg"/><br>
+                            <img id="imagePreview_{{ $step->step }}" src="/storage/tutorialsIMG/{{ $step->picture }}" class="previewImg"/><br>
                             <label>Opis <span class="asterisk">*</span></label>
                             <textarea name="description_{{ $step->step }}" class="inputText" type="text" maxlength="1000" required>{{ $step->description }}</textarea>
                         </li>
