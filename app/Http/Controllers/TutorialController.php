@@ -22,7 +22,7 @@ class TutorialController extends Controller
     public function index()
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->get();
+        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->paginate(8);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }

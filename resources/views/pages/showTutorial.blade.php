@@ -11,7 +11,7 @@
                     <img class="showImg" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}">
                     <p class="showDescription">{{ $tutorials->description }}</p>
 
-                    <label id="categoryLabel">Kategoria:</label>
+                    <label style="display: inline-block;">Kategoria:</label>
                     <p class="showCategory">{{ $tutorials->category }}</p><br>
 
                     <label>Wymagane materiały:</label>

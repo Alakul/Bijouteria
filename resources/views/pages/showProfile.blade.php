@@ -35,7 +35,7 @@
                         <a class="buttonStyle miniatureButton"><i class="fas fa-heart" style="color: white;"></i></a>
                     @endif
                 @endauth
-                <p class="miniatureButton" style="background-color: white; bottom: 0; font-weight: bold; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
+                <p class="miniatureButton" style="background-color: white; bottom: 0; font-weight: bold; font-size: 12px; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
                 <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
                     <img class="miniatureImg" src="/storage/tutorialsIMG/{{ $tutorial->title_picture }}"/>
                 </a>
