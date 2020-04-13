@@ -52,7 +52,7 @@ class ProfileController extends Controller
     {
         $users=User::find($id);
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('users.id', [$id])->orderBy('date', 'desc')->get();
+        ->select('tutorials.*', 'users.name')->where('users.id', [$id])->orderBy('date', 'desc')->paginate(8);
         $profiles = Profile::where('user_id', [$id])->first();
 
         return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users, 'profiles'=>$profiles]);
@@ -61,7 +61,7 @@ class ProfileController extends Controller
     public function profile(Tutorial $tutorial)
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->orderBy('date', 'desc')->get();
+        ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->orderBy('date', 'desc')->paginate(8);
         $profiles = Profile::where('user_id', [auth()->id()])->first();
 
         return view('pages/profile',['tutorials'=>$tutorials, 'profiles'=>$profiles]);

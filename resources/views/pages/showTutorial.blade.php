@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div class="formStyle" style="max-width: 600px; margin-top: 30px;">
+    <div class="formStyle" style="max-width: 666px; margin-top: 30px;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
             <form method="POST" action="{{ route('addComment') }}" enctype="multipart/form-data">

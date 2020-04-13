@@ -3,14 +3,8 @@ var tools=1;
 var steps=1;
 
 
-function listMenu(obj) {
-	var id=obj.id;
-	if (id=='categories'){
-		var x = document.getElementById("categoriesMenu");	
-	}	
-	else if	(id=='user'){
-		var x = document.getElementById("userMenu");
-	}
+function listMenu() {
+	var x = document.getElementById("hamburgerMenu");	
 
     if (x.style.display === "block"){
         x.style.display = "none";

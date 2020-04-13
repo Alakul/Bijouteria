@@ -42,5 +42,6 @@
             </div>
         @endforeach
     </div>
+    {{ $tutorials->links('vendor.pagination.pagination') }}
     @endisset
 @endsection

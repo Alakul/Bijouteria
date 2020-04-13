@@ -277,16 +277,6 @@ main {
 
 
 
-@media only screen and (max-width: 720px) {
-	.gallery.galleryColumns {
-	  -webkit-column-count: 1;
-	  /* Chrome, Safari, Opera */
-	  -moz-column-count: 1;
-	  /* Firefox */
-	  column-count: 1;
-	}
-}
-
 
 /* Icon */
 #plus {
@@ -515,8 +505,7 @@ main {
 .menuElement {
 	height: inherit;
 	width: auto;
-	display: inline-flex;
-	align-items: center;
+	display: block;
 	cursor: pointer;
 	padding: 0 14px;
 	border-radius: 4px;
@@ -530,6 +519,7 @@ main {
 .menuText {
 	font-size: 16px;
 	font-weight: bold;
+	margin: 11px 0;
 }
 
 #categories:hover #categoriesMenu {
@@ -751,4 +741,30 @@ main {
 	display: flex;
 	width: 100%;
 	justify-content: center;
+}
+
+
+
+#menu {
+	height: inherit;
+	width: auto;
+	display: none;
+	cursor: pointer;
+	padding: 0 14px;
+	border-radius: 4px;
+	background-color: white;
+	color: #333333;
+	font-size: 16px;
+}
+
+@media screen and (max-width: 970px) {
+	#rightbox {
+		display: none;
+	}
+	#leftSide {
+		display: none;
+	}
+	#menu {
+		display: block;
+	}
 }

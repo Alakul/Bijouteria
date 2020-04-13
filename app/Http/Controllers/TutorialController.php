@@ -27,6 +27,23 @@ class TutorialController extends Controller
         return view('pages/home',['tutorials'=>$tutorials]);
     }
 
+    public function gallery($categorySelected)
+    {
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->where('category', $categorySelected)->orderBy('date', 'desc')->paginate(8);
+        
+        return view('pages/gallery',['tutorials'=>$tutorials]);
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('search');
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(8);
+        
+        return view('pages/search',['tutorials'=>$tutorials]);
+    }
+
 
 
     /**

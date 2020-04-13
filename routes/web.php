@@ -14,6 +14,8 @@
 
 
 Route::get('/', 'TutorialController@index')->name('home');
+Route::get('/{categorySelected}', 'TutorialController@gallery')->name('gallery');
+
 
 Route::get('/usunPoradnik/{id}', 'TutorialController@destroy')->name('deleteTutorial')->middleware('auth');
 Route::get('/usunKomentarz/{id}', 'CommentController@destroy')->name('deleteComment')->middleware('auth');
@@ -31,6 +33,7 @@ Route::post('dodajPoradnik', 'TutorialController@store')->name('addTutorial');
 Route::post('dodajKomentarz', 'CommentController@store')->name('addComment');
 Route::post('edytujProfil', 'ProfileController@update')->name('editProfile');
 Route::post('edytujPoradnik/{id}', 'TutorialController@update')->name('editTutorial');
+Route::post('szukaj', 'TutorialController@search')->name('searchTutorial');
 
 
 Route::resource('categories', 'CategoryController');
