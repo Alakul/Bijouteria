@@ -57,7 +57,7 @@
                 @if ($tutorials->user_id!=Auth::user()->id)
                     <a class="buttonStyle buttonFavourites"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
                 @else
-                    <a class="buttonStyle buttonFavourites" href="{{ route('showEditTutorial', ['id' => $tutorials->id]) }}" style="text-align: center;"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
+                    <a class="buttonStyle buttonFavourites" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="text-align: center;"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
                 @endif
             @endauth
         </div>
@@ -66,10 +66,10 @@
     <div class="formStyle" style="max-width: 666px; margin-top: 30px;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
-            <form method="POST" action="{{ route('addComment') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('storeComment') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
-                <label>Napisz komentarz</label><br>
+                <label>Napisz komentarz</label>
                 @guest
                     <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>
                 @endguest
@@ -90,7 +90,7 @@
                         <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}" class="commentUser">{{ $comment->name }}</a>
                         @auth
                             @if ($comment->user_id==Auth::user()->id)
-                                <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('deleteComment', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>
+                                <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyComment', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>
                             @endif
                         @endauth
                         <p class="commentDate">{{ date('d.m.yy', strtotime($comment->date)) }}, godz. {{ date('H:i', strtotime($comment->date)) }}</p>

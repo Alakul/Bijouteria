@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
     @isset($tutorials, $users, $profiles)
+    @if(session()->has('success'))
+        <div class=" alertSuccess">
+            {{ session()->get('success') }}
+        </div>
+    @endif
     <div class="show">
         @auth
             @if ($users->id!=Auth::user()->id)
@@ -18,19 +23,19 @@
             @auth
                 @if ($users->id==Auth::user()->id)
                     <div class="showColumn" style="vertical-align: middle; text-align: center; width: 30%;">
-                        <a href="{{ route('showEditProfile', ['id' => auth()->id()]) }}" class="buttonStyle">Edytuj profil</a>
+                        <a href="{{ route('editProfile', ['id' => auth()->id()]) }}" class="buttonStyle">Edytuj profil</a>
                     </div>
                 @endif
             @endauth
         </div>
     </div>
-    <div class="gallery galleryColumns">
+    <div class="gallery">
         @foreach ($tutorials as $tutorial)
             <div class="miniature">
                 @auth
                     @if ($tutorial->user_id==Auth::user()->id)
-                        <a class="buttonStyle miniatureButton" href="{{ route('showEditTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-edit" style="color: white;"></i></a>
-                        <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('deleteTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
+                        <a class="buttonStyle miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-edit" style="color: white;"></i></a>
+                        <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
                     @else
                         <a class="buttonStyle miniatureButton"><i class="fas fa-heart" style="color: white;"></i></a>
                     @endif

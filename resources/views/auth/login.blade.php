@@ -22,7 +22,7 @@
 
 				<div id="rememberPassword">
 					<input id="remember" name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-					<label id="savePassword" for="remember">Zapamiętaj hasło</label>
+					<label id="savePassword" for="remember" style="display: inline-block;">Zapamiętaj hasło</label>
 				</div>
 				<button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">Zaloguj się</button>
 			</div>

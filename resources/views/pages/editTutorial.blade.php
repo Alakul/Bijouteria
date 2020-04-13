@@ -6,7 +6,7 @@
             {{ session()->get('success') }}
         </div>
     @endif
-	<form method="POST" action="{{ route('editTutorial', ['id'=> $tutorials->id]) }}" class="formStyle" enctype="multipart/form-data">
+	<form method="POST" action="{{ route('updateTutorial', ['id'=> $tutorials->id]) }}" class="formStyle" enctype="multipart/form-data">
         <h2 class="headline">Edytuj poradnik</h2>
         {{ csrf_field() }}
 		<div class="inputArea">

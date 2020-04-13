@@ -32,7 +32,7 @@ class TutorialController extends Controller
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
         ->select('tutorials.*', 'users.name')->where('category', $categorySelected)->orderBy('date', 'desc')->paginate(8);
         
-        return view('pages/gallery',['tutorials'=>$tutorials]);
+        return view('pages/home',['tutorials'=>$tutorials]);
     }
 
     public function search(Request $request)
@@ -41,7 +41,7 @@ class TutorialController extends Controller
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
         ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(8);
         
-        return view('pages/search',['tutorials'=>$tutorials]);
+        return view('pages/home',['tutorials'=>$tutorials]);
     }
 
 
@@ -54,7 +54,6 @@ class TutorialController extends Controller
     public function create()
     {
         $categories=DB::table('categories')->get();
-
         return view('pages/addTutorial',['categories'=>$categories]);
     }
 
@@ -239,6 +238,6 @@ class TutorialController extends Controller
         }
 
         $tutorial -> delete();
-        return back();
+        return redirect()->back()->with('success', 'Poradnik został usunięty.');
     }
 }

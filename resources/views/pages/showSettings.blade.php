@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<form method="POST" action="{{ route('changePassword') }}" class="formStyle" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('changePassword') }}" class="formStyle" enctype="multipart/form-data">
         {{csrf_field()}}
         <h2 class="headline">Ustawienia</h2>
         <h3 style="margin-bottom: 30px; text-align: center;">Zmień hasło</h3>

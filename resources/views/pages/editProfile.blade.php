@@ -6,9 +6,9 @@
             {{ session()->get('success') }}
         </div>
     @endif
-    <form method="POST" action="{{ route('editProfile') }}" class="formStyle" enctype="multipart/form-data">
-        {{csrf_field()}}
+    <form method="POST" action="{{ route('updateProfile') }}" class="formStyle" enctype="multipart/form-data">
         <h2 class="headline">Edytuj profil</h2>
+        {{ csrf_field() }}
         <div class="inputArea"> 
             <br>
             <label>Zdjęcie</label>

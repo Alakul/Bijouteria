@@ -5,7 +5,7 @@
 			<div id="categories" class="menuElement" style="margin-right: 14px; float: left;" onClick=""><p class="menuText">Kategorie</p>
 				<ul id="categoriesMenu" class="menuList" style="left: 10px;">
 					@foreach ($categories as $category)
-						<li><a id="{{ $category->category }}" href="{{ route('gallery', ['categorySelected'=> $category->category]) }}">{{ ucfirst(trans($category->category)) }}</a></li>
+						<li><a id="{{ $category->category }}" href="{{ route('showGallery', ['categorySelected'=> $category->category]) }}">{{ ucfirst(trans($category->category)) }}</a></li>
 					@endforeach
 				</ul>
 			</div>
@@ -18,15 +18,14 @@
 
 		<div id="menu" style="margin-right: 14px; float: left;" onClick="listMenu();"><i class="fa fa-bars" style="margin: 11px 0;"></i>
 			<ul id="hamburgerMenu" class="menuList" style="left: 10px;">
-			@guest
-				<li><a style="text-align: center;" href="{{ route('login') }}" class="buttonStyle">LOGOWANIE</a></li>
-				<li><a style="text-align: center;" href="{{ route('register') }}" class="buttonStyle">REJESTRACJA</a></li>
-			@endguest
-
+				@guest
+					<li><a style="font-weight: bold;" href="{{ route('login') }}"><i class="fas fa-user" style="margin-right: 10px;"></i>Logowanie</a></li>
+					<li><a style="font-weight: bold;" href="{{ route('register') }}"><i class="fas fa-lock" style="margin-right: 10px;"></i>Rejestracja</a></li>
+				@endguest
 
 				<lh style="font-weight: bold;">Kategorie</lh>
 				@foreach ($categories as $category)
-					<li><a id="{{ $category->category }}" href="{{ route('home') }}">{{ ucfirst(trans($category->category)) }}</a></li>
+					<li><a id="{{ $category->category }}" href="{{ route('showGallery', ['categorySelected'=> $category->category]) }}">{{ ucfirst(trans($category->category)) }}</a></li>
 				@endforeach
 				
 				@auth
