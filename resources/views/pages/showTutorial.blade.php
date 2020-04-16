@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+    @if(session()->has('success'))
+        <div class=" alertSuccess">
+            {{ session()->get('success') }}
+        </div>
+    @elseif (session()->has('fail'))
+        <div class=" alertSuccess">
+            {{ session()->get('fail') }}
+        </div>
+    @endif
     @isset ($tutorials, $materials, $tools, $steps, $comments, $profiles, $users)
     <div class="show">
         <a id="back" class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
@@ -55,7 +64,7 @@
             </div>
             @auth
                 @if ($tutorials->user_id!=Auth::user()->id)
-                    <a class="buttonStyle buttonFavourites"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
+                    <a class="buttonStyle buttonFavourites" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
                 @else
                     <a class="buttonStyle buttonFavourites" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="text-align: center;"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
                 @endif

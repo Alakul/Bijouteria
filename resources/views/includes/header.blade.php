@@ -31,7 +31,7 @@
 				@auth
 					<lh style="font-weight: bold;">Użytkownik</lh>
 					<li><a href="{{ route('showProfile', ['id' => Auth::user()->id]) }}">Profil</a></li>
-					<li><a href="{{ route('home') }}">Ulubione</a></li>
+					<li><a href="{{ route('showFavourite') }}">Ulubione</a></li>
 					<li><a href="{{ route('settings') }}">Ustawienia</a></li>
 					<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj</a></li>
 						
@@ -60,7 +60,7 @@
 			<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">{{ Auth::user()->name }}</p>
 				<ul id="userMenu" class="menuList" style="right: 10px">
 					<li><a href="{{ route('showProfile', ['id' => Auth::user()->id]) }}">Profil</a></li>
-					<li><a href="{{ route('home') }}">Ulubione</a></li>
+					<li><a href="{{ route('showFavourite') }}">Ulubione</a></li>
 					<li><a href="{{ route('settings') }}">Ustawienia</a></li>
 					<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj</a></li>
 					

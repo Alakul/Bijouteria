@@ -58,7 +58,7 @@ class ProfileController extends Controller
         return view('pages/showProfile',['tutorials'=>$tutorials, 'users'=>$users, 'profiles'=>$profiles]);
     }
 
-    public function profile(Tutorial $tutorial)
+    public function profile()
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
         ->select('tutorials.*', 'users.name')->where('users.id', [auth()->id()])->orderBy('date', 'desc')->paginate(8);

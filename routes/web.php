@@ -33,6 +33,10 @@ Route::get('/edytujProfil/{id}', 'ProfileController@edit')->name('editProfile')-
 //Ustawienia
 Route::get('/ustawienia', 'ChangePasswordController@index')->name('settings')->middleware('auth');
 
+//Ulubione
+Route::get('dodajDoUlubionych/{id}', 'FavouriteController@add')->name('addFavourite');
+Route::get('ulubione', 'FavouriteController@index')->name('showFavourite')->middleware('auth');
+Route::get('/usunZUlubionych/{id}', 'FavouriteController@destroy')->name('destroyFavourite')->middleware('auth');
 
 Route::post('zmienHaslo', 'ChangePasswordController@store')->name('changePassword');
 Route::post('dodajPoradnik', 'TutorialController@store')->name('storeTutorial');
@@ -40,6 +44,8 @@ Route::post('dodajKomentarz', 'CommentController@store')->name('storeComment');
 Route::post('edytujProfil', 'ProfileController@update')->name('updateProfile');
 Route::post('edytujPoradnik/{id}', 'TutorialController@update')->name('updateTutorial');
 Route::post('szukaj', 'TutorialController@search')->name('searchTutorial');
+
+
 
 Route::resource('categories', 'CategoryController');
 Route::resource('profiles', 'ProfileController');
