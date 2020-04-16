@@ -45,4 +45,6 @@ Route::resource('categories', 'CategoryController');
 Route::resource('profiles', 'ProfileController');
 Route::resource('comments', 'CommentController');
 Route::resource('tutorials', 'TutorialController');
+
+
 Auth::routes();

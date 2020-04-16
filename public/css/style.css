@@ -576,6 +576,30 @@ main {
 	display: block;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
+#menu {
+	height: inherit;
+	width: auto;
+	display: none;
+	cursor: pointer;
+	padding: 0 14px;
+	border-radius: 4px;
+	background-color: white;
+	color: #333333;
+	font-size: 16px;
+}
+#menu:hover {
+	background-color: #F0F0F0;
+}
+
+
+
+.submenuList {
+	display: none;
+	text-decoration: none;
+}
+
+
+
 
 
 /* Pagination */
@@ -753,20 +777,17 @@ main {
 
 
 
-#menu {
-	height: inherit;
-	width: auto;
-	display: none;
-	cursor: pointer;
-	padding: 0 14px;
-	border-radius: 4px;
-	background-color: white;
-	color: #333333;
-	font-size: 16px;
-}
+
+
+
+
+
 
 @media screen and (max-width: 970px) {
-	#rightbox {
+	#rightbox > .menuButton{
+		display: none;
+	}
+	#rightbox > #user{
 		display: none;
 	}
 	#leftSide {
@@ -781,5 +802,24 @@ main {
 	}
 	.menuList > li {
 		border-bottom: 1px solid gainsboro;
+	}
+}
+
+@media screen and (max-width: 470px) {
+	.inputText{
+		font-size: 13px;
+		padding: 8px;
+	}
+	label {
+		font-size: 11px;
+	}
+	.headline {
+		font-size: 22px;
+	}
+	.formStyle {
+		padding: 40px 25px 40px 25px;
+	}
+	main {
+		padding: 20px;
 	}
 }

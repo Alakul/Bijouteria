@@ -50,8 +50,8 @@
 
 	@guest
 		<div id="rightbox">
-			<a style="float: right; margin-left: 14px;" href="{{ route('login') }}" class="buttonStyle">LOGOWANIE</a>
-			<a style="float: right;" href="{{ route('register') }}" class="buttonStyle">REJESTRACJA</a>
+			<a style="float: right; margin-left: 14px;" href="{{ route('login') }}" class="buttonStyle menuButton">LOGOWANIE</a>
+			<a style="float: right;" href="{{ route('register') }}" class="buttonStyle menuButton">REJESTRACJA</a>
 		</div>
 	@endguest
 
