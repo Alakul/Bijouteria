@@ -11,7 +11,6 @@
     @endif
     @isset ($tutorials, $materials, $tools, $steps, $comments, $profiles, $users)
     <div class="show">
-        <a id="back" class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
         <div class="showColumn">
             <div class="formStyle" style="max-width: 450px; width: 450px; margin-right: 10px;">
                 <h2 class="headline">{{ $tutorials->title }}</h2>

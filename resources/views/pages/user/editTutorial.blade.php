@@ -7,8 +7,8 @@
         </div>
     @endif
 	<form method="POST" action="{{ route('updateTutorial', ['id'=> $tutorials->id]) }}" class="formStyle" enctype="multipart/form-data">
-        <h2 class="headline">Edytuj poradnik</h2>
         {{ csrf_field() }}
+        <h2 class="headline">Edytuj poradnik</h2>
 		<div class="inputArea">
             <br>
             <label>Tytuł <span class="asterisk">*</span></label>

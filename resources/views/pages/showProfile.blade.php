@@ -7,11 +7,6 @@
         </div>
     @endif
     <div class="show">
-        @auth
-            @if ($users->id!=Auth::user()->id)
-                <a id="back"class="showColumn" href="{{ URL::previous() }}"><i id="backIcon" class="fa fa-arrow-left"></i></a>
-            @endif
-        @endauth
         <div id="profile" class="formStyle">
             <div class="showColumn">
                 <img class="profileImg" src="/storage/avatarsIMG/{{ $profiles->avatar }}"/>

@@ -26,7 +26,6 @@ Route::get('/poradnik/edytuj/{id}', 'TutorialController@edit')->name('editTutori
 Route::get('/usunPoradnik/{id}', 'TutorialController@destroy')->name('destroyTutorial')->middleware('auth');
 
 //Profil
-Route::get('/profil', 'ProfileController@profile')->name('profile')->middleware('auth');
 Route::get('/uzytkownik/{id}', 'ProfileController@show')->name('showProfile');
 Route::get('/edytujProfil/{id}', 'ProfileController@edit')->name('editProfile')->middleware('auth');
 
@@ -34,7 +33,7 @@ Route::get('/edytujProfil/{id}', 'ProfileController@edit')->name('editProfile')-
 Route::get('/ustawienia', 'ChangePasswordController@index')->name('settings')->middleware('auth');
 
 //Ulubione
-Route::get('dodajDoUlubionych/{id}', 'FavouriteController@add')->name('addFavourite');
+Route::get('/dodajDoUlubionych/{id}', 'FavouriteController@add')->name('addFavourite')->middleware('auth');
 Route::get('ulubione', 'FavouriteController@index')->name('showFavourite')->middleware('auth');
 Route::get('/usunZUlubionych/{id}', 'FavouriteController@destroy')->name('destroyFavourite')->middleware('auth');
 
@@ -45,6 +44,11 @@ Route::post('edytujProfil', 'ProfileController@update')->name('updateProfile');
 Route::post('edytujPoradnik/{id}', 'TutorialController@update')->name('updateTutorial');
 Route::post('szukaj', 'TutorialController@search')->name('searchTutorial');
 
+
+//Admin
+Route::get('/uzytkownicy', 'HomeController@users')->name('showUsers')->middleware('auth');
+Route::get('/komentarze', 'HomeController@comments')->name('showComments')->middleware('auth');
+Route::get('/poradniki', 'HomeController@tutorials')->name('showTutorials')->middleware('auth');
 
 
 Route::resource('categories', 'CategoryController');

@@ -76,7 +76,7 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         $profiles = Profile::where('user_id', [auth()->id()])->first();
-        return view('pages/editProfile',['profiles'=>$profiles]);
+        return view('pages/user/editProfile',['profiles'=>$profiles]);
     }
 
     /**

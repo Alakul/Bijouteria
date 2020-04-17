@@ -54,7 +54,7 @@ class TutorialController extends Controller
     public function create()
     {
         $categories=DB::table('categories')->get();
-        return view('pages/addTutorial',['categories'=>$categories]);
+        return view('pages/user/addTutorial',['categories'=>$categories]);
     }
 
     /**
@@ -153,7 +153,7 @@ class TutorialController extends Controller
         $steps = DB::table('steps')->where('tutorial_id', [$id])->orderBy('step', 'asc')->get();
         $categories=DB::table('categories')->get();
 
-        return view('pages/editTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools,
+        return view('pages/user/editTutorial',['tutorials'=>$tutorials, 'materials'=>$materials, 'tools'=>$tools,
         'steps'=>$steps, 'categories'=>$categories]);
     }
 

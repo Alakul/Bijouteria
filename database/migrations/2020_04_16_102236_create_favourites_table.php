@@ -17,7 +17,7 @@ class CreateFavouritesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tutorial_id');
             $table->unsignedBigInteger('user_id');
-            $table->char('state', 1);
+            $table->boolean('state');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

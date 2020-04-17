@@ -7,8 +7,8 @@
         </div>
     @endif
     <form method="POST" action="{{ route('updateProfile') }}" class="formStyle" enctype="multipart/form-data">
-        <h2 class="headline">Edytuj profil</h2>
         {{ csrf_field() }}
+        <h2 class="headline">Edytuj profil</h2>
         <div class="inputArea"> 
             <br>
             <label>Zdjęcie</label>

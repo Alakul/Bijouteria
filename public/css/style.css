@@ -95,22 +95,22 @@ main {
 
 
 /* Button */
+
 .buttonAdd {
 	padding: 10px;
 	font-size: 15px;
 	border-radius: 4px;
-	border: 2px solid silver;
+	border: none;
 	margin: auto auto 30px auto;
 	font-family: Lucida, sans-serif;
 	width: auto;
 	cursor: pointer;
 	font-weight: bold;
 	display: block;
-	background-color: silver;
+	background-color: white;
 }
 .buttonAdd:hover {
-	background-color: gray;
-	border: 2px solid gray;
+	background-color: #F0F0F0;
 }
 .buttonStyle {
 	padding: 12px;
@@ -300,25 +300,8 @@ main {
 	background-color: #F0F0F0;
 	border-radius: 4px;
 }
-#backIcon {
-	font-size: 20px;
-	padding: 10px;
-	margin: 0;
-}
-#back {
-	float: left;
-	height: auto;
-	position: fixed;
-	left: 0;
-	margin: 0 12px;
-	background-color: white;
-	border-radius: 8px;
-	top: 72px;
 
-}
-#back:hover {
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
+
 
 
 /* Image */
