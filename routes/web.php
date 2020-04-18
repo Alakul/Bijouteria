@@ -46,9 +46,15 @@ Route::post('szukaj', 'TutorialController@search')->name('searchTutorial');
 
 
 //Admin
-Route::get('/uzytkownicy', 'HomeController@users')->name('showUsers')->middleware('auth');
-Route::get('/komentarze', 'HomeController@comments')->name('showComments')->middleware('auth');
-Route::get('/poradniki', 'HomeController@tutorials')->name('showTutorials')->middleware('auth');
+Route::get('/uzytkownicy', 'HomeController@users')->name('showUsers')->middleware('auth:admin');
+Route::get('/komentarze', 'HomeController@comments')->name('showComments')->middleware('auth:admin');
+Route::get('/poradniki', 'HomeController@tutorials')->name('showTutorials')->middleware('auth:admin');
+
+Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
+Route::post('/login/admin', 'Auth\LoginController@adminLogin');
+Route::view('/admin', 'pages/admin/home');
+
+
 
 
 Route::resource('categories', 'CategoryController');

@@ -18,17 +18,31 @@
 
 		<div id="menu" style="margin-right: 14px; float: left;" onClick="listMenu();"><i class="fa fa-bars" style="margin: 11px 0;"></i>
 			<ul id="hamburgerMenu" class="menuList" style="left: 10px;">
-				@guest
+				@if (Auth::guard('admin')->check())
+				@elseif (Auth::check())
+				@else
 					<li><a style="font-weight: bold;" href="{{ route('login') }}"><i class="fas fa-user" style="margin-right: 10px;"></i>Logowanie</a></li>
 					<li><a style="font-weight: bold;" href="{{ route('register') }}"><i class="fas fa-lock" style="margin-right: 10px;"></i>Rejestracja</a></li>
-				@endguest
+				@endif
+
 
 				<lh style="font-weight: bold;">Kategorie</lh>
 				@foreach ($categories as $category)
 					<li><a id="{{ $category->category }}" href="{{ route('showGallery', ['categorySelected'=> $category->category]) }}">{{ ucfirst(trans($category->category)) }}</a></li>
 				@endforeach
-				
-				@auth
+
+
+				@if (Auth::guard('admin')->check())
+					<lh style="font-weight: bold;">Zarządzanie</lh>
+					<li><a href="{{ route('showUsers') }}">Użytkownicy</a></li>
+					<li><a href="{{ route('showTutorials') }}">Poradniki</a></li>
+					<li><a href="{{ route('showComments') }}">Komentarze</a></li>
+					<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj</a></li>
+						
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+						@csrf
+					</form>
+				@elseif (Auth::check())
 					<lh style="font-weight: bold;">Użytkownik</lh>
 					<li><a href="{{ route('showProfile', ['id' => Auth::user()->id]) }}">Profil</a></li>
 					<li><a href="{{ route('showFavourite') }}">Ulubione</a></li>
@@ -38,7 +52,8 @@
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 						@csrf
 					</form>
-				@endauth
+				@endif
+
 			</ul>
 		</div>
 
@@ -48,29 +63,42 @@
 		<a href="{{ route('home') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="fortissimo logo"></a>
 	</div>
 
-	@guest
-		<div id="rightbox">
+	@if (Auth::guard('admin')->check())
+    <div id="rightbox">
+		<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">Admin</p>
+			<ul id="userMenu" class="menuList" style="right: 10px">
+				<li><a href="{{ route('showUsers') }}">Użytkownicy</a></li>
+				<li><a href="{{ route('showTutorials') }}">Poradniki</a></li>
+				<li><a href="{{ route('showComments') }}">Komentarze</a></li>
+				<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj</a></li>
+					
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>
+			</ul>
+		</div>
+	</div>
+	@elseif (Auth::check())
+	<div id="rightbox">
+		<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">{{ Auth::user()->name }}</p>
+			<ul id="userMenu" class="menuList" style="right: 10px">
+				<li><a href="{{ route('showProfile', ['id' => Auth::user()->id]) }}">Profil</a></li>
+				<li><a href="{{ route('showFavourite') }}">Ulubione</a></li>
+				<li><a href="{{ route('settings') }}">Ustawienia</a></li>
+				<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj</a></li>
+					
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					@csrf
+				</form>
+			</ul>
+		</div>
+			
+		<a href="{{ route('createTutorial') }}" class="menuElement" style="float: right;"><i class="fa fa-plus" style="margin: 11px 0;"></i></a>
+	</div>
+	@else
+	<div id="rightbox">
 			<a style="float: right; margin-left: 14px;" href="{{ route('login') }}" class="buttonStyle menuButton">LOGOWANIE</a>
 			<a style="float: right;" href="{{ route('register') }}" class="buttonStyle menuButton">REJESTRACJA</a>
 		</div>
-	@endguest
-
-	@auth
-		<div id="rightbox">
-			<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">{{ Auth::user()->name }}</p>
-				<ul id="userMenu" class="menuList" style="right: 10px">
-					<li><a href="{{ route('showProfile', ['id' => Auth::user()->id]) }}">Profil</a></li>
-					<li><a href="{{ route('showFavourite') }}">Ulubione</a></li>
-					<li><a href="{{ route('settings') }}">Ustawienia</a></li>
-					<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Wyloguj</a></li>
-					
-					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-						@csrf
-					</form>
-				</ul>
-			</div>
-			
-			<a href="{{ route('createTutorial') }}" class="menuElement" style="float: right;"><i class="fa fa-plus" style="margin: 11px 0;"></i></a>
-		</div>
-	@endauth
+	@endif
 </div>

@@ -1,8 +1,15 @@
 @extends('layouts.app')
 @section('content')
+		@isset($url)
+		<form method="POST" action='{{ url("login/$url") }}' class="formStyle">
+			<h2 class="headline">Logowanie do administracji</h2>
+		@else
 		<form method="POST" action="{{ route('login') }}" class="formStyle">
 			<h2 class="headline">Logowanie</h2>
-			@csrf
+		@endisset
+			@csrf	
+			
+			
 			<div class="inputArea">
 				@error('email')
                     <span role="alert" class="alertMessage">

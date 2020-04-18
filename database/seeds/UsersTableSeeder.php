@@ -11,13 +11,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i<10; $i++)
-        {
-            $user=new \App\Models\User();
-            $user->name='User'.$i;
-            $user->password=bcrypt('12345');
-            $user->email='user'.$i.'@user.com';
-            $user->save();
-        }
+        $admin=new \App\Models\Admin();
+        $admin->password=bcrypt('12345678');
+        $admin->email='admin@gmail.com';
+        $admin->save();
     }
 }

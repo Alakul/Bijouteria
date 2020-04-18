@@ -27,14 +27,18 @@
     <div class="gallery">
         @foreach ($tutorials as $tutorial)
             <div class="miniature">
-                @auth
+                @if (Auth::guard('admin')->check())
+                    <a class="buttonStyle miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-edit" style="color: white;"></i></a>
+                    <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
+                @elseif (Auth::check())
                     @if ($tutorial->user_id==Auth::user()->id)
                         <a class="buttonStyle miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-edit" style="color: white;"></i></a>
                         <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
                     @else
-                        <a class="buttonStyle miniatureButton"><i class="fas fa-heart" style="color: white;"></i></a>
+                        <a class="buttonStyle miniatureButton"  href="{{ route('addFavourite', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fas fa-heart" style="color: white;"></i></a>  
                     @endif
-                @endauth
+                @endif
+                
                 <p class="miniatureButton" style="background-color: white; bottom: 0; font-weight: bold; font-size: 12px; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
                 <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
                     <img class="miniatureImg" src="/storage/tutorialsIMG/{{ $tutorial->title_picture }}"/>

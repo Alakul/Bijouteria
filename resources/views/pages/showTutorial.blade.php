@@ -61,13 +61,16 @@
                     <p class="commentDate">{{ date('d.m.yy', strtotime($tutorials->date)) }}</p>
                 </div>
             </div>
-            @auth
+
+            @if (Auth::guard('admin')->check())
+            @elseif (Auth::check())
                 @if ($tutorials->user_id!=Auth::user()->id)
                     <a class="buttonStyle buttonFavourites" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
                 @else
                     <a class="buttonStyle buttonFavourites" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="text-align: center;"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
                 @endif
-            @endauth
+            @endif
+
         </div>
     </div>
 
@@ -77,14 +80,16 @@
             <form method="POST" action="{{ route('storeComment') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
-                <label>Napisz komentarz</label>
-                @guest
-                    <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>
-                @endguest
-                @auth
+                @if (Auth::guard('admin')->check())
+                @elseif (Auth::check())
+                    <label>Napisz komentarz</label>
                     <textarea name="comment" class="inputText" type="text" maxlength="300" required style="margin-bottom: 8px;"></textarea>
                     <button type="submit" class="buttonStyle" style="margin: 0 auto 40px auto;">Opublikuj</button>
-                @endauth
+                @else
+                    <label>Napisz komentarz</label>
+                    <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>
+                @endif
+
                 <input type="hidden" name="tutorial_id" value="{{ $tutorials-> id}}">
             </form>
         
@@ -96,11 +101,15 @@
                     </div>
                     <div class="commentContent">
                         <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}" class="commentUser">{{ $comment->name }}</a>
-                        @auth
+
+                        @if (Auth::guard('admin')->check())
+                            <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyComment', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>
+                        @elseif (Auth::check())
                             @if ($comment->user_id==Auth::user()->id)
                                 <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyComment', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>
                             @endif
-                        @endauth
+                        @endif
+
                         <p class="commentDate">{{ date('d.m.yy', strtotime($comment->date)) }}, godz. {{ date('H:i', strtotime($comment->date)) }}</p>
                         <p class="commentComment" >{{ $comment->comment }}</p>
                     </div>
