@@ -46,9 +46,13 @@ Route::post('szukaj', 'TutorialController@search')->name('searchTutorial');
 
 
 //Admin
-Route::get('/uzytkownicy', 'HomeController@users')->name('showUsers')->middleware('auth:admin');
-Route::get('/komentarze', 'HomeController@comments')->name('showComments')->middleware('auth:admin');
-Route::get('/poradniki', 'HomeController@tutorials')->name('showTutorials')->middleware('auth:admin');
+Route::get('/uzytkownicy', 'AdminController@users')->name('showUsers')->middleware('auth:admin');
+Route::get('/komentarze', 'AdminController@comments')->name('showComments')->middleware('auth:admin');
+Route::get('/poradniki', 'AdminController@tutorials')->name('showTutorials')->middleware('auth:admin');
+
+Route::get('/usunPoradnikAdmin/{id}', 'AdminController@destroyTutorial')->name('destroyTutorialAdmin')->middleware('auth:admin');
+Route::get('/usunKomentarzAdmin/{id}', 'AdminController@destroyComment')->name('destroyCommentAdmin')->middleware('auth:admin');
+Route::get('/usunUzytkownikaAdmin/{id}', 'AdminController@destroyUser')->name('destroyUserAdmin')->middleware('auth:admin');
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');

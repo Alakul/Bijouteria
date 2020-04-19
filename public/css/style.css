@@ -66,6 +66,22 @@ main {
 	padding: 30px;
 }
 
+
+/* Admin */
+.adminTable {
+	background-color: white;
+	padding: 6px;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+th, td {
+	padding: 15px;
+	text-align: left;
+	border: 1px solid black;
+  }
+
+
 /* Alert */
 .alert {
 	margin: -20px 0 14px 0;
