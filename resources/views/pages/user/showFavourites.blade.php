@@ -9,10 +9,10 @@
         @foreach ($tutorials as $tutorial)
             <div class="miniature">
                 <div class="miniatureInner">
-                    <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyFavourite', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
-                    <p class="miniatureButton" style="background-color: white; bottom: 0; font-size: 12px; font-weight: bold; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
+                    <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyFavourite', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close"></i></a>
+                    <p class="miniatureTitle">{{ Str::limit($tutorial->title, 50) }}</p>
                     <a href="{{ route('showTutorial', ['id' => $tutorial->tutorial_id]) }}">
-                        <img class="miniatureImg" src="/storage/tutorialsIMG/{{ $tutorial->title_picture }}"/>
+                        <div class="miniatureImg" style="background-image: url('/storage/tutorialsIMG/{{ $tutorial->title_picture }}')"></div>
                     </a>
                 </div>
             </div>

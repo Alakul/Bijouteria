@@ -22,7 +22,7 @@ class TutorialController extends Controller
     public function index()
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->paginate(8);
+        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->paginate(20);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
@@ -30,7 +30,7 @@ class TutorialController extends Controller
     public function gallery($categorySelected)
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('category', $categorySelected)->orderBy('date', 'desc')->paginate(8);
+        ->select('tutorials.*', 'users.name')->where('category', $categorySelected)->orderBy('date', 'desc')->paginate(20);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
@@ -39,7 +39,7 @@ class TutorialController extends Controller
     {
         $keyword = $request->input('search');
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(8);
+        ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(20);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }

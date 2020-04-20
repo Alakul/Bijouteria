@@ -24,25 +24,26 @@
             @endauth
         </div>
     </div>
+
     <div class="gallery">
         @foreach ($tutorials as $tutorial)
             <div class="miniature">
-                @if (Auth::guard('admin')->check())
-                    <a class="buttonStyle miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-edit" style="color: white;"></i></a>
-                    <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
-                @elseif (Auth::check())
-                    @if ($tutorial->user_id==Auth::user()->id)
-                        <a class="buttonStyle miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-edit" style="color: white;"></i></a>
-                        <a class="buttonStyle miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fa fa-close" style="color: white;"></i></a>
-                    @else
-                        <a class="buttonStyle miniatureButton"  href="{{ route('addFavourite', ['id' => $tutorial->id]) }}" style="right: 0;"><i class="fas fa-heart" style="color: white;"></i></a>  
+                <div class="miniatureInner">
+                    @if (Auth::guard('admin')->check())
+                        <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close"></i></a>
+                    @elseif (Auth::check())
+                        @if ($tutorial->user_id==Auth::user()->id)
+                            <a class="miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}" style="right: 38px;"><i class="fa fa-edit" style="font-size: 12px;"></i></a>
+                            <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close"></i></a>
+                        @else
+                            <a class="miniatureButton"  href="{{ route('addFavourite', ['id' => $tutorial->id]) }}"><i class="fas fa-heart"></i></a>  
+                        @endif
                     @endif
-                @endif
-                
-                <p class="miniatureButton" style="background-color: white; bottom: 0; font-weight: bold; font-size: 12px; color: black; padding: 12px; border-radius: 4px;">{{ Str::limit($tutorial->title, 28) }}</p>
-                <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
-                    <img class="miniatureImg" src="/storage/tutorialsIMG/{{ $tutorial->title_picture }}"/>
-                </a>
+                    <p class="miniatureTitle">{{ Str::limit($tutorial->title, 50) }}</p>
+                    <a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">
+                        <div class="miniatureImg" style="background-image: url('/storage/tutorialsIMG/{{ $tutorial->title_picture }}')"></div>
+                    </a>
+                </div>
             </div>
         @endforeach
     </div>

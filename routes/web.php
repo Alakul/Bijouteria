@@ -56,7 +56,7 @@ Route::get('/usunUzytkownikaAdmin/{id}', 'AdminController@destroyUser')->name('d
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
-Route::view('/admin', 'pages/admin/home');
+
 
 
 

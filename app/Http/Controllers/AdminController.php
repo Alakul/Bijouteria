@@ -83,4 +83,13 @@ class AdminController extends Controller
 
         return back();
     }
+
+
+
+    public function admin(){
+        $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
+        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->paginate(8);
+        
+        return view('pages/admin/home',['tutorials'=>$tutorials]);
+    }
 }
