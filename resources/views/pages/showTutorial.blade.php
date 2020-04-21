@@ -65,9 +65,9 @@
             @if (Auth::guard('admin')->check())
             @elseif (Auth::check())
                 @if ($tutorials->user_id!=Auth::user()->id)
-                    <a class="buttonStyle buttonFavourites" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><p style="display: inline-block; margin: 0 6px 0 0;">Dodaj do ulubionych</p><i class="fas fa-heart" style="color: white; margin-left: 6px;"></i></a>
+                    <a class="buttons buttonStyle" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><i class="fas fa-heart"></i><p class="buttonText">Dodaj do ulubionych</p></a>
                 @else
-                    <a class="buttonStyle buttonFavourites" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="text-align: center;"><p style="display: inline-block; margin: 0 6px 0 0;">Edytuj</p><i class="fas fa-edit" style="color: white; margin-left: 6px;"></i></a>    
+                    <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>    
                 @endif
             @endif
 

@@ -1,4 +1,4 @@
-<div>
+<nav>
 	<div id="leftbox">
 		<div id="leftSide">
 			<a class="menuElement" style="margin-right: 10px; float: left; display: none;"><i class="fas fa-bars"></i></a>
@@ -101,4 +101,4 @@
 			<a style="float: right;" href="{{ route('register') }}" class="buttonStyle menuButton">REJESTRACJA</a>
 		</div>
 	@endif
-</div>
+</nav>

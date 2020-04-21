@@ -22,7 +22,7 @@
             <img id="avatarPreview" src="/storage/avatarsIMG/{{ $profiles->avatar }}" class="previewImg"/><br>
 
             <label>Informacje o Twoim profilu</label>
-            <textarea name="info" class="inputText" type="text" maxlength="1000">{{ $profiles->info}}</textarea>
+            <textarea name="info" class="inputText" type="text" maxlength="300">{{ $profiles->info}}</textarea>
 
             <button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">Zapisz</button>
         </div>

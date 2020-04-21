@@ -321,7 +321,7 @@ function fileExtensionValidate(file) {
 	}
 }
 
-var maxSize = '2048';
+var maxSize = '2048'; //2 MB
 function fileSizeValidate(file) {
 	if (file.files && file.files[0]) {
 		var fileSize = file.files[0].size/1024;

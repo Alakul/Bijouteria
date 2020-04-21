@@ -150,13 +150,22 @@ th, td {
 .buttonStyle:active {
     color: gray;
 }
-.buttonFavourites {
-	background-color: silver; 
-	margin: 10px 0 0 0;
+.buttonText {
+	display: inline-block;
+	margin: 0 0 0 8px;
 }
-.buttonFavourites:hover {
-	background-color: gray;
+.buttons {
+	text-align: center;
+	margin-top: 10px;
+	color: black;
+	border: 1px solid #DDDDDD;
+	background-color: white;
 }
+.buttons:hover {
+	background-color: #E8E8E8;
+}
+
+
 
 /* Comment */
 .comment {
@@ -231,9 +240,9 @@ th, td {
 }
 .formStyle {
 	max-width: 500px;
+	margin: 20px auto 20px auto;
 	border-radius: 8px;
 	padding: 50px 30px 50px 30px;
-	margin: 0 auto 0 auto;
 	border: 1px solid #DDDDDD;
 	background-color: white;
 }
@@ -261,7 +270,7 @@ th, td {
 .miniatureButton {
 	width: 18px;
 	height: 18px;
-	font-size: 14px;
+	font-size: 13px;
 	border-radius: 4px;
 	letter-spacing: 0.4px;
 	margin: 10px;
@@ -284,7 +293,7 @@ th, td {
 	margin-left: auto;
 }
 .miniatureButton:hover {
-	background-color: #F0F0F0;
+	background-color: gainsboro;
 }
 .miniatureTitle {
 	padding: 8px 10px 8px 10px;
@@ -453,7 +462,7 @@ th, td {
 }
 .inputText {
 	padding: 12px 10px 12px 10px;
-	margin: 4px 0px 30px 0px;
+	margin: 4px 0px 40px 0px;
 	width: 100%;
 	background-color: white;
 	border: 2px solid #DDDDDD;
@@ -725,16 +734,18 @@ th, td {
 	border-radius: 4px;
 	float: left;
 }
-#profileContent {
-	vertical-align: top;
-	padding: 0 0 0 20px;
-	width: 60%;
-}
-#profile {
-	max-width: 500px;
-	display: table;
+.profile {
+	width: 500px;
+	display: inline-block;
 	padding: 20px;
-	margin-bottom: 30px;
+	margin: 10px 10px 30px 10px;
+	background-color: white;
+	border-radius: 4px;
+}
+.profileContent {
+	vertical-align: top;
+	padding: 0 20px 0 20px;
+	width: 100%;
 }
 
 
@@ -891,3 +902,78 @@ th, td {
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* define a fixed width for the entire menu */
+.navigation {
+  width: 300px;
+}
+
+/* reset our lists to remove bullet points and padding */
+.mainmenu, .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* make ALL links (main and submenu) have padding and background color */
+.mainmenu a {
+  display: block;
+  background-color: #CCC;
+  text-decoration: none;
+  padding: 10px;
+  color: #000;
+}
+
+/* add hover behaviour */
+.mainmenu a:hover {
+    background-color: #C5C5C5;
+}
+
+
+/* when hovering over a .mainmenu item,
+  display the submenu inside it.
+  we're changing the submenu's max-height from 0 to 200px;
+*/
+
+.mainmenu li:hover .submenu {
+  display: block;
+  max-height: 200px;
+}
+
+/*
+  we now overwrite the background-color for .submenu links only.
+  CSS reads down the page, so code at the bottom will overwrite the code at the top.
+*/
+
+.submenu a {
+  background-color: #999;
+}
+
+/* hover behaviour for links inside .submenu */
+.submenu a:hover {
+  background-color: #666;
+}
+
+/* this is the initial state of all submenus.
+  we set it to max-height: 0, and hide the overflowed content.
+*/
+.submenu {
+  overflow: hidden;
+  max-height: 0;
+  -webkit-transition: all 0.5s ease-out;
+}

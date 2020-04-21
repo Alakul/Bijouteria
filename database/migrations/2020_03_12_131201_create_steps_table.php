@@ -18,7 +18,7 @@ class CreateStepsTable extends Migration
             $table->unsignedBigInteger('tutorial_id');
             $table->tinyInteger('step');
             $table->string('picture');
-            $table->string('description');
+            $table->string('description', 1000);
             $table->timestamps();
 
             $table->foreign('tutorial_id')->references('id')->on('tutorials')->onDelete('cascade');

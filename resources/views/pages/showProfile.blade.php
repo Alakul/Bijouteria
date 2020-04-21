@@ -7,19 +7,17 @@
         </div>
     @endif
     <div class="show">
-        <div id="profile" class="formStyle">
+        <div class="profile">
             <div class="showColumn">
                 <img class="profileImg" src="/storage/avatarsIMG/{{ $profiles->avatar }}"/>
             </div>
-            <div class="showColumn" style="vertical-align: top; padding: 0 20px 0 20px; width: 60%;">
+            <div class="showColumn profileContent">
                 <p id="userLogin">{{ $users->name }}</p>
                 <p style="font-size: 14px;">{{ $profiles->info }}</p>
             </div>
             @auth
                 @if ($users->id==Auth::user()->id)
-                    <div class="showColumn" style="vertical-align: middle; text-align: center; width: 30%;">
-                        <a href="{{ route('editProfile', ['id' => auth()->id()]) }}" class="buttonStyle">Edytuj profil</a>
-                    </div>
+                    <a href="{{ route('editProfile', ['id' => auth()->id()]) }}" class="buttons buttonStyle"><i class="fas fa-edit"></i><p class="buttonText">Edytuj profil</p></a> 
                 @endif
             @endauth
         </div>
@@ -30,11 +28,11 @@
             <div class="miniature">
                 <div class="miniatureInner">
                     @if (Auth::guard('admin')->check())
-                        <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close"></i></a>
+                        <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close" style="font-size: 15px;"></i></a>
                     @elseif (Auth::check())
                         @if ($tutorial->user_id==Auth::user()->id)
-                            <a class="miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}" style="right: 38px;"><i class="fa fa-edit" style="font-size: 12px;"></i></a>
-                            <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close"></i></a>
+                            <a class="miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}" style="right: 38px;"><i class="fa fa-edit"></i></a>
+                            <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close" style="font-size: 15px;"></i></a>
                         @else
                             <a class="miniatureButton"  href="{{ route('addFavourite', ['id' => $tutorial->id]) }}"><i class="fas fa-heart"></i></a>  
                         @endif
