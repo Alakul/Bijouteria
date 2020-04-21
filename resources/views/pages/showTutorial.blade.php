@@ -11,47 +11,46 @@
     @endif
     @isset ($tutorials, $materials, $tools, $steps, $comments, $profiles, $users)
     <div class="show">
-        <div class="showColumn">
-            <div class="formStyle" style="max-width: 450px; width: 450px; margin-right: 10px;">
-                <h2 class="headline">{{ $tutorials->title }}</h2>
-                <div class="inputArea">
-                    
-                    <img class="showImg" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}">
-                    <p class="showDescription">{{ $tutorials->description }}</p>
+        <div class="showColumn" style="margin-right: 10px;">
+            <div class="showTutorial">
+                <h2 class="showHeadline">{{ $tutorials->title }}</h2>
 
-                    <label style="display: inline-block;">Kategoria:</label>
-                    <p class="showCategory">{{ $tutorials->category }}</p><br>
+                <img class="showImg" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}">
+                <p class="showDescription">{{ $tutorials->description }}</p>
 
-                    <label>Wymagane materiały:</label>
-                    <ul id="materialsListShow" class="showList">
-                        @foreach ($materials as $material)
-                            <li>{{ $material->material}}</li>
-                        @endforeach
-                    </ul>
+                <label class="showLabel" style="display: inline-block; margin: 16px 0 40px 30px;">Kategoria:</label>
+                <p class="showCategory">{{ $tutorials->category }}</p><br>
+
+                <label class="showLabel">Wymagane materiały:</label>
+                <ul id="showMaterialsList" class="showList">
+                    @foreach ($materials as $material)
+                        <li>{{ $material->material}}</li>
+                    @endforeach
+                </ul>
                     
-                    <label>Wymagane narzędzia:</label>
-                    <ul id="toolsListShow" class="showList">
-                        @foreach ($tools as $tool)
-                            <li>{{ $tool->tool}}</li>
-                        @endforeach
-                    </ul>
+                <label class="showLabel">Wymagane narzędzia:</label>
+                <ul id="showToolsList" class="showList">
+                    @foreach ($tools as $tool)
+                        <li>{{ $tool->tool}}</li>
+                    @endforeach
+                </ul>
                 
-                    <div id="stepShow">
-                        <ul id="stepsList">
-                            @foreach ($steps as $step)
-                                <li class="showSteps">
-                                    <h3>Krok {{ $step->step}}:</h3>
-                                    <img id="imgStepShow" class="showImg" src="/storage/tutorialsIMG/{{ $step->picture }}">
-                                    <p class="showDescriptionStep">{{ $step->description}}</p>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div id="stepShow">
+                    <ul id="stepsList">
+                        @foreach ($steps as $step)
+                            <li class="showSteps">
+                                <h3 class="showH3">Krok {{ $step->step}}:</h3>
+                                <img id="imgStepShow" class="showImg" src="/storage/tutorialsIMG/{{ $step->picture }}">
+                                <p class="showDescriptionStep">{{ $step->description}}</p>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </div>
+
         <div class="showColumn">
-            <div class="formStyle" style="padding: 12px; margin-bottom: 0;">
+            <div class="profile" style="padding: 16px; max-width: 240px;">
                 <div class="showColumn" style=" height: 100%;">
                 <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}" style=" vertical-align: middle;"><img class="showAvatar" src="/storage/avatarsIMG/{{ $profiles->avatar }}"></a>
                 </div>
@@ -60,17 +59,16 @@
                     <p class="commentDate" style="margin-bottom: 2px; font-size: 11px;">Opublikowano:</p>
                     <p class="commentDate">{{ date('d.m.yy', strtotime($tutorials->date)) }}</p>
                 </div>
-            </div>
-
-            @if (Auth::guard('admin')->check())
-            @elseif (Auth::check())
-                @if ($tutorials->user_id!=Auth::user()->id)
-                    <a class="buttons buttonStyle" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><i class="fas fa-heart"></i><p class="buttonText">Dodaj do ulubionych</p></a>
-                @else
-                    <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>    
+                @if (Auth::guard('admin')->check())
+                @elseif (Auth::check())
+                    @if ($tutorials->user_id!=Auth::user()->id)
+                        <a class="buttons buttonStyle" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><i class="fas fa-heart"></i><p class="buttonText">Dodaj do ulubionych</p></a>
+                    @else
+                        <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>
+                        <a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorials->id]) }}"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a>
+                    @endif
                 @endif
-            @endif
-
+            </div>
         </div>
     </div>
 
