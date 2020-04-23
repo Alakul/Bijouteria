@@ -22,7 +22,7 @@ function addToList(obj){
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
 			childX.setAttribute('id','materialRow_'+materials);
-			childX.innerHTML = '<input name="material_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><i id="materialsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="margin-right: 6px; display: inline-block;"></i><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="margin-right: 0; display: inline-block;"></i>';
+			childX.innerHTML = '<input name="material_'+materials+'" class="inputText materialsInput" type="text" maxlength="100" required><div class="listElement"><i id="materialsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);"></i></div><div class="listElement"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i></div>';
 			x.appendChild(childX);
 			changeIdMaterials();
 			changeFirstElementMaterials();
@@ -35,7 +35,7 @@ function addToList(obj){
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
 			childX.setAttribute('id','toolRow_'+tools);
-			childX.innerHTML = '<input name="tool_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><i id="toolsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="margin-right: 6px; display: inline-block;"></i><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i>';
+			childX.innerHTML = '<input name="tool_'+tools+'" class="inputText toolsInput" type="text" maxlength="100" required><div class="listElement"><i id="toolsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);"></i></div><div class="listElement"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);"></i></div>';
 			x.appendChild(childX);
 			changeIdTools();
 			changeFirstElementTools();
@@ -49,7 +49,7 @@ function addToList(obj){
 			var childX = document.createElement('li');
 			childX.setAttribute('id','step_'+steps);
 			childX.setAttribute('class','steps');
-			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="margin-right: 0;"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><input name="image_'+steps+'" class="imageToUpload" id="image_'+steps+'" type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);"><div class="imageInput"><div style="height: 100%; display: table-cell;"><a id="imageButton_'+steps+'"class="imageButton" onclick="imageInput(this);">Przeglądaj...</a></div><span id="fileName_'+steps+'" class="fileName">Nie wybrano pliku.</span></div><img id="imagePreview_'+steps+'" src="#" class="previewImg" style="display: none;"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="1000" required></textarea>';
+			childX.innerHTML = '<h3 id="h3_'+steps+'">Krok '+steps+':</h3><i id="stepsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="margin-right: 0;"></i><i id="stepsIcon" class="fas fa-arrow-down" onclick="replaceDown(this);"></i><i id="stepsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);"></i><br><label>Zdjęcie <span class="asterisk">*</span></label><input name="image_'+steps+'" class="imageToUpload" id="image_'+steps+'" type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);"><div class="imageInput"><div style="height: 100%; display: table-cell;"><a id="imageButton_'+steps+'" class="buttonStyle buttons" style="margin: 0;" onclick="imageInput(this);">Przeglądaj...</a></div><span id="fileName_'+steps+'" class="fileName">Nie wybrano pliku.</span></div><img id="imagePreview_'+steps+'" src="#" class="previewImg" style="display: none;"/><br><label>Opis <span class="asterisk">*</span></label><textarea name="description_'+steps+'" class="inputText" type="text" maxlength="900" required></textarea>';
 			x.appendChild(childX);
 			changeId();
 			changeFirstElementSteps();
@@ -62,14 +62,14 @@ function deleteFromList(obj){
 	var id=obj.id;
 	if (id=='materialsIcon'){
 		materials--;
-		obj.parentNode.parentNode.removeChild(obj.parentNode);
+		obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode);
 		changeIdMaterials();
 		changeFirstElementMaterials();
 		document.getElementsByName("materials_length")[0].value=materials;
 	}
 	else if (id=='toolsIcon'){
 		tools--;
-		obj.parentNode.parentNode.removeChild(obj.parentNode);
+		obj.parentNode.parentNode.parentNode.removeChild(obj.parentNode.parentNode);
 		changeIdTools();
 		changeFirstElementTools();
 		document.getElementsByName("tools_length")[0].value=tools;
@@ -85,29 +85,23 @@ function deleteFromList(obj){
 
 function changeFirstElementMaterials(){
 	if (materials==1){
-		document.getElementsByName("material_1")[0].nextElementSibling.style.display="none";
-		document.getElementsByName("material_1")[0].nextElementSibling.nextElementSibling.style.display="none";
-		document.getElementsByName("material_1")[0].style.width="100%";
+		document.getElementsByName("material_1")[0].nextElementSibling.childNodes[0].style.display="none";
+		document.getElementsByName("material_1")[0].nextElementSibling.nextElementSibling.childNodes[0].style.display="none";
 	}
 	else {
-		document.getElementsByName("material_1")[0].nextElementSibling.style.display="inline-block";
-		document.getElementsByName("material_1")[0].nextElementSibling.nextElementSibling.style.display="inline-block";
-		document.getElementsByName("material_1")[0].style.width="85%";
-		document.getElementsByName("material_1")[0].style.marginRight="5px";
+		document.getElementsByName("material_1")[0].nextElementSibling.childNodes[0].style.display="inline-block";
+		document.getElementsByName("material_1")[0].nextElementSibling.nextElementSibling.childNodes[0].style.display="inline-block";
 	}
 }
 
 function changeFirstElementTools(){
 	if (tools==1){
-		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="none";
-		document.getElementsByName("tool_1")[0].nextElementSibling.nextElementSibling.style.display="none";
-		document.getElementsByName("tool_1")[0].style.width="100%";
+		document.getElementsByName("tool_1")[0].nextElementSibling.childNodes[0].style.display="none";
+		document.getElementsByName("tool_1")[0].nextElementSibling.nextElementSibling.childNodes[0].style.display="none";
 	}
 	else {
-		document.getElementsByName("tool_1")[0].nextElementSibling.marginRight="6px";
-		document.getElementsByName("tool_1")[0].nextElementSibling.style.display="inline-block";
-		document.getElementsByName("tool_1")[0].nextElementSibling.nextElementSibling.style.display="inline-block";
-		document.getElementsByName("tool_1")[0].style.width="85%";
+		document.getElementsByName("tool_1")[0].nextElementSibling.childNodes[0].style.display="inline-block";
+		document.getElementsByName("tool_1")[0].nextElementSibling.nextElementSibling.childNodes[0].style.display="inline-block";
 	}
 }
 
@@ -139,11 +133,11 @@ function replaceUp(obj){
 }
 
 function replaceUpList(obj){
-	var element= obj.previousElementSibling.name;
+	var element= obj.parentNode.previousElementSibling.name;
 	var elementName = element.substring(0, element.indexOf('_'));
 	var number = element.substring(element.indexOf('_')+1, element.length);
 	var numberPrevious=number-1;
-
+	console.log(elementName);
 	if (numberPrevious==0){
 		return;
 	}

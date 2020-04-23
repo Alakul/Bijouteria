@@ -21,7 +21,7 @@ a {
 	text-decoration: underline;
 }
 .margin {
-	margin-top: 30px;
+	margin-top: 36px;
 }
 
 header {
@@ -104,7 +104,7 @@ th, td {
 	border-radius: 4px;
 	margin: 0 auto 6px auto;
 	padding: 14px 10px 14px 10px;
-	border: 2px solid goldenrod;
+	border: 2px solid darkgray;
 	background-color: white;
 	width: 300px;
 }
@@ -116,7 +116,7 @@ th, td {
 	font-size: 15px;
 	border-radius: 4px;
 	border: none;
-	margin: auto auto 30px auto;
+	margin: auto auto 40px auto;
 	font-family: Lucida, sans-serif;
 	width: auto;
 	cursor: pointer;
@@ -139,12 +139,12 @@ th, td {
 	border: none;
 	font-family: Lucida, sans-serif;
 	color: white;
-	background-color: #e1b74c;
+	background-color: darkgray;
 	margin: auto;
 	display: block;
 }
 .buttonStyle:hover {
-    background-color: goldenrod; 
+    background-color: gray; 
 }
 .buttonStyle:active {
     color: gray;
@@ -156,12 +156,16 @@ th, td {
 .buttons {
 	text-align: center;
 	margin-top: 10px;
-	color: black;
-	border: 1px solid #DDDDDD;
+	color: #333333;
+	border: 1px solid silver;
 	background-color: white;
 }
 .buttons:hover {
 	background-color: #E8E8E8;
+}
+.buttonSubmit {
+	margin: 10px auto auto auto;
+	width: 100%;
 }
 
 
@@ -238,10 +242,10 @@ th, td {
 	color: red;
 }
 .formStyle {
-	max-width: 500px;
+	max-width: 450px;
 	margin: 20px auto 20px auto;
 	border-radius: 4px;
-	padding: 50px 30px 50px 30px;
+	padding: 26px 20px 26px 20px;
 	background-color: white;
 }
 .headline {
@@ -389,6 +393,7 @@ th, td {
 }
 #toolsIcon, #materialsIcon {
 	padding: 6px;
+	height: auto;
 }
 #toolsIcon:hover , #materialsIcon:hover {
 	border-radius: 4px;
@@ -401,8 +406,8 @@ th, td {
 /* Image */
 #avatarPreview {
 	object-fit: cover;
-  	width: 500px;
-  	height: 500px;
+  	width: 450px;
+  	height: 450px;
 }
 .imageToUpload {
 	opacity: 0;
@@ -412,24 +417,6 @@ th, td {
 }
 .imageInput {
 	margin: 6px 0 6px 0;
-}
-.imageButton {
-	padding: 12px;
-	border-radius: 4px;
-	font-size: 14px;
-	letter-spacing: 0.4px;
-	width: auto;
-	font-weight: bold;
-	cursor: pointer;
-	height: auto;
-	border: none;
-	font-family: Lucida, sans-serif;
-	color: white;
-	background-color: silver;
-	display: block;
-}
-.imageButton:hover {
-	background-color: gray;
 }
 .fileName {
 	font-size: 13px;
@@ -459,11 +446,11 @@ th, td {
 	padding: 0;
 }
 .inputText {
-	padding: 12px 10px 12px 10px;
+	padding: 12px;
 	margin: 4px 0px 40px 0px;
 	width: 100%;
 	background-color: white;
-	border: 2px solid #DDDDDD;
+	border: 1px solid silver;
 	border-radius: 4px;
 	font-size: 15px;
 	letter-spacing: 0.7px;
@@ -472,10 +459,10 @@ th, td {
 	color: #333333;
 }
 .inputText:hover {
-	border: 2px solid silver;
+	border: 1px solid gray;
 }
 .inputText:focus {
-	border: 2px solid silver;
+	border: 1px solid gray;
 }
 
 
@@ -577,15 +564,15 @@ th, td {
 	font-size: 15px;
 	letter-spacing: 0.7px;
 	border-radius: 0 4px 4px 0;
-	border: 2px solid #e1b74c;
+	border: 2px solid darkgray;
 	height: inherit;
 	cursor: pointer;
 	font-family: Lucida, sans-serif;
-	background-color: #e1b74c;
+	background-color: darkgray;
 }
 .searchButton:hover {
-	background-color: goldenrod;
-	border: 2px solid goldenrod;
+	background-color: gray;
+	border: 2px solid gray;
 }
 .menuElement {
 	height: inherit;
@@ -749,22 +736,21 @@ th, td {
 
 /* Tutorial ADD*/
 .steps {
-	border: 2px solid #DDDDDD;
+	border: 2px solid silver;
 	margin: 6px 0 10px 0;
 	padding: 20px;
 }
 .toolsInput, .materialsInput {
-	width: 85%;
+	display: table-cell;
 	margin: 5px 10px 8px 0px;
-	box-sizing: border-box;
 }
 #category {
 	padding: 12px 10px 12px 10px;
-	margin: 6px 0 30px 0;
+	margin: 6px 0 40px 0;
 	border-radius: 4px;
 	font-size: 14px;
 	letter-spacing: 0.7px;
-	border: 2px solid #DDDDDD;
+	border: 1px solid silver;
 	font-weight: bold;
 	color: #333333;
 	font-family: Lucida, sans-serif;
@@ -777,7 +763,7 @@ th, td {
 	background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Sort_down_font_awesome.svg/600px-Sort_down_font_awesome.svg.png) 96% / 15% no-repeat white;
 }
 #category:hover {
-	border: 2px solid silver;
+	border: 1px solid gray;
 }
 #category > option {
 	color: #333333;
@@ -790,6 +776,18 @@ th, td {
 	list-style: none;
 	padding-left: 0;
 	margin: 0;
+}
+#materialsList > li {
+	display: table;
+	width: 100%;
+}
+#toolsList > li {
+	display: table;
+	width: 100%;
+}
+.listElement {
+	display: table-cell;
+	text-align: center;
 }
 
 

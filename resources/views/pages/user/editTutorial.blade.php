@@ -15,19 +15,19 @@
 			<input name="title" class="inputText" type="text" minlength="3" maxlength="100" required value="{{ $tutorials->title }}">
                 
             <label>Opis</label>
-            <textarea name="description_0" class="inputText" type="text" maxlength="1000">{{ $tutorials->description }}</textarea>
+            <textarea name="description_0" class="inputText" type="text" maxlength="900">{{ $tutorials->description }}</textarea>
                 
             <label>Zdjęcie tytułowe <span class="asterisk">*</span></label>
             <input name="image_0" id="image_0" class="imageToUpload" type="file" onchange="loadPreview(this);">
             <div class="imageInput">
                 <div style="height: 100%; display: table-cell;">
-                    <a id="imageButton_0" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
+                    <a id="imageButton_0" class="buttonStyle buttons" style="margin: 0;" onclick="imageInput(this);">Przeglądaj...</a>
                 </div>
                 <span id="fileName_0" class="fileName" >Nie wybrano pliku.</span>
             </div>
-            <img id="imagePreview_0" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}" class="previewImg"/><br>
+            <img id="imagePreview_0" src="/storage/tutorialsIMG/{{ $tutorials->title_picture }}" class="previewImg"/>
 
-            <label for="category">Kategoria <span class="asterisk">*</span></label>
+            <label for="category" style="margin-top: 16px;">Kategoria <span class="asterisk">*</span></label>
             <select name="category" id="category" required>
                 @foreach ($categories as $category)
                     @if ($category->category==$tutorials->category)
@@ -42,7 +42,7 @@
             <ul id="materialsList">
                 @foreach ($materials as $indexKey => $material)
                     <?php $indexKey++; ?>
-                    <li><input name="material_<?php echo $indexKey; ?>" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;" value="{{ $material->material}}"></li>
+                    <li><input name="material_<?php echo $indexKey; ?>" class="inputText materialsInput" type="text" maxlength="100" required style="margin-bottom: 0; width: 100%;" value="{{ $material->material}}"></li>
                     <?php $materials_length=$indexKey ?>
                 @endforeach
             </ul>
@@ -52,7 +52,7 @@
             <ul id="toolsList">
                 @foreach ($tools as $indexKey => $tool)
                     <?php $indexKey++; ?>
-                    <li><input name="tool_<?php echo $indexKey; ?>" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;" value="{{ $tool->tool}}"></li>
+                    <li><input name="tool_<?php echo $indexKey; ?>" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 0; width: 100%;" value="{{ $tool->tool}}"></li>
                     <?php $tools_length=$indexKey ?>
                 @endforeach
             </ul>
@@ -72,20 +72,20 @@
                             <input name="image_{{ $step->step }}" id="image_{{ $step->step }}" class="imageToUpload"  type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);">
                             <div class="imageInput">
                                 <div style="height: 100%; display: table-cell;">
-                                    <a id="imageButton_{{ $step->step }}" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
+                                    <a id="imageButton_{{ $step->step }}" class="buttonStyle buttons" style="margin: 0;" onclick="imageInput(this);">Przeglądaj...</a>
                                 </div>
                                 <span id="fileName_{{ $step->step }}" class="fileName">Nie wybrano pliku.</span>
                             </div>  
                             <img id="imagePreview_{{ $step->step }}" src="/storage/tutorialsIMG/{{ $step->picture }}" class="previewImg"/><br>
                             <label>Opis <span class="asterisk">*</span></label>
-                            <textarea name="description_{{ $step->step }}" class="inputText" type="text" maxlength="1000" required>{{ $step->description }}</textarea>
+                            <textarea name="description_{{ $step->step }}" class="inputText" type="text" maxlength="900" required>{{ $step->description }}</textarea>
                         </li>
                         <?php $steps_length=$indexKey ?>
                     @endforeach
                 </ol>
             </div>
             <input type="hidden" name="steps_length" value="<?php echo $steps_length; ?>">
-			<button type="submit" class="buttonStyle" style="margin: 30px auto 0px auto;" onclick="inputRequired()">Zapisz</button>
+			<button type="submit" class="buttonStyle buttonSubmit" style="margin-top: 50px;" onclick="inputRequired()">Zapisz</button>
 		</div>
     </form>
     @endisset

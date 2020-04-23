@@ -15,19 +15,19 @@
                 <input name="title" class="inputText" type="text" minlength="3" maxlength="100" required>
                     
                 <label>Opis</label>
-                <textarea name="description_0" class="inputText" type="text" maxlength="1000"></textarea>
+                <textarea name="description_0" class="inputText" type="text" maxlength="900"></textarea>
                     
                 <label>Zdjęcie tytułowe <span class="asterisk">*</span></label>
                 <input name="image_0" id="image_0" class="imageToUpload" type="file" required onchange="loadPreview(this);">
                 <div class="imageInput">
                     <div style="height: 100%; display: table-cell;">
-                        <a id="imageButton_0" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
+                        <a id="imageButton_0" class="buttonStyle buttons" style="margin: 0;" onclick="imageInput(this);">Przeglądaj...</a>
                     </div>
                     <span id="fileName_0" class="fileName" >Nie wybrano pliku.</span>
                 </div>
-                <img id="imagePreview_0" src="#" class="previewImg" style="display: none;"/><br>
+                <img id="imagePreview_0" src="#" class="previewImg" style="display: none;"/>
 
-                <label for="category">Kategoria <span class="asterisk">*</span></label>
+                <label for="category" style="margin-top: 40px;">Kategoria <span class="asterisk">*</span></label>
                 <select name="category" id="category" required>
                     <option value="">Wybierz</option>
                     @foreach ($categories as $category)
@@ -38,9 +38,9 @@
                 <label>Wymagane materiały <span class="asterisk">*</span></label>
                 <ul id="materialsList">
                     <li id="materialRow_1">
-                        <input name="material_1" class="inputText materialsInput" type="text" maxlength="100" required style="width: 100%;">
-                        <i id="materialsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="display: none;"></i>
-                        <i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i>
+                        <input name="material_1" class="inputText materialsInput" type="text" maxlength="100" required>
+                        <div class="listElement"><i id="materialsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="display: none;"></i></div>
+                        <div class="listElement"><i id="materialsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></div>
                     </li>
                 </ul>
                 <input type="hidden" name="materials_length" value="1">
@@ -49,9 +49,9 @@
                 <label>Wymagane narzędzia <span class="asterisk">*</span></label>
                 <ul id="toolsList">
                     <li id="toolRow_1">
-                        <input name="tool_1" class="inputText toolsInput" type="text" maxlength="100" required style="margin-bottom: 8px; width: 100%;">
-                        <i id="toolsIcon" class="fas fa-arrow-up" onclick="replaceUp(this);" style="display: none; margin-right: 0;"></i>
-                        <i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none; margin-right: 0;"></i>
+                        <input name="tool_1" class="inputText toolsInput" type="text" maxlength="100" required>
+                        <div class="listElement"><i id="toolsIcon" class="fas fa-arrow-up" onclick="replaceUpList(this);" style="display: none;"></i></div>
+                        <div class="listElement"><i id="toolsIcon" class="fa fa-close" onclick="deleteFromList(this);" style="display: none;"></i></div>
                     </li>
                 </ul>
                 <input type="hidden" name="tools_length" value="1">
@@ -69,19 +69,19 @@
                             <input name="image_1" id="image_1" class="imageToUpload" type="file" accept=".jpeg, .jpg, .png, .gif, .svg" onchange="loadPreview(this);" required>
                             <div class="imageInput">
                             <div style="height: 100%; display: table-cell;">
-                                <a id="imageButton_1" class="imageButton" onclick="imageInput(this);">Przeglądaj...</a>
+                                <a id="imageButton_1" class="buttonStyle buttons" style="margin: 0;" onclick="imageInput(this);">Przeglądaj...</a>
                             </div>
                                 <span id="fileName_1" class="fileName">Nie wybrano pliku.</span>
                             </div>  
                             <img id="imagePreview_1" src="#" class="previewImg" style="display: none;"/><br>
                             <label>Opis <span class="asterisk">*</span></label>
-                            <textarea name="description_1" class="inputText" type="text" maxlength="1000" required></textarea>
+                            <textarea name="description_1" class="inputText" type="text" maxlength="900" required></textarea>
                         </li>
                     </ol>
                 </div>
                 <input type="hidden" name="steps_length" value="1">
-                <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button><br>
-                <button type="submit" class="buttonStyle" style="margin: 30px auto 0px auto;">Opublikuj</button>
+                <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button>
+                <button type="submit" class="buttonStyle buttonSubmit">Opublikuj</button>
             </div>
         </form>
     @endisset
