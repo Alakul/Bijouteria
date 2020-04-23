@@ -11,7 +11,34 @@
     @endif
     @isset ($tutorials, $materials, $tools, $steps, $comments, $profiles, $users)
     <div class="show">
-        <div class="showColumn" style="margin-right: 10px;">
+        <div class="showColumn">
+
+            <div id="profileTutorialUp" class="profileTutorial">
+                <div class="showColumn" style="height: 100%;">
+                <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}" style=" vertical-align: middle;"><img class="showAvatar" src="/storage/avatarsIMG/{{ $profiles->avatar }}"></a>
+                </div>
+                <div class="showColumn showDetails">
+                    <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}"><p class="showUser">{{ $users->name }}</p></a>
+                    <p class="commentDate" style="margin-bottom: 2px; font-size: 11px;">Opublikowano:</p>
+                    <p class="commentDate">{{ date('d.m.yy', strtotime($tutorials->date)) }}</p>
+                </div>
+                @if (Auth::guard('admin')->check())
+                @elseif (Auth::check())
+                    @if ($tutorials->user_id!=Auth::user()->id)
+                        <a class="buttons buttonStyle" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><i class="fas fa-heart"></i><p class="buttonText">Dodaj do ulubionych</p></a>
+                    @else
+                    <div style="display: flex; box-sizing: border-box;">
+                        <div class="showColumn" style="width: 50%;">
+                            <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="display: block;  margin-right: 2px;"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>
+                        </div>
+                        <div class="showColumn" style="width: 50%;">
+                            <a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorials->id]) }}" style=" display: block;  margin-left: 2px;"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a>
+                        </div>
+                    </div>
+                    @endif
+                @endif
+            </div>
+
             <div class="showTutorial">
                 <h2 class="showHeadline">{{ $tutorials->title }}</h2>
 
@@ -50,8 +77,8 @@
         </div>
 
         <div class="showColumn">
-            <div class="profile" style="padding: 16px; max-width: 240px;">
-                <div class="showColumn" style=" height: 100%;">
+            <div id="profileTutorialRight" class="profile" style="padding: 16px; max-width: 240px;">
+                <div class="showColumn" style="height: 100%;">
                 <a href="{{ route('showProfile', ['id' => $profiles->user_id]) }}" style=" vertical-align: middle;"><img class="showAvatar" src="/storage/avatarsIMG/{{ $profiles->avatar }}"></a>
                 </div>
                 <div class="showColumn showDetails">
@@ -64,15 +91,21 @@
                     @if ($tutorials->user_id!=Auth::user()->id)
                         <a class="buttons buttonStyle" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><i class="fas fa-heart"></i><p class="buttonText">Dodaj do ulubionych</p></a>
                     @else
-                        <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>
-                        <a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorials->id]) }}"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a>
+                    <div style="display: flex; box-sizing: border-box;">
+                        <div class="showColumn" style="width: 50%;">
+                            <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="display: block; margin-right: 2px;"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>
+                        </div>
+                        <div class="showColumn" style="width: 50%;">
+                            <a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorials->id]) }}" style=" display: block; margin-left: 2px;"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a>
+                        </div>
+                    </div>
                     @endif
                 @endif
             </div>
         </div>
     </div>
 
-    <div class="formStyle" style="max-width: 666px; margin-top: 30px;">
+    <div class="formStyle" style="max-width: 450px; margin-top: 30px; padding: 26px;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
             <form method="POST" action="{{ route('storeComment') }}" enctype="multipart/form-data">
@@ -81,8 +114,8 @@
                 @if (Auth::guard('admin')->check())
                 @elseif (Auth::check())
                     <label>Napisz komentarz</label>
-                    <textarea name="comment" class="inputText" type="text" maxlength="300" required style="margin-bottom: 8px;"></textarea>
-                    <button type="submit" class="buttonStyle" style="margin: 0 auto 40px auto;">Opublikuj</button>
+                    <textarea name="comment" class="inputText" type="text" maxlength="300" required style="margin-bottom: 0;"></textarea>
+                    <button type="submit" class="buttons buttonStyle" style="width: 100%;">Opublikuj</button>
                 @else
                     <label>Napisz komentarz</label>
                     <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>

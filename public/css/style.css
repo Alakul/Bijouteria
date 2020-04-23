@@ -865,8 +865,9 @@ th, td {
 	justify-content: center;
 }
 .showTutorial {
-	max-width: 450px;
-	margin: 20px auto 20px auto;
+	max-width: 400px;
+	width: 400px;
+	margin: 20px 10px 20px 10px;
 	border-radius: 4px;
 	padding: 26px 0 26px 0;
 	background-color: white;
@@ -880,8 +881,17 @@ th, td {
 .showLabel {
 	margin: 0 14px 0 30px;
 }
-
-
+.profileTutorial {
+	max-width: 450px;
+	margin: 20px 10px 10px 10px;
+	background-color: white;
+	border-radius: 4px;
+	padding: 16px;
+	box-sizing: border-box;
+}
+#profileTutorialUp {
+	display: none;
+}
 
 
 
@@ -906,6 +916,12 @@ th, td {
 	}
 	.menuList > li {
 		border-bottom: 1px solid gainsboro;
+	}
+	#profileTutorialUp {
+		display: block;
+	}
+	#profileTutorialRight {
+		display: none;
 	}
 }
 
