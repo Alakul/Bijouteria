@@ -1,9 +1,12 @@
 @extends('layouts.app')
 @section('content')
     @if(session()->has('success'))
-        <div class=" alertSuccess">
+        <div class=" alertDatabase">
             {{ session()->get('success') }}
         </div>
+    @endif
+    @if ($tutorials->isEmpty())
+        <div class="alertDatabase">Brak rekordów</div>
     @endif
     <div class="gallery">
         @foreach ($tutorials as $tutorial)

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 @section('content')
     @if(session()->has('success'))
-        <div class=" alertSuccess">
+        <div class=" alertDatabase">
             {{ session()->get('success') }}
         </div>
     @elseif (session()->has('fail'))
-        <div class=" alertSuccess">
+        <div class=" alertDatabase">
             {{ session()->get('fail') }}
         </div>
     @endif

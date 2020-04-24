@@ -7,7 +7,7 @@
 		<form method="POST" action="{{ route('login') }}" class="formStyle">
 			<h2 class="headline">Logowanie</h2>
 		@endisset
-			@csrf	
+			@csrf
 			
 			
 			<div class="inputArea">

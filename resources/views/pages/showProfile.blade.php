@@ -2,7 +2,7 @@
 @section('content')
     @isset($tutorials, $users, $profiles)
     @if(session()->has('success'))
-        <div class=" alertSuccess">
+        <div class=" alertDatabase">
             {{ session()->get('success') }}
         </div>
     @endif
@@ -23,6 +23,9 @@
         </div>
     </div>
 
+    @if ($tutorials->isEmpty())
+        <div class="alertDatabase">Brak rekordów</div>
+    @endif
     <div class="gallery">
         @foreach ($tutorials as $tutorial)
             <div class="miniature">
