@@ -44,6 +44,11 @@ class TutorialController extends Controller
         return view('pages/home',['tutorials'=>$tutorials]);
     }
 
+    public function searchEdit()
+    {
+        return view('pages/showSearch');
+    }
+
 
 
     /**

@@ -105,7 +105,7 @@
         </div>
     </div>
 
-    <div class="formStyle" style="max-width: 450px; margin-top: 30px;">
+    <div class="formStyle" style="max-width: 450px; margin-top: 0;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
             <form method="POST" action="{{ route('storeComment') }}" enctype="multipart/form-data">
@@ -118,7 +118,7 @@
                     <button type="submit" class="buttonStyle buttonSubmit" style="width: 100%;">Opublikuj</button>
                 @else
                     <label>Napisz komentarz</label>
-                    <p style="font-size: 15px; margin: 10px 0 0 0;">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>
+                    <p class="commentWrite">Aby skomentować <a class="a" href="{{ route('login') }}">zaloguj się</a> lub <a class="a" href="{{ route('register') }}">zarejestruj</a>.</p>
                 @endif
 
                 <input type="hidden" name="tutorial_id" value="{{ $tutorials-> id}}">
@@ -141,7 +141,7 @@
                             @endif
                         @endif
 
-                        <p class="commentDate">{{ date('d.m.yy', strtotime($comment->date)) }}, godz. {{ date('H:i', strtotime($comment->date)) }}</p>
+                        <p class="commentDate" style="font-size: 13px;">{{ date('d.m.yy', strtotime($comment->date)) }}, godz. {{ date('H:i', strtotime($comment->date)) }}</p>
                         <p class="commentComment" >{{ $comment->comment }}</p>
                     </div>
                 </li>

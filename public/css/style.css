@@ -73,13 +73,33 @@ main {
 	padding: 6px;
 	border-collapse: collapse;
 	border: 1px solid black;
+	font-size: 15px;
+	width: 100%;
 }
 
-th, td {
-	padding: 15px;
+.adminTable th {
+	padding: 10px;
 	text-align: left;
-	border: 1px solid black;
-  }
+	border: 1px solid silver;
+	background-color: gray;
+	color: white;
+}
+.adminTable td {
+	padding: 10px;
+	text-align: left;
+	border: 1px solid silver;
+}
+
+.adminTable tr:hover {
+	background-color: #F0F0F0;
+}
+.adminContainer {
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+
 
 
 /* Alert */
@@ -147,7 +167,7 @@ th, td {
     background-color: gray; 
 }
 .buttonStyle:active {
-    color: gray;
+    color: #DDDDDD;
 }
 .buttonText {
 	display: inline-block;
@@ -225,7 +245,7 @@ th, td {
 }
 .commentComment {
 	font-size: 14px;
-	margin: 6px 0 0 0;
+	margin: 10px 0 0 0;
 }
 .commentUser {
 	font-weight: bold;
@@ -234,6 +254,13 @@ th, td {
 }
 .commentUser:hover {
 	text-decoration: underline;
+}
+.commentWrite {
+	margin: 6px 0 0 0;
+	font-size: 14px;
+	border: 1px solid grey;
+	padding: 8px;
+	border-radius: 4px;
 }
 
 
@@ -654,16 +681,13 @@ th, td {
 #menu:hover {
 	background-color: #F0F0F0;
 }
-
-
-
-.submenuList {
+#categoriesResponsive {
 	display: none;
-	text-decoration: none;
+	float: left;
 }
-
-
-
+#addIcon {
+	display: block;
+}
 
 
 /* Pagination */
@@ -921,6 +945,12 @@ th, td {
 	#profileTutorialRight {
 		display: none;
 	}
+	#categoriesResponsive {
+		display: block;
+	}
+	#addIcon {
+		display: none;
+	}
 }
 
 @media screen and (max-width: 470px) {
@@ -933,9 +963,6 @@ th, td {
 	}
 	.headline {
 		font-size: 22px;
-	}
-	.formStyle {
-		padding: 40px 25px 40px 25px;
 	}
 }
 

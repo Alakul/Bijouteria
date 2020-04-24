@@ -10,9 +10,22 @@ function listMenu() {
         x.style.display = "none";
     }
     else{
-        x.style.display = "block";
+		x.style.display = "block";
+		x.style.boxShadow = "0px 8px 16px 0px rgba(0,0,0,0.2)"; 
     }
 }
+function listMenuCategories() {
+	var x = document.getElementById("categoriesMenuResponsive");	
+
+    if (x.style.display === "block"){
+        x.style.display = "none";
+    }
+    else{
+		x.style.display = "block";
+		x.style.boxShadow = "0px 8px 16px 0px rgba(0,0,0,0.2)"; 
+    }
+}
+
 
 function addToList(obj){
 	var id=obj.id;

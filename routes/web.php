@@ -32,6 +32,9 @@ Route::get('/edytujProfil/{id}', 'ProfileController@edit')->name('editProfile')-
 //Ustawienia
 Route::get('/ustawienia', 'ChangePasswordController@index')->name('settings')->middleware('auth');
 
+//Szukaj
+Route::get('szukaj', 'TutorialController@searchEdit')->name('searchEdit');
+
 //Ulubione
 Route::get('/dodajDoUlubionych/{id}', 'FavouriteController@add')->name('addFavourite')->middleware('auth');
 Route::get('ulubione', 'FavouriteController@index')->name('showFavourite')->middleware('auth');
