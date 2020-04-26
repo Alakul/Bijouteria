@@ -34,6 +34,16 @@ Route::get('/ustawienia', 'ChangePasswordController@index')->name('settings')->m
 
 //Szukaj
 Route::get('szukaj', 'TutorialController@searchEdit')->name('searchEdit');
+Route::post('wyszukiwanie', 'TutorialController@search')->name('searchTutorial');
+
+
+Route::get('wyszukiwanie/{keyword}', 'TutorialController@search');
+
+Route::post('wyszukiwanie', 'TutorialController@form')->name('searchTutorial');
+
+
+
+
 
 //Ulubione
 Route::get('/dodajDoUlubionych/{id}', 'FavouriteController@add')->name('addFavourite')->middleware('auth');
@@ -45,7 +55,6 @@ Route::post('dodajPoradnik', 'TutorialController@store')->name('storeTutorial');
 Route::post('dodajKomentarz', 'CommentController@store')->name('storeComment');
 Route::post('edytujProfil', 'ProfileController@update')->name('updateProfile');
 Route::post('edytujPoradnik/{id}', 'TutorialController@update')->name('updateTutorial');
-Route::post('szukaj', 'TutorialController@search')->name('searchTutorial');
 
 
 //Admin
@@ -68,6 +77,6 @@ Route::resource('categories', 'CategoryController');
 Route::resource('profiles', 'ProfileController');
 Route::resource('comments', 'CommentController');
 Route::resource('tutorials', 'TutorialController');
-
+Route::resource('favourites', 'FavouriteController');
 
 Auth::routes();

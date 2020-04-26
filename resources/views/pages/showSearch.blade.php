@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <form method="POST" action="{{ route('searchTutorial') }}" class="formStyle" enctype="multipart/form-data">   
-        <h2 class="headline">Wyszukiwanie</h2>
         {{ csrf_field() }}
-		<input name="search" class="inputText" setype="text" placeholder="Szukaj...">
+        <h2 class="headline">Wyszukiwanie</h2>
+		<input name="search" class="inputText" setype="text">
 		<button type="submit" class="buttonStyle buttonSubmit" style="margin-top: 10px;">Szukaj</button>
 	</form>
 @endsection

@@ -8,6 +8,7 @@ use App\Models\Step;
 use App\Models\User;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Redirect;
 use DB;
 use File;
 use Storage;
@@ -35,9 +36,8 @@ class TutorialController extends Controller
         return view('pages/home',['tutorials'=>$tutorials]);
     }
 
-    public function search(Request $request)
+    public function search($keyword)
     {
-        $keyword = $request->input('search');
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
         ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(20);
         
@@ -48,6 +48,14 @@ class TutorialController extends Controller
     {
         return view('pages/showSearch');
     }
+
+    public function form(Request $request)
+    {
+        $keyword = $request->input('search');
+        return Redirect::to('wyszukiwanie/'.$keyword) ;
+    }
+
+    
 
 
 
