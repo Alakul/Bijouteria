@@ -13,10 +13,10 @@
         <table class="adminTable">
             <tr>
                 <th>ID</th>
-                <th>nazwa uzytkownika</th>
-                <th>tytuł</th>
-                <th>kategoria</th>
-                <th>data opublikowania</th>
+                <th>Nazwa użytkownika</th>
+                <th>Tytuł</th>
+                <th>Kategoria</th>
+                <th>Data opublikowania</th>
                 <th>Akcja</th>
             </tr>
             @foreach ($tutorials as $tutorial)
@@ -26,7 +26,7 @@
                     <td><a href="{{ route('showTutorial', ['id' => $tutorial->id]) }}">{{ $tutorial->title }}</a></td>
                     <td>{{ $tutorial->category }}</td>
                     <td>{{ $tutorial->date }}</td>
-                    <td style="width: 100px;"><a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorialAdmin', ['id' => $tutorial->id]) }}" style=" display: block; margin: 0;"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a></td>
+                    <td style="width: 100px;"><a class="buttonStyle buttonSubmit" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorialAdmin', ['id' => $tutorial->id]) }}" style="box-sizing: border-box; text-align: center; margin: 0;"><i class="fa fa-close" style="color: white;"></i><p class="buttonText">Usuń</p></a></td>
                 </tr>
             @endforeach
         </table>

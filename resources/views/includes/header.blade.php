@@ -11,7 +11,7 @@
 			</div>
 			<form method="POST" action="{{ route('searchTutorial') }}" enctype="multipart/form-data">
 				{{ csrf_field() }}
-				<input name="search" class="searchBar" setype="text" placeholder="Szukaj..." value="{{ old('search') }}" required>
+				<input name="search" class="searchBar" setype="text" placeholder="Szukaj..." required>
 				<button type="submit" class="searchButton"><i class='fas' style="color: white;">&#xf002;</i></button>
 			</form>
 		</div>

@@ -30,7 +30,7 @@ function listMenuCategories() {
 function addToList(obj){
 	var id=obj.id;
 	if (id=='materialsButton'){
-		if (materials<=5){
+		if (materials<=30){
 			materials++;
 			var x = document.getElementById("materialsList");
 			var childX = document.createElement('li');
@@ -43,7 +43,7 @@ function addToList(obj){
 		}	
 	}
 	else if	(id=='toolsButton'){
-		if(tools<=5){
+		if(tools<=30){
 			tools++;
 			var x = document.getElementById("toolsList");
 			var childX = document.createElement('li');
@@ -56,7 +56,7 @@ function addToList(obj){
 		}
 	}
 	else if	(id=='stepsButton'){
-		if(steps<=5){
+		if(steps<=50){
 			steps++;
 			var x = document.getElementById("stepsList");
 			var childX = document.createElement('li');
@@ -358,4 +358,6 @@ function checkSpace(event) {
 }
 
 
+function check() {
 
+}

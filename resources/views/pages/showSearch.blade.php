@@ -3,7 +3,7 @@
     <form method="POST" action="{{ route('searchTutorial') }}" class="formStyle" enctype="multipart/form-data">   
         {{ csrf_field() }}
         <h2 class="headline">Wyszukiwanie</h2>
-		<input name="search" class="inputText" setype="text">
+		<input name="search" class="inputText" setype="text" required>
 		<button type="submit" class="buttonStyle buttonSubmit" style="margin-top: 10px;">Szukaj</button>
 	</form>
 @endsection

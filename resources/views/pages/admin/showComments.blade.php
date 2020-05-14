@@ -4,10 +4,11 @@
         <table class="adminTable">
             <tr>
                 <th>ID</th>
-                <th>nazwa uzytkownika</th>
-                <th>poradnik id</th>
-                <th>poradnik tytul</th>
+                <th>Nazwa uzytkownika</th>
+                <th>ID poradnika</th>
+                <th>Tytuł poradnika</th>
                 <th>Komentarz</th>
+                <th>Data opublikowania</th>
                 <th>Akcja</th>
             </tr>
             @foreach ($comments as $comment)
@@ -17,7 +18,8 @@
                     <td>{{ $comment->tutorial_id }}</td>
                     <td><a href="{{ route('showTutorial', ['id' => $comment->tutorial_id]) }}">{{ $comment->title }}</a></td>
                     <td>{{ $comment->comment }}</td>
-                    <td style="width: 100px;"><a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyCommentAdmin', ['id' => $comment->id]) }}" style=" display: block; margin: 0;"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a></td>
+                    <td>{{ $comment->date }}</td>
+                    <td style="width: 100px;"><a class="buttonStyle buttonSubmit" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyCommentAdmin', ['id' => $comment->id]) }}" style="box-sizing: border-box; text-align: center; margin: 0;"><i class="fa fa-close" style="color: white;"></i><p class="buttonText">Usuń</p></a></td>
                 </tr>
             @endforeach
         </table>

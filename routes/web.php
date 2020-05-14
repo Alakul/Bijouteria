@@ -34,21 +34,14 @@ Route::get('/ustawienia', 'ChangePasswordController@index')->name('settings')->m
 
 //Szukaj
 Route::get('szukaj', 'TutorialController@searchEdit')->name('searchEdit');
-Route::post('wyszukiwanie', 'TutorialController@search')->name('searchTutorial');
-
-
 Route::get('wyszukiwanie/{keyword}', 'TutorialController@search');
-
-Route::post('wyszukiwanie', 'TutorialController@form')->name('searchTutorial');
-
-
-
-
+Route::post('wyszukiwanie', 'TutorialController@searchForm')->name('searchTutorial');
 
 //Ulubione
 Route::get('/dodajDoUlubionych/{id}', 'FavouriteController@add')->name('addFavourite')->middleware('auth');
 Route::get('ulubione', 'FavouriteController@index')->name('showFavourite')->middleware('auth');
 Route::get('/usunZUlubionych/{id}', 'FavouriteController@destroy')->name('destroyFavourite')->middleware('auth');
+
 
 Route::post('zmienHaslo', 'ChangePasswordController@store')->name('changePassword');
 Route::post('dodajPoradnik', 'TutorialController@store')->name('storeTutorial');
@@ -68,8 +61,6 @@ Route::get('/usunUzytkownikaAdmin/{id}', 'AdminController@destroyUser')->name('d
 
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
-
-
 
 
 

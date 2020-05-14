@@ -49,10 +49,13 @@ class TutorialController extends Controller
         return view('pages/showSearch');
     }
 
-    public function form(Request $request)
+    public function searchForm(Request $request)
     {
         $keyword = $request->input('search');
-        return Redirect::to('wyszukiwanie/'.$keyword) ;
+        if ($keyword==null) {
+            return Redirect::to('/') ;
+        }
+        return Redirect::to('wyszukiwanie/'.$keyword);
     }
 
     

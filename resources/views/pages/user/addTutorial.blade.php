@@ -44,7 +44,7 @@
                     </li>
                 </ul>
                 <input type="hidden" name="materials_length" value="1">
-                <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button>
+                <button id ="materialsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i><p class="buttonText">Dodaj materiał</p></button>
 
                 <label>Wymagane narzędzia <span class="asterisk">*</span></label>
                 <ul id="toolsList">
@@ -55,7 +55,7 @@
                     </li>
                 </ul>
                 <input type="hidden" name="tools_length" value="1">
-                <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button>
+                <button id ="toolsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i><p class="buttonText">Dodaj narzędzie</p></button>
 
                 <label>Poradnik</label>
                 <div>
@@ -80,8 +80,8 @@
                     </ol>
                 </div>
                 <input type="hidden" name="steps_length" value="1">
-                <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i></button>
-                <button type="submit" class="buttonStyle buttonSubmit">Opublikuj</button>
+                <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i><p class="buttonText">Dodaj krok</p></button>
+                <button type="submit" class="buttonStyle buttonSubmit" onclick="check();">Opublikuj</button>
             </div>
         </form>
     @endisset

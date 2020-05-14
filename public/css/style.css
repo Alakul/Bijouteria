@@ -159,12 +159,12 @@ main {
 	border: none;
 	font-family: Lucida, sans-serif;
 	color: white;
-	background-color: darkgray;
+	background-color: #e1b74c;
 	margin: auto;
 	display: block;
 }
 .buttonStyle:hover {
-    background-color: gray; 
+    background-color: goldenrod; 
 }
 .buttonStyle:active {
     color: #DDDDDD;
@@ -591,15 +591,15 @@ main {
 	font-size: 15px;
 	letter-spacing: 0.7px;
 	border-radius: 0 4px 4px 0;
-	border: 2px solid darkgray;
+	border: 2px solid #e1b74c;
 	height: inherit;
 	cursor: pointer;
 	font-family: Lucida, sans-serif;
-	background-color: darkgray;
+	background-color: #e1b74c;
 }
 .searchButton:hover {
-	background-color: gray;
-	border: 2px solid gray;
+	background-color: goldenrod;
+	border: 2px solid goldenrod;
 }
 .menuElement {
 	height: inherit;
