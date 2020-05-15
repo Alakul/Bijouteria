@@ -66,7 +66,7 @@
 			</ul>
 		</div>
 		@if (Auth::guard('admin')->check())
-			<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">Admin</p>
+			<div id="user" class="menuElement" style="margin-left: 14px; float: right;" onClick=""><p class="menuText">Administrator</p>
 				<ul id="userMenu" class="menuList" style="right: 10px">
 					<li><a href="{{ route('showUsers') }}">Użytkownicy</a></li>
 					<li><a href="{{ route('showTutorials') }}">Poradniki</a></li>

@@ -17,7 +17,7 @@
                     </span>
                 @enderror<br/>
 
-                <button type="submit" class="buttonStyle" style="margin: 30px auto auto auto;">Wyślij link resetujący hasło</button>
+                <button type="submit" class="buttonStyle" style="margin-top: 10px;">Wyślij link resetujący hasło</button>
             </div>
         </form>
 @endsection

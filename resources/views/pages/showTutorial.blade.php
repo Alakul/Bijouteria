@@ -91,21 +91,14 @@
                     @if ($tutorials->user_id!=Auth::user()->id)
                         <a class="buttons buttonStyle" href="{{ route('addFavourite', ['id' => $tutorials->id]) }}"><i class="fas fa-heart"></i><p class="buttonText">Dodaj do ulubionych</p></a>
                     @else
-                    <div style="display: flex; box-sizing: border-box;">
-                        <div class="showColumn" style="width: 50%;">
-                            <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="display: block; margin-right: 2px;"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>
-                        </div>
-                        <div class="showColumn" style="width: 50%;">
-                            <a class="buttons buttonStyle" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorials->id]) }}" style=" display: block; margin-left: 2px;"><i class="fa fa-close"></i><p class="buttonText">Usuń</p></a>
-                        </div>
-                    </div>
+                        <a class="buttons buttonStyle" href="{{ route('editTutorial', ['id' => $tutorials->id]) }}" style="display: block; margin-right: 2px;"><i class="fas fa-edit"></i><p class="buttonText">Edytuj</p></a>
                     @endif
                 @endif
             </div>
         </div>
     </div>
 
-    <div class="formStyle" style="max-width: 450px; margin-top: 0;">
+    <div class="formStyle" id="comments" style="max-width: 650px; margin-top: 0;">
         <h3 style="margin-bottom: 30px; text-align: center;">Komentarze</h3>
         
             <form method="POST" action="{{ route('storeComment') }}" enctype="multipart/form-data">

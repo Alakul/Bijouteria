@@ -15,11 +15,6 @@ use Storage;
 
 class TutorialController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
@@ -58,27 +53,12 @@ class TutorialController extends Controller
         return Redirect::to('wyszukiwanie/'.$keyword);
     }
 
-    
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories=DB::table('categories')->get();
         return view('pages/user/addTutorial',['categories'=>$categories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $tutorial = new Tutorial();
@@ -132,12 +112,6 @@ class TutorialController extends Controller
         return redirect()->back()->with('success', 'Poradnik został opublikowany.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $tutorials = Tutorial::find($id);
@@ -155,12 +129,6 @@ class TutorialController extends Controller
         'steps'=>$steps, 'comments'=>$comments, 'profiles'=>$profiles, 'users'=>$users]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $tutorials = Tutorial::find($id);
@@ -173,13 +141,6 @@ class TutorialController extends Controller
         'steps'=>$steps, 'categories'=>$categories]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $tutorial = Tutorial::where('id', $id)->first();
@@ -234,13 +195,6 @@ class TutorialController extends Controller
         return redirect()->back()->with('success', 'Zmiany zostały zapisane.');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $tutorial = Tutorial::find($id);

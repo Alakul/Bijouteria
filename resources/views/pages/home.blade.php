@@ -17,7 +17,7 @@
             <div class="miniature">
                 <div class="miniatureInner">
                     @if (Auth::guard('admin')->check())
-                        <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorial', ['id' => $tutorial->id]) }}"><i class="fa fa-close" style="font-size: 15px;"></i></a>
+                        <a class="miniatureButton" onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyTutorialAdmin', ['id' => $tutorial->id]) }}"><i class="fa fa-close" style="font-size: 15px;"></i></a>
                     @elseif (Auth::check())
                         @if ($tutorial->user_id==Auth::user()->id)
                             <a class="miniatureButton" href="{{ route('editTutorial', ['id' => $tutorial->id]) }}" style="right: 38px;"><i class="fa fa-edit"></i></a>
