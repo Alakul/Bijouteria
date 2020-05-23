@@ -18,7 +18,7 @@ class TutorialController extends Controller
     public function index()
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->paginate(20);
+        ->select('tutorials.*', 'users.name')->orderBy('date', 'desc')->paginate(30);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
@@ -26,7 +26,7 @@ class TutorialController extends Controller
     public function gallery($categorySelected)
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('category', $categorySelected)->orderBy('date', 'desc')->paginate(20);
+        ->select('tutorials.*', 'users.name')->where('category', $categorySelected)->orderBy('date', 'desc')->paginate(30);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
@@ -34,7 +34,7 @@ class TutorialController extends Controller
     public function search($keyword)
     {
         $tutorials = DB::table('tutorials')->join('users', 'tutorials.user_id', '=', 'users.id')
-        ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(20);
+        ->select('tutorials.*', 'users.name')->where('tutorials.title', 'like', '%' . $keyword . '%')->orderBy('date', 'desc')->paginate(30);
         
         return view('pages/home',['tutorials'=>$tutorials]);
     }
@@ -61,6 +61,10 @@ class TutorialController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title'=> 'required',
+        ]);
+
         $tutorial = new Tutorial();
         $tutorial->user_id = auth()->id();
         $tutorial->title = $request->input('title');
@@ -78,6 +82,11 @@ class TutorialController extends Controller
 
         $materialsLength = $request->input('materials_length');
         for ($i = 1; $i <= $materialsLength; $i++) {
+
+            $this->validate($request,[
+                'material_'.$i=> 'required',
+            ]);
+
             $material = new Material();
             $material->tutorial_id = $tutorialId;
             $material->lp = $i;
@@ -87,6 +96,11 @@ class TutorialController extends Controller
 
         $toolsLength = $request->input('tools_length');
         for ($i = 1; $i <= $toolsLength; $i++) {
+
+            $this->validate($request,[
+                'tool_'.$i=> 'required',
+            ]);
+
             $tool = new Tool();
             $tool->tutorial_id = $tutorialId;
             $tool->lp = $i;
@@ -96,6 +110,11 @@ class TutorialController extends Controller
 
         $stepsLength = $request->input('steps_length');
         for ($i = 1; $i <= $stepsLength; $i++) {
+
+            $this->validate($request,[
+                'description_'.$i=> 'required',
+            ]);
+
             $step = new Step();
             $step->tutorial_id = $tutorialId;
             $step->step = $i;

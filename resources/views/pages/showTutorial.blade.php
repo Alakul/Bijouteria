@@ -127,7 +127,7 @@
                         <a href="{{ route('showProfile', ['id' => $comment->user_id]) }}" class="commentUser">{{ $comment->name }}</a>
 
                         @if (Auth::guard('admin')->check())
-                            <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyComment', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>
+                            <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyCommentAdmin', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>
                         @elseif (Auth::check())
                             @if ($comment->user_id==Auth::user()->id)
                                 <a onclick="return confirm('Czy na pewno chcesz usunąć?')" href="{{ route('destroyComment', ['id' => $comment->id]) }}" style="float: right;"><i id="stepsIcon" class="fa fa-close" style="margin-right: 0;"></i></a>

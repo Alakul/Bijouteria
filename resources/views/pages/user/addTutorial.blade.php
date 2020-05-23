@@ -10,6 +10,11 @@
             {{ csrf_field() }}
             <h2 class="headline">Dodaj poradnik</h2>
             <div class="inputArea">
+                @foreach ($errors->all() as $error)
+                    <span role="alert" class="alertMessage">
+                        <strong>{{ $error }}</strong>
+                    </span>
+                @endforeach<br>
                 <br>
                 <label>Tytuł <span class="asterisk">*</span></label>
                 <input name="title" class="inputText" type="text" minlength="3" maxlength="100" required>

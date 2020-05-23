@@ -12,13 +12,13 @@
             @endforeach<br>
             
             <label>Obecne hasło</label>
-            <input  name="current_password" type="password" class="inputText" class="form-control" autocomplete="current-password" required>
+            <input  name="current_password" type="password" class="inputText" class="form-control" autocomplete="current-password" required onkeypress="checkSpace(event)">
             
             <label>Nowe hasło</label>
-            <input id="new_password" name="new_password" class="inputText" type="password" class="form-control" autocomplete="current-password" required>
+            <input id="new_password" name="new_password" class="inputText" type="password" class="form-control" autocomplete="current-password" required onkeypress="checkSpace(event)">
 
             <label>Potwierdź nowe hasło</label>
-            <input id="new_confirm_password" name="new_confirm_password" class="inputText" type="password" class="form-control" autocomplete="current-password" required>
+            <input id="new_confirm_password" name="new_confirm_password" class="inputText" type="password" class="form-control" autocomplete="current-password" required onkeypress="checkSpace(event)">
 
 			<button type="submit" class="buttonStyle buttonSubmit">Zapisz</button>
 		</div>

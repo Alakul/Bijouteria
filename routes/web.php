@@ -13,14 +13,15 @@
 */
 
 
-Route::get('/', 'TutorialController@index')->name('home');
-Route::get('/kategoria/{categorySelected}', 'TutorialController@gallery')->name('showGallery');
+
 
 //Komentarz
 Route::get('/usunKomentarz/{id}', 'CommentController@destroy')->name('destroyComment')->middleware('auth');
 Route::post('dodajKomentarz', 'CommentController@store')->name('storeComment');
 
 //Poradnik
+Route::get('/', 'TutorialController@index')->name('home');
+Route::get('/kategoria/{categorySelected}', 'TutorialController@gallery')->name('showGallery');
 Route::get('/stworzPoradnik', 'TutorialController@create')->name('createTutorial')->middleware('auth');
 Route::get('/poradnik/{id}', 'TutorialController@show')->name('showTutorial');
 Route::get('/poradnik/edytuj/{id}', 'TutorialController@edit')->name('editTutorial')->middleware('auth');
