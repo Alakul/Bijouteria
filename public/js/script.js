@@ -14,6 +14,7 @@ function listMenu() {
 		x.style.boxShadow = "0px 8px 16px 0px rgba(0,0,0,0.2)"; 
     }
 }
+
 function listMenuCategories() {
 	var x = document.getElementById("categoriesMenuResponsive");	
 
@@ -150,7 +151,7 @@ function replaceUpList(obj){
 	var elementName = element.substring(0, element.indexOf('_'));
 	var number = element.substring(element.indexOf('_')+1, element.length);
 	var numberPrevious=number-1;
-	console.log(elementName);
+
 	if (numberPrevious==0){
 		return;
 	}
@@ -355,9 +356,4 @@ function checkSpace(event) {
     	event.preventDefault();
     	return false;
 	}
-}
-
-
-function check() {
-
 }

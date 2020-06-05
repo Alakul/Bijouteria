@@ -86,7 +86,7 @@
                 </div>
                 <input type="hidden" name="steps_length" value="1">
                 <button id ="stepsButton" class="buttonAdd" type="button" onclick="addToList(this);"><i id="plus" class="fa fa-plus"></i><p class="buttonText">Dodaj krok</p></button>
-                <button type="submit" class="buttonStyle buttonSubmit" onclick="check();">Opublikuj</button>
+                <button type="submit" class="buttonStyle buttonSubmit">Opublikuj</button>
             </div>
         </form>
     @endisset
