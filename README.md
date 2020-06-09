@@ -1,4 +1,5 @@
-![Logo](./screenshots/logo.png)
+<img src="./screenshots/logo.png" width="250" alt="Logo">
+
 # Bijouteria
 Bijouteria is a social network written with PHP framework - Laravel. It enables users to share ideas for jewelry making using step-by-step guides that lead through the various stages of creation. The application was created for beginners who start their adventure with jewelry making and for more advanced people who want to share their knowledge and experience with other users.
 
@@ -69,6 +70,12 @@ To-do list:
 
 
 ## Screenshots
-![Home page](./screenshots/home.png)
-
-![Profile](./screenshots/profile.png)
+<p>
+    <img src="./screenshots/home.png" alt="Home page">
+    <em>Home page</em>
+</p>
+</br>
+<p>
+    <img src="./screenshots/profile.png" alt="Profile">
+    <em>Profile</em>
+</p>
